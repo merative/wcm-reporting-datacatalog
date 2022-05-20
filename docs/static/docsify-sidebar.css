@@ -1,0 +1,31 @@
+.sidebar-nav li {
+  position: relative;
+  margin: 0 8px 0;
+  padding-left: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebar-nav ul:not(.app-sub-sidebar) > li:not(.file)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: -12px;
+  height: 6px;
+  width: 6px;
+  border-right: 1px solid #505d6b;
+  border-bottom: 1px solid #505d6b;
+  transform: rotate(-45deg);
+  transition: transform 0.1s;
+}
+
+.sidebar-nav ul:not(.app-sub-sidebar) > li.open::before {
+  transform: rotate(45deg);
+  top: 12px;
+  left: -10px;
+}
+
+.sidebar-nav ul:not(.app-sub-sidebar) > li.collapse::before {
+  transform: rotate(-45deg);
+}
