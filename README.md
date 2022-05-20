@@ -1,5 +1,3 @@
-# wcm-reporting-datacatalog
-Watson Care Manager Reporting BYOT data catalog.
 
 # IBM Watson Care Manager Reporting
 
