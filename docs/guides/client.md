@@ -1,6 +1,6 @@
 
 
-This section describes data available for clients.<br/>
+This section describes data available for clients.<br/> <br/>
 These views groups attributes that relate to a client's demographic information, address and contact information. It also contains a view that groups data that relates to tags recorded for clients and a view that groups data that shows who has requested emergency access to a client and when.
 
 ## CLIENTS_V1_VIEW
@@ -199,14 +199,14 @@ This view groups attributes that relate to a client's phone number such as the p
 
 
 ## TAGS_V1_VIEW
-This view groups attributes that relate to a client's tags, such as additional information that describes them like whether they are a member of an organization or group, for example, student, football team.
+Tags are used to describe additional information about the client like whether they are a member of an organization or group, for example, student, football team. This view groups attributes that relate to a client's tags, such as the tag name, status, when it was added and which users added the tag. 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
 | TAGID| Identifier for a record. |  Int 64| ---|NO|
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|YES|
 | TAGNAME| The name of the tag. | Character| 512|YES|
-| ADDEDBY| First name and last name of the user who added the record. | Character| 256|YES|
+| ADDEDBY| The identity of the user who created the record.  | Character| 256|NO|
 | ADDEDON| Date on which the record was added.| Date Time| ---|YES|
 | STATUS| The tag status, Active or Canceled. | Character| 200|YES|
 | INGESTIONTIME| Date and time the record was ingested, supports change data capture.| Date Time| |YES|
@@ -218,4 +218,4 @@ This view groups attributes that relate to a client's tags, such as additional i
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/>  A client is associated with zero-to-many tags.|
-| UPDATEDBYUSERNAME |  USERS_V1_VIEW | Cardinality is one-to-many. <br/> A tag is associated with one user. |
+| ADDEDBY |  USERS_V1_VIEW | Cardinality is one-to-many. <br/> A tag is added by a user. |

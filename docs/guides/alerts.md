@@ -8,7 +8,7 @@ These views group attributes that relate to a client's alert details such as the
 
 ## ALERTS_V1_VIEW
 
-This view groups attributes that relate to the alert such as the alert name, priority and the client's reference. 
+This view groups attributes that relate to the alert such as the alert name, priority and the client's reference.
 
 | Attribute | Description | Domain definition | Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -66,7 +66,7 @@ This view groups attributes that relate to who is notified of an alert, such as 
 
 ## ALERT_COMMENTS_V1_VIEW
 
-This view groups attributes that relate comments recorded for an alert.
+This view groups attributes that relate to comments recorded for an alert, such as the comment, who created it and when it was created.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |

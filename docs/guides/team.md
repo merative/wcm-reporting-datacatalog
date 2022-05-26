@@ -5,28 +5,6 @@ This section describes data available teams, team members and users.
 These views groups attributes that relate to a users details, such as their login id,  which workspaces they have access to, what team role they are assigned, when they last logged in to the application and whether they are a member of a client's team.  
 
 
-
-## TEAMS_V1_VIEW
-This view groups attributes that relate to a client and their teams. Use this view to identify which teams are associated with which clients.
-
-| Attribute | Description | Domain definition |Character size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| TEAMID| Identifier for a record.  | Int 64| ---|NO|
-| CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|YES|
-| INTERACTIONREFERENCE| Unique reference number that identifies an interaction under management. | Character| 200|YES|
-| FAMILYREFERENCE| Unique reference number that identifies a family under management. | Character| 200|YES|
-| STATUS| Status of the record, open or closed.| Character| 40|NO|
-| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|---  |NO|
-
-### Links to other data
-
-| Attribute | Joins to |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A team is associated with zero-to-many clients.|
-| FAMILYREFERENCE| FAMILIES_V1_VIEW | Cardinality is one-to-many. <br/> A team manages a family interaction.|
-| TEAMID| TEAM_MEMBERS_V1_VIEW | Cardinality is one-to-many. <br/> A team has many team members.|
-
-
 ## TEAM_MEMBERS_V1_VIEW
 
 This view groups attributes that relate to a client's team members and their role on the team. If additional roles are added for a team member who is already on the client's team, their previous role is end dated and a new instance of that role is created with a new start date.
@@ -73,6 +51,27 @@ This view groups attributes that relate to a client's team members and their rol
 
 
 
+## TEAMS_V1_VIEW
+This view groups attributes that relate to a client and their teams. Use this view to identify which teams are associated with which clients.
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| TEAMID| Identifier for a record.  | Int 64| ---|NO|
+| CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|YES|
+| INTERACTIONREFERENCE| Unique reference number that identifies an interaction under management. | Character| 200|YES|
+| FAMILYREFERENCE| Unique reference number that identifies a family under management. | Character| 200|YES|
+| STATUS| Status of the record, open or closed.| Character| 40|NO|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|---  |NO|
+
+### Links to other data
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A team is associated with zero-to-many clients.|
+| FAMILYREFERENCE| FAMILIES_V1_VIEW | Cardinality is one-to-many. <br/> A team manages a family interaction.|
+| TEAMID| TEAM_MEMBERS_V1_VIEW | Cardinality is one-to-many. <br/> A team has many team members.|
+
+
 ## USERS_V1_VIEW
 
 This view  groups attributes that relate to users who are not in a client's team, but might have interacted with the client. For example, a user who assigned a program to the client.
@@ -98,6 +97,7 @@ This view  groups attributes that relate to users who are not in a client's team
 ### Links to other data
 
 Any table with a `LOGINID` can link to this table. No links from this table to other tables defined.
+
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | -| - | -|
