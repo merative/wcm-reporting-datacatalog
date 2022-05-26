@@ -4,11 +4,11 @@ This section describes data available for client actions.
 
 Client actions are actions that clients can complete to help them to achieve a goal.
 
-These views groups attributes that relate to a client actions such as the client action name, category, status and reason for the client action.
+These views groups attributes that relate to a client actions such as the client action name, category, status, progress commments recorded against the client action and reason for the client action.
 
 ## CLIENTACTIONS_V1_VIEW
 
-The client actions view groups attributes relating to actions by their assigned client. Use this view to create client action reports.
+The client actions view groups attributes relating to client actions, such as the name, category, status and completion details for the action. Use this view to create client action reports.
 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -59,7 +59,7 @@ This view groups attributes that will allow you to identify barriers associated 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| BARRIERID| BARRIERS_V1_VIEW | Barrierid joins to an barrier.<br/> A client action is associated with zero-to-many barriers.|
+| BARRIERID| BARRIERS_V1_VIEW | Barrierid joins to a barrier.<br/> A client action is associated with zero-to-many barriers.|
 | ACTIONID | CLIENTACTIONS_V1_VIEW | Actionid joins to an action.<br/> A client action is associated with zero-to-many barriers. |
 
 

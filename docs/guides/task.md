@@ -49,7 +49,7 @@ This view groups attributes that relate to a task such as the task name, start t
 
 
 ## TASK_PROGRAMS_V1_VIEW
-
+This view groups attributes by their associated program. Use this view to identify specific tasks associated with a client's programs.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:--------------|
@@ -66,13 +66,3 @@ This view groups attributes that relate to a task such as the task name, start t
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br/> A client is associated with zero-to-many tasks_program.|
 | TASKID | TASK_V1_VIEW| A task is associated with one-to-many programs. |
 | PROGRAMID | PROGRAMS_V1_VIEW| A program is associated with zero-to-many tasks. |
-
-## TASK_ROLES_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Character size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| TEAMROLEID| Identifier for a record. |  Int 64| ---|NO|
-| TEAMROLE| The  team role that is assigned the task. | Character| 200|NO|
-| RECORDSTATUS| Status of the record, Actived or Cancelled. | Character| 40|YES|
-| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---|NO|

@@ -9,7 +9,7 @@ The following views are available to WCM reporting users. A view is a group of r
 | [ASSESSMENTS_V1_VIEW](guides/assessments.md)|This view groups attributes that relate to client assessments, for example, the assessment name, answers, status and score.| 22:06|
 | [ASSESSMENT_MEASURES_V1_VIEW](guides/assessments.md)|This view groups assessments by their associated measures. Use this view to identify specific assessments associated with a measure. | 22:06|
 | [CLIENTACTIONS_V1_VIEW](guides/clientaction.md)|This view groups attributes that relate to a client's actions, such as the action name, reason, and outcome. Client actions are actions that clients can complete to help them to achieve a goal.  | 22:06|
-| [CLIENTACTION_BARRIERS_V1_VIEW](guides/clientaction.md)|This view groups attributes that will allow you to identify barriers associated with client actions. Use this view in reports to report on barriers associated with a client's actions. | 22:06|
+| [CLIENTACTION_BARRIERS_V1_VIEW](guides/clientaction.md)|This view groups attributes that will allow you to identify barriers associated with client actions.  | 22:06|
 | [CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW](guides/clientaction.md)|This view groups attributes that relate to comments recorded when progress is updated for a client action, such as the progress comment, the name of the user who added the comment, and the date when the comment was added. | 22:06|
 | [CLIENTS_V1_VIEW](guides/client.md)| This view groups attributes that relate to client's demographics data such as their name, marital status, and gender. In addition, this view groups a client's preferred or most recently updated address, phone number, and email address data.| 22:06|
 | [CLIENT_ADDRESSES_V1_VIEW](guides/client.md)|This view groups attributes that relate to a client's address such as the address details, address type, and whether the address is the client's preferred address.| 22:06|
@@ -24,7 +24,6 @@ The following views are available to WCM reporting users. A view is a group of r
 | [TAGS_V1_VIEW](guides/client.md)|This view groups attributes that relate to a client's tags, such as additional information that describes them like whether they are a member of an organization or group, for example, Student, Football Team | 22:06|
 | [TASKS_V1_VIEW](guides/task.md)|This view groups attributes that relate to a task such as the task name, start time, and priority | 22:06|
 | [TASK_PROGRAMS_V1_VIEW](guides/task.md)|This view groups attributes by their associated program. Use this view to identify specific tasks associated with a client's programs.| 22:06|
-| [TASK_ROLES_V1_VIEW](guides/task.md)|This view groups attributes that relate to the team role that is assigned the task. | 22:06|
 | [TEAMS_V1_VIEW](guides/team.md)|This view groups attributes that relate to a client and their teams. Use this view to identify which teams are associated with which clients. | 22:06|
 | [TEAMMEMBERS_V1_VIEW](guides/team.md)|This view groups attributes that relate to a client's team members and their role in the team. | 22:06|
 | [USERS_V1_VIEW](guides/team.md)|This view groups attributes that relate to users who are not in a client's team, but might have interacted with the client. For example, a user who assigned a program to the client. | 22:06|
