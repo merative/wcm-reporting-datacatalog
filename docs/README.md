@@ -1,6 +1,4 @@
-# Watson Care Manager Reporting
-
-COMING SOON.......
+# Watson Care Manager Reporting Data Catalog
 
 IBM Watson® Care Manager supports human-centered contact tracing through structured interviews and provides care teams a platform for supporting the holistic needs of individuals affected by COVID-19 and beyond. Bridge the gap between health and social needs, collaborate across departments and jurisdictions, and automate care management workflows to support ongoing care.
 
