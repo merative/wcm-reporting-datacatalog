@@ -37,12 +37,11 @@ The cardinality column in links to other data sections should use is assoicated 
 | UPDATEDBYFULLNAME| First name and last name of the user who updated the record.   |  |
 | UPDATEDDATETIME| Date and time that the record was updated. |  |
 | ASSIGNEDTOFULLNAME| Identity of the user who was assigned the item. |  |
-| CLOSUREREASON| DReason that the record was closed. |  |
+| CLOSUREREASON| Reason that the record was closed. |  |
 | DESCRIPTION |Description of the record.  |  |
 | CATEGORY|Category that best describes the nature of the item. |  |
 | PRIORITY|Priority of the item, High, Medium, or Low or Not Set.	 | Ensure these states apply to the record type the data is being entered for |
 | STARTDATE |Date on which the *record type* is due to start. |  |
 | ENDDATE |Date on which the *record type* is due to end. | Date on which the record type is valid to. |
 | LASTWRITTEN |Date and time the record was changed. |  |
-| FROMDATE|Date on which the record type is valid from.| 
-
+| FROMDATE|Date on which the record type is valid from.|

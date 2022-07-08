@@ -1,7 +1,7 @@
 
 
 This section describes data available for clients.<br/> <br/>
-These views groups attributes that relate to a client's demographic information, address and contact information. It also contains a view that groups data that relates to tags recorded for clients and a view that groups data that shows who has requested emergency access to a client and when.
+These views groups attributes that relate to a client's demographic information, address and contact information along with referral and utilization information for the client. It also contains a view that groups data that relates to tags recorded for clients and a view that groups data that shows who has requested emergency access to a client and when.
 
 ## CLIENTS_V1_VIEW
 
@@ -17,7 +17,7 @@ This view groups attributes that relate to a client's demographics data such as 
 | CLIENTSTATUS| Client's status in the application, active or inactive. | Character|20|NO|
 | PREFERREDLANGUAGE| Client's preferred language for communications.| Character| 50|YES|
 | PREFCOMMMETHOD| Client's preferred method of communication, hard copy, email, data transfer, phone or fax. | Character| 50|YES|
-| DATEOFBIRTH| Clients date of birth.| Date Time|--- |YES|
+| DATEOFBIRTH| Client's date of birth.| Date Time|--- |YES|
 | DATEOFDEATH| Client's date of death.| Date Time| ---|YES|
 | MOTHERSBIRTHLASTNAME| Mother's birth last name. | Character| 200|YES|
 | BIRTHLASTNAME| Client's birth last name.| Character| 200|YES|
@@ -194,12 +194,59 @@ This view groups attributes that relate to a client's phone number such as the p
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many phone numbers.|
 
 
+## REFERRALS_V1_VIEW
+
+Referrals are used to direct a client to the correct organization unit that will meet their care management needs.
+
+This view groups data items that relate to a client's referrals such as cohort name, referral date, referral reason and status of the referral.
+
+
+
+| Attribute | Description | Domain definition | Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| REFERRALID|  Identifier for a referral record.  |  Int 64|--- |NO|
+| COHORTNAME| Name of the cohort that referred the client. Only populated when the referral came from an external source. | Character| 500|YES|
+| COHORTSOURCE| Indicates where the cohort came from, for example, a facility or an external system. Only populated when the referral came from an external system. The field is not displayed in the Watson Care Manager user interface.  | Character| 100 |YES|
+| CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|NO|
+| REFERRALREASON| Reason the client was referred selected from a preconfigured list of reasons.| Character| 2000|NO|
+| OTHERREFERRALREASON| Reason entered for the referral, if none of the reasons in the preconfigured list were suitable for selection. | Character| 2000|YES|
+| REFERRALDATE| Date that the client was referred to the organization. | Date| ---|NO|
+| CREATEDBY| 	First name and last name of the user who created the referral. | Character| 256|YES|
+| STATUS| Current status of the referral, open, accepted, or rejected.| Character| 200|YES|
+| PRIORITY| Indicates how urgently the client requires care, Low, Medium, High, or Not Set. | Character|200 |YES|
+| FROMORGNAME| Name of the organization unit that referred the client.  | Character| 500|YES|
+| FROMORGEXTERNALREF| Reference number for the organization unit that referred the client. | Character| 400|YES|
+| TOORGNAME| Name of the organization unit that the client was referred to. | Character| 500|YES|
+| TOORGEXTERNALREF| Reference number for the organization unit that the client was referred to. | Character| 400|YES|
+| COMMENTS| Comments entered for the record.| Character| 2000|YES|
+| ASSIGNEDTO| First name and last name of the user who is assigned the referral. | Character| 256|YES|
+| ASSIGNEDDATE| Date and time that the referral was assigned. | Date Time| ---|YES|
+| REJECTREASON| Reason for rejecting the referral that was selected from a preconfigured list of reasons. | Character| 200|YES|
+| REJECTCOMMENTS| Comments relating to the referral rejection. | Character| 2000|YES|
+| REJECTOTHERREASON|  Reason entered for rejecting the referral, if none of the reasons in the preconfigured list were suitable for selection. | Character| 500|YES|
+| REJECTEDDATE| Date and time that the referral was rejected. | Character| 200|YES|
+| REJECTEDBY| First name and last name of the user who rejected the referral. | Date Time| ---|YES|
+| SOURCE| System in which the data was recorded. | Character| 400|YES|
+| ORIGINALSOURCE| System in which the data was recorded for the first time. | Character| 400|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---|YES|
+
+
+
+### Links to other data
+
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with one referral.|
+| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many referrals. |
+| ASSIGNEDTO | USERS_V1_VIEW | Assigned-to joins to a user.<br /> A user is associated with zero-to-many referrals. |
+| REJECTEDBY | USERS_V1_VIEW | Rejected-by joins to a user.<br /> A user is associated with zero-to-many referrals. |
 
 
 
 
 ## TAGS_V1_VIEW
-Tags are used to describe additional information about the client like whether they are a member of an organization or group, for example, student, football team. This view groups attributes that relate to a client's tags, such as the tag name, status, when it was added and which users added the tag. 
+Tags are used to describe additional information about the client like whether they are a member of an organization or group, for example, student, football team. This view groups attributes that relate to a client's tags, such as the tag name, status, when it was added and which users added the tag.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -219,3 +266,36 @@ Tags are used to describe additional information about the client like whether t
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/>  A client is associated with zero-to-many tags.|
 | ADDEDBY |  USERS_V1_VIEW | Cardinality is one-to-many. <br/> A tag is added by a user. |
+
+## UTILIZATIONS_V1_VIEW
+
+A utilization records the clinical services that clients visit so that the organization can understand the types of services that clients use, and service usage and outcome patterns.
+
+This view groups attributes that relate to the utilization such as the utilization id, type and the client's reference.
+
+| Attribute | Description | Domain definition | Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| UTILIZATIONID|  Identifier for a record.  |  Int 64|--- |NO|
+| CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|YES|
+| VISITDATE| The date on which the client was admitted to a service, or completed their visit.  | Date|--- |YES|
+| ADMITTEDIND| The check box to confirm that the client was admitted. | Character| 1|YES|
+| DISCHARGEDDATE| The discharge or end date of a service lasted longer than one day.| Date|--- |YES|
+| SOURCE| The source that indicates who is providing the information about the service that a client used. For example, a caregiver, or a hospital. The Source list also contains a value of Other.| Character| 200|YES|
+| OTHERSOURCE| Source system where the record originated (if configured). | Character| 500|YES|
+| ADDEDBY| The identity of the user who added the utilization.  | Character| 256|YES|
+| ADDEDON| Date and time that the record was added. | Date Time|---  |YES|
+| TYPE| The name of the type that indicates the service that a client visited for clinical care, for example, an Emergency Room or acute hospital. The type list also contains a value of Other. | Character| 200|YES|
+| OTHERTYPE| 	The specific service type when Other is selected as the type. | Character| 200|YES|
+| DISPOSITION| The type of disposition that indicates the outcome for a client after they availed of clinical services. For example, after a stay in a hospital, a client might return home or go to a skilled nursing facility (SNF). The Disposition list also contains a value of Other. | Character| 200|YES|
+| OTHERDISPOSITION| The specific disposition when Other is selected as the disposition type. | Character|500 |YES|
+| LOCATION| The name of the facility where a client availed of health services, for example, the name of a hospital, hospice, or rehabilitation center. | Character| 200|YES|
+| OTHERLOCATION| The facility name where the client received health services when Other is selected as the location.| Character| 500|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Character| 200|YES|
+
+### Links to other data
+
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many utilizations.|
+| ADDEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many utilizations. |

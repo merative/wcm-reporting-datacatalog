@@ -37,9 +37,6 @@
 | [CLINICALDATA_WAISTTOHEIGHT_MEASUREMENTS_V1_VIEW](guides/clinicaldata.md)| This view groups attributes that relate to a client's waist-to-height circumference measurement, such as the measurement value, unit of measurement, and measurement date.  |
 | [CLINICALDATA_WAIST_MEASUREMENTS_V1_VIEW](guides/clinicaldata.md)| This view groups attributes that relate to a client's waist circumference measurement, such as the measurement value, unit of measurement, and measurement date. |
 | [CLINICALDATA_WEIGHT_MEASUREMENTS_V1_VIEW](guides/clinicaldata.md)|This view groups attributes that relate to a client's weight measurement, such as the measurement value, unit of measurement, and measurement date. |
-| [CONSENTS_V1_VIEW](guides/consents.md)|This view groups attributes that relate to a client consent records such as the content type, received date, and the date when the consent expires. |
-| [CONSENT_ATTACHMENTS_V1_VIEW](guides/consents.md)|This view groups attributes that relate to documents that are attached to a consent record, such as signed consent forms. |
-| [CONSENT_HISTORIES_V1_VIEW](guides/consents.md)|This view groups attributes that relate to the history of a consent record, such as when the record was last updated, and the team member who made the update. |
 | [GOAL_BARRIERS_V1_VIEW](guides/clinicaldata.md)|This view groups attributes that relate to a client's barriers, such as the barrier name, category, and status. Barriers can hinder or prevent a client from achieving their goals or completing actions. |
 | [GOAL_CLIENTACTIONS_V1_VIEW](guides/clinicaldata.md)|This view groups attributes that relate to a client's actions, such as the action name, reason, and outcome. Client actions are actions that clients can complete to help them to achieve a goal.  |
 | [GOAL_PROGRESSCOMMENTS_V1_VIEW](guides/clinicaldata.md)|This view groups attributes that relate to comments recorded when progress is updated for a goal such as the comment, the name of the user who added the comment, and the date when the comment was added.|
@@ -47,7 +44,6 @@
 | [INQUIRIES_V1_VIEW](guides/inquiry.md)|This view groups attributes that relate to inquiries to providers about client services. |
 | [INQUIRY_COMMENTS_V1_VIEW](guides/inquiry.md)|This view groups attributes that relate to comments that are recorded for an inquiry. |
 | [INQUIRY_RESPONSES_V1_VIEW](guides/inquiry.md)|This view groups attributes that relate responses and inquiry response comments by providers to inquiries about their services. |
-| [NOTES_V1_VIEW](guides/note.md)|This view groups attributes that relate to a client's note information. |
 | [NOTE_COMMENTS_V1_VIEW](guides/note.md)|This view groups attributes that relate to comments recorded for the note.|
 | [PATIENTS_UNDER_MANAGEMENT_V1_VIEW](guides/utilization.md)| |
 | [PAYMENTHISTORIES_V1_VIEW](guides/clinicaldata.md)|This view groups attributes that relate to the payment history for the service, for example, the payment due date and the payment amount. |
@@ -70,7 +66,7 @@
 | [PROVIDER_SHORTLISTED_V1_VIEW](guides/provider.md)| |
 | [SERVICES_V1_VIEW](guides/service.md)|This view groups attributes that relate to a client's planned services such as the service name, category, start date and end date. Use this data set to identify a client's planned services.  |
 | [SERVICE_BARRIERS_V1_VIEW](guides/service.md)|This view groups services by their associated barrier. Use this view to identify specific services associated with a client's barriers. |
-| [SERVICE_GOALS_V1_VIEW](guides/service.md)|This view groups services by their associated goal. Use this view to identify specific services associated with a client's goals.  |
+
 | [TEAMACTIONS_V1_VIEW](guides/teamaction.md)|This view groups attributes that relate to actions assigned to team members, such as the action name, reason, and outcome. |
 | [TEAMACTION_BARRIERS_V1_VIEW](guides/teamaction.md)|This view groups attributes that relate to specific barriers associated with team actions. Use this view in reports to see a more granular view of specific barriers associated with a team's actions. |
 | [TEAMACTION_PROGRESSCOMMENTS_V1_VIEW](guides/teamaction.md)|This view groups attributes that relate to comments recorded when progress is updated for a team action, such as the progress comment, the name of the user who added the comment, and the date when the comment was added. |
@@ -866,94 +862,11 @@ This section describes data available for barriers.
 
 
 
-PLEASE ADD IN BARRIER_NOTES_V1_VIEW.....
 
 
 
 
 This section describes data available for alerts.
-
-
-## CONSENTS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| CONSENTID| tbc |  Int 64| |NO|
-| CLIENTREFERENCE| tbc | Character| 200|YES|
-| CARETEAMMEMBERID| tbc |  Int 64| |YES|
-| CONSENTTYPES| tbc | Character| 4000|YES|
-| TYPE| tbc | Character| 200|YES|
-| RECEIVEDDATE| tbc | Date| |YES|
-| RECEIVEDBY| tbc | Character| 256|YES|
-| EXPIRYDATE| tbc | Date| |YES|
-| STATUS| tbc | Character| 200|YES|
-| DESCRIPTION| tbc | Character| 8000|YES|
-| WITHDRAWNDATE| tbc | Date| |YES|
-| WITHDRAWNBY| tbc | Character| 256|YES|
-| ISCOMMUNITYCONSENT| tbc | Date Time| |YES|
-| RELATEDTYPE| tbc | Character| 200|YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| Joins to CLIENTS_V1_VIEW. | Cardinality is one-to-many.  A client has zero-to-many consent records|
-| RECEIVEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-| WITHDRAWNBY | Joins to USERS_V1_VIEW.| Cardinality is zero-to-one. An alert joins to 1 user if closed. |
-
-
-## CONSENT_ATTACHMENTS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| CONSENTID| tbc |  Int 64| |NO|
-| ADDEDBY| tbc | Character| 256|YES|
-| ADDEDBYFULLNAME| tbc | Character| 524|YES|
-| ADDEDBYROLE| tbc | Character| 200|YES|
-| ATTACHMENTNAME| tbc | Character| 1024|YES|
-| STATUS| tbc | Character| 200|YES|
-| RECEIPTDATE| tbc | Date Time| |YES|
-| ISCOMMUNITYCONSENT| tbc | Date Time| |YES|
-| CLIENTREFERENCE| tbc | Character| 200|YES|
-| ATTACHMENTID| tbc |  Int 64| |NO|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CONSENTID| Joins to CONSENTS_V1_VIEW . | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| ADDEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-
-## CONSENT_HISTORIES_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| CONSENTHISTORYID| tbc |  Int 64| |YES|
-| UPDATEDBY| tbc | Character| 200|YES|
-| UPDATEDDATE| tbc | Date| |YES|
-| RELATEDTYPE| tbc | Character| 200|YES|
-| STATUS| tbc | Character| 200|YES|
-| CONSENTID| tbc |  Int 64| |YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CONSENTID| Joins to CONSENTS_V1_VIEW . | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| UPDATEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-
 
 
 ## GOAL_BARRIERS_V1_VIEW
@@ -1136,41 +1049,6 @@ This section describes data available for inquiries.
 This section describes data available for notes.
 
 
-
-
-## NOTES_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| NOTEID| tbc |  Int 64| |NO|
-| ADDEDBY| tbc | Character| 256|YES|
-| ADDEDBYFULLNAME| tbc | Character| 524|YES|
-| ADDEDBYROLE| tbc | Character| 200|YES|
-| PRIORITY| tbc | Character| 20|YES|
-| SUBJECT| tbc | Character| 480|YES|
-| NOTECONTEXT| tbc | Character| 20|YES|
-| STATUS| tbc | Character| 20|YES|
-| NOTETYPE| tbc | Character| 50|YES|
-| DURATION| tbc |  Int 32| |YES|
-| MODIFIEDDATETIME| tbc | Date Time| |YES|
-| CLIENTREFERENCE| tbc | Character| 200|YES|
-| NOTE| tbc | Character| 32592|YES|
-| DISCARDREASON| tbc | Character| 512|YES|
-| MODIFIEDBY| tbc | Character| 524|YES|
-| SENSITIVE| tbc | Character| 1|YES|
-| CREATEDDATETIME| tbc | Date Time| |YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| Joins to CLIENTS_V1_VIEW. | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| ADDEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-| MODIFIEDBY | Joins to USERS_V1_VIEW.| Cardinality is zero-to-one. An alert joins to 1 user if closed. |
 
 
 
@@ -1500,50 +1378,6 @@ This section describes data available for services.
 
 
 
-## SERVICE_BARRIERS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| BARRIERID| tbc |  Int 64| |NO|
-| SERVICEID| tbc |  Int 64| |NO|
-| SERVICENAME| tbc | Character| 200|YES|
-| BARRIERNAME| tbc | Character| 1024|YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-Please review and amend, just examples below to help your edits.
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| Joins to CLIENTS_V1_VIEW. | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| CREATEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-| CLOSEDBY | Joins to USERS_V1_VIEW.| Cardinality is zero-to-one. An alert joins to 1 user if closed. |
-| ALERTID | Joins to ALERT_NOTIFICATIONS_V1_VIEW.| Cardinality is zero-to-many. |
-
-## SERVICE_GOALS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| GOALID| tbc |  Int 64| |NO|
-| SERVICEID| tbc |  Int 64| |NO|
-| GOALNAME| tbc | Character| 500|YES|
-| SERVICENAME| tbc | Character| 200|YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-Please review and amend, just examples below to help your edits.
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| Joins to CLIENTS_V1_VIEW. | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| CREATEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-| CLOSEDBY | Joins to USERS_V1_VIEW.| Cardinality is zero-to-one. An alert joins to 1 user if closed. |
-| ALERTID | Joins to ALERT_NOTIFICATIONS_V1_VIEW.| Cardinality is zero-to-many. |
-
 ## SERVICES_V1_VIEW
 
 
@@ -1683,68 +1517,6 @@ This section describes data available for touchpoints.
 
 
 
-## TOUCHPOINTS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| TOUCHPOINTID| tbc |  Int 64| |NO|
-| CLIENTREFERENCE| tbc | Character| 200|YES|
-| NOTEID| tbc |  Int 64| |NO|
-| ADDEDBY| tbc | Character| 256|YES|
-| ADDEDBYFULLNAME| tbc | Character| 524|YES|
-| ADDEDBYROLE| tbc | Character| 200|YES|
-| ADDEDDATE| tbc | Date Time| |YES|
-| CONTACTWITH| tbc | Character| 50|YES|
-| CONTACTMETHOD| tbc | Character| 50|YES|
-| CONTACTDIRECTION| tbc | Character| 50|YES|
-| CONTACTOUTCOME| tbc | Character| 50|YES|
-| CONTACTDATETIME| tbc | Date Time| |NO|
-| CONTACTDURATION| tbc | Decimal fixed-point| 2 decimal places|YES|
-| VALIDATEDIDENTITYIND| tbc | Character| 1|NO|
-| SUBJECTTEXT| tbc | Character| 480|YES|
-| NOTETEXT| tbc | Character| 32592|YES|
-| SENSITIVE| tbc | Character| 1|YES|
-| STATUS| tbc | Character| 50|YES|
-| INGESTIONTIME| tbc | Date Time| |YES|
-
-### Links to other data
-
-Please review and amend, just examples below to help your edits.
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| Joins to CLIENTS_V1_VIEW. | Cardinality is one-to-many.  A client has zero-to-many alerts|
-| ADDEDBY | joins to USERS_V1_VIEW. | Cardinality is one-to-many. An alert joins to 1 user. |
-
-
-
-## TOUCHPOINT_COMMENTS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| NOTEID| tbc |  Int 64| |NO|
-| AUTHOR| tbc | Character| 100|YES|
-| CONTENT| tbc | Character| 32592|YES|
-| CREATIONDATE| tbc | Date Time| |YES|
-| POSITION| tbc |  Int 32| |NO|
-
-### Links to other data
-
-Please review and amend, just examples below to help your edits.
-
-| Attribute | Description |Cardinality |
-| :-------------- | :------ |:------ |
-| TOUCHPOINTID| Joins to TOUCHPOINTS_V1_VIEW. | Cardinality is zero-to-many.  A client has zero-to-many alerts|
-
-
-
-
-This section describes data available for patients under active managment.
-
-
-
 
 
 ## PATIENTS_UNDER_MANAGEMENT_V1_VIEW
@@ -1872,26 +1644,6 @@ This section describes data available for patients under active managment.
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | TOUCHPOINTID|BARRIERS_V1_VIEW | Cardinality is one-to-one.  An touchpoint is associated with one program enrolment|
-| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-one.  A program barrier is associated with one program enrolment|
-
-## PROGRAM_UTILIZATIONS_V1_VIEW
-
-
-| Attribute | Description | Domain definition |Character size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| UTILIZATIONID| tbc |  Int 64|--- |NO|
-| PROGRAMID| tbc |  Int 64| ---|NO|
-| PROGRAMNAME| tbc | Character| 75|YES|
-| UTILIZATIONTYPE| tbc | Character| 200|YES|
-| INGESTIONTIME| tbc | Date Time|--- |YES|
-
-### Links to other data
-
-
-
-| Attribute | Joins to |Cardinality |
-| :-------------- | :------ |:------ |
-| UTILIZATIONID| BARRIERS_V1_VIEW | Cardinality is one-to-one.  An utilization is associated with one program enrolment|
 | PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-one.  A program barrier is associated with one program enrolment|
 
 

@@ -39,7 +39,7 @@ This view groups attributes that relate to a client’s programs such as the pro
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many programs.|
-| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A status is associated with 1 user.|
+| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A status is associated with one user.|
 
 ## PROGRAM_ASSESSMENTS_V1_VIEW
 
@@ -61,3 +61,25 @@ This view groups assessments by their associated programs. Use this data set to 
 | :-------------- | :------ |:------ |
 | PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance is associated with one program enrolment.|
 | ASSESSMENTS_V1_VIEW| ASSESSMENTS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance is associated with one program enrolment.|
+
+
+
+
+## PROGRAM_UTILIZATIONS_V1_VIEW
+
+This view groups programs by their utilization type. Use this data set to identify specific utilizations associated with a client's program.
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| UTILIZATIONID| The identifier for a utilization record.  |  Int 64|--- |NO|
+| PROGRAMID| The identifier for a program enrollment record.  |  Int 64| ---|NO|
+| PROGRAMNAME| The name of this program, for example, alcohol rehab program. | Character| 75|YES|
+| UTILIZATIONTYPE| Utilization type that is associated with the program. | Character| 200|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |NO|
+
+### Links to other data
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| UTILIZATIONID| PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-one. <br/> A utilization identifier is associated with one utilization record.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/> A program identifier is associated with one program enrolment record.|
