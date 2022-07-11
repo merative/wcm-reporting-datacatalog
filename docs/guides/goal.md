@@ -42,9 +42,6 @@ This views groups attributes that relate to goals such as the goal name, importa
 | ADDEDBY | USERS_V1_VIEW | ADDED-by joins to a user.<br /> A user is associated with zero-to-many goals. |
 | COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user.<br /> A user is associated with zero-to-many goals. |
 | GOALID| GOAL_BARRIERS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many barriers.|
-| GOALID| GOAL_CLIENTACTIONS_V1_VIEW | Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many clientactions.|
-| GOALID| GOAL_TEAMACTIONS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many teamactions.|
-| GOALID| GOAL_PROGRESSCOMMENTS_V1_VIEW | Cardinality is zero-to-many.<br/>  A goal is associagted with zero-to-many progresscomments.|
 
 
 

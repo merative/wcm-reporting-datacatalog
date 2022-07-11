@@ -12,6 +12,7 @@
   - [Data Refresh](guides/datarefresh.md)
   - [Goal](guides/goal.md)
   - [Program](guides/program.md)
+  - [Providers](guides/provider.md)
   - [Task](guides/task.md)
   - [Team Action](guides/teamactions.md)  
   - [Team & User](guides/team.md)

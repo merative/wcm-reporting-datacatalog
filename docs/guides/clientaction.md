@@ -39,8 +39,6 @@ The client actions view groups attributes relating to client actions, such as th
 | COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user. <br /> A user is associated with zero-to-many client actions. |
 | ACTIONID | CLIENTACTION_BARRIERS_V1_VIEW| A client action is associated with zero-to-many barriers. |
 | ACTIONID | CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW| A client action is associated with zero-to-many progress comments. |
-| ACTIONID |PROGRAM_CLIENTACTION_V1_VIEW| A client action is associated with zero-to-many programs. |
-| ACTIONID | GOALS_CLIENTACTIONS_V1_VIEW| A client action is associated with zero-to-many goals. |
 
 
 ## CLIENTACTION_BARRIERS_V1_VIEW
