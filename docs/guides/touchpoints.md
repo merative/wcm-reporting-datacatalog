@@ -13,7 +13,7 @@ This section describes data available for notes.
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|NO|
 | ADDEDBY| The identity of the user who created the record.  | Character| 256|NO|
 | ADDEDBYFULLNAME| First name and last name of the user who created the item.  |  |
-| ADDEDBYROLE| The role name of the user who created this item. | Character| 200|YES|
+| ADDEDBYROLE| The role name of the user who created the item. | Character| 200|YES|
 | ADDEDDATE| Date that the touchpoint was added. | Date Time| |YES|
 | CONTACTWITH| Type of person who was contacted in the touchpoint. | Character| 50|YES|
 | CONTACTMETHOD| Method of contact used for the touchpoint. | Character| 50|YES|
