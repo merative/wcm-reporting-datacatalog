@@ -15,6 +15,6 @@
   - [Program](guides/program.md)
   - [Services](guides/services.md)
   - [Task](guides/task.md)
-  - [Touchpoint](guides/touchpoints.md)
   - [Team & User](guides/team.md)
   - [Team Action](guides/teamactions.md)
+  - [Touchpoint](guides/touchpoints.md)
