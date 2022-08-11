@@ -147,16 +147,16 @@ This view groups attributes that relate to a client's email address such as the 
 ## CLIENT_IDENTIFICATIONS_V1_VIEW
 This view groups attributes that relate to client's identification types such as their Employee ID or passport, and the number associated with the identification type.
 
-| Attribute | Description | Domain definition |Character size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|NO|
-| ALTERNATEIDTYPE| Client identification type, for example, reference number, or passport number. The type can be the client's unique system reference number or a configured identification type.  | Character| 50|NO|
-| ALTERNATEID| Client identification number. | Character| 200|NO|
-| PREFERREDIND| Indicates if this is the client's preferred identification number for communications. | Character| 1|NO|
-| COMMENTS| Comments entered for the record. | Character| 50|YES|
-| LASTWRITTEN| Date and time the record was changed. | Date Time| ---|NO|
-| FROMDATE| Date on which the record is valid from. | Date| ---|YES|
-| ENDDATE|Date on which the record is valid to. | Date| ---|YES|
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| ALTERNATEIDTYPE | Client identification type, for example, reference number, or passport number. The type can be the client's unique system reference number or a configured identification type.  | Character| 50|NO|
+| ALTERNATEID     | Client identification number. | Character| 200|NO|
+| PREFERREDIND    | Indicates if this is the client's preferred identification number for communications. | Character| 1|NO|
+| COMMENTS        | Comments entered for the record. | Character| 50|YES|
+| UPDATEDON       | Date and time the record was changed. | Date Time| ---|NO|
+| FROMDATE        | Date on which the record is valid from. | Date| ---|YES|
+| ENDDATE         |Date on which the record is valid to. | Date| ---|YES|
 
 ### Links to other data
 
@@ -299,3 +299,4 @@ This view groups attributes that relate to the utilization such as the utilizati
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many utilizations.|
 | ADDEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many utilizations. |
+ |UTILIZATIONID| PROGRAM_UTILIZATIONS_V1_VIEW | Utilizationid joins to a utilization record.<br />A utilization identifier is associated with one utilization record. |

@@ -30,4 +30,8 @@ barrier. Use this view to create barriers reports.
 | CLIENTREFERENCE| CLIENTS_V1_VIEW         | Client reference joins to a client.<br/> A client is associated with zero-to-many barriers. |
 | ADDEDBY | USERS_V1_VIEW           | Created-by joins to a user.<br/> A user is associated with zero-to-many barriers.           |
 | RESOLVEDBY | USERS_V1_VIEW           | Updated-by joins to one user.<br/> A user is associated with zero-to-many barriers.         |     
-| BARRIERID | GOAL_BARRIERS_V1_VIEW       | A barrier is associated with zero-to-one goals.                                             |
+| BARRIERID | GOAL_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one goals.           |
+| BARRIERID | SERVICE_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one services.     |
+| BARRIERID | PROGARAM_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one programs.     |
+| NOTEID | NOTES_V1_VIEW       | Cardinality is zero-to-many. <br/> A barrier is associated with zero-to-many notes.   |
+

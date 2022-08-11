@@ -4,7 +4,7 @@ This section describes data available for programs.
 
 A program is a care delivery strategy that is designed to deliver a specific client outcome.
 
-These views group attributes that relate to a client’s programs such as the program name, status,  assessments that are assigned to the program and the date and time from which a program is in a status.
+These views group attributes that relate to a client’s programs such as the program name, status and the date and time from which a program is in a status. They also contains views that groups data for plan activies and items that can be associated with a program such as assessments, goals, client actions, team actions, barriers, touchpoints and utilizations.  
 
 
 
@@ -15,7 +15,7 @@ This view groups attributes that relate to a client’s programs such as the pro
 | :-------------- | :------ |:------ |:------ |:------ |
 | PROGRAMID| Identifier for a record. |  Int 64|--- |NO|
 | NAME| The name of a program. | Character| 75|YES|
-| DESCRIPTION| The current program enrollement status, assigned, pending, enrolled, not enrolled, disenrolled or completed. | Character| 50|NO|
+| PROGRAMENROLLMENTSTATUS| The current program enrollement status, assigned, pending, enrolled, not enrolled, disenrolled or completed. | Character| 50|NO|
 | STARTDATE| Date on which a program is in the program enrollment status. | Date|--- |NO|
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character | 200|NO|
 | GRADUATIONDATE| The date a client graduated from the program.| Date|---|YES|
@@ -39,7 +39,7 @@ This view groups attributes that relate to a client’s programs such as the pro
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many programs.|
-| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A status is associated with one user.|
+| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many program status.|
 
 ## PROGRAM_ASSESSMENTS_V1_VIEW
 
@@ -59,8 +59,8 @@ This view groups assessments by their associated programs. Use this data set to 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance is associated with one program enrolment.|
-| ASSESSMENTS_V1_VIEW| ASSESSMENTS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance is associated with one program enrolment.|
+| PROGRAMID|PROGRAMS_V1_VIEW |  Cardinality is one-to-many.  <br/>  A program enrollment is associated with zero-to-many assessment instances.|
+| ASSESSMENTINSTANCEID| ASSESSMENTS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance identifier is associated with one assessment instance record.|
 
 
 
@@ -73,7 +73,7 @@ This view groups programs by their utilization type. Use this data set to identi
 | :-------------- | :------ |:------ |:------ |:------ |
 | UTILIZATIONID| The identifier for a utilization record.  |  Int 64|--- |NO|
 | PROGRAMID| The identifier for a program enrollment record.  |  Int 64| ---|NO|
-| PROGRAMNAME| The name of this program, for example, alcohol rehab program. | Character| 75|YES|
+| PROGRAMNAME| The name of this program. | Character| 75|YES|
 | UTILIZATIONTYPE| Utilization type that is associated with the program. | Character| 200|YES|
 | INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |NO|
 
@@ -81,5 +81,111 @@ This view groups programs by their utilization type. Use this data set to identi
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| UTILIZATIONID| PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-one. <br/> A utilization identifier is associated with one utilization record.|
-| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/> A program identifier is associated with one program enrolment record.|
+| UTILIZATIONID| UTILIZATIONS_V1_VIEW | Cardinality is one-to-one. <br/> A utilization identifier is associated with one utilization record.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many utilization records.|
+
+
+
+## PROGRAM_TOUCHPOINTS_V1_VIEW
+This view groups touchpoints by their associated program. Use this view to identify specific touchpoints associated with a client's programs.
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| TOUCHPOINTID| The identifier for a touchpoint record. |  Int 64| ---|NO|
+| CLIENTREFERENCE| Unique reference number that identifies the client in the application.| Character| 200|YES|
+| PROGRAMID| The identifier for a program enrollment record.  |  Int 64| ---|YES|
+| PROGRAMNAME| The name of this program. | Character| 75|YES|
+| TOUCHPOINTSUBJECT| Subject of the touchpoint. | Character| 500|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---|NO|
+
+### Links to other data
+
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many programs.|
+| TOUCHPOINTID|TOUCHPOINTS_V1_VIEW | Cardinality is one-to-one. <br/> A touchpoint identifier is associated with one touchpoint record.|
+| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many touchpoints.|
+
+
+
+## PROGRAM_BARRIERS_V1_VIEW
+This view groups barriers by their associated program. Use this view to identify specific barriers associated with a client's programs.
+
+| Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
+| :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
+| BARRIERID| The identifier for a barrier.                                        |  Int 64| ---| NO            |
+| PROGRAMID| The identifier for a program enrollment record.                      |  Int 64|--- | NO            |
+| PROGRAMNAME| The name of this program.                                              | Character| 75| YES           |
+| BARRIERNAME| The name of the barrier.                                               | Character| 1024| YES           |
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---| NO            |
+
+### Links to other data
+
+
+
+| Attribute | Joins to | Cardinality                                                                                        |
+| :-------------- | :------ |:---------------------------------------------------------------------------------------------------|
+| BARRIERID| BARRIERS_V1_VIEW | Cardinality is one-to-one.<br/>  A barrier identifier is associated with with one barrier record. |
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.  <br/> A program barrier is associated with one program enrollment.            |
+
+## PROGRAM_CLIENTACTIONS_V1_VIEW
+This view groups client actions by their associated program. Use this view to identify specific client actions associated with a client's programs.
+
+| Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
+| :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
+| ACTIONID| The identifier for a action.                                         |  Int 64| ---| NO            |
+| PROGRAMID| The identifier for a program enrollment record.                      |  Int 64|--- | NO            |
+| PROGRAMNAME| The name of this program.                                            | Character| 75| YES           |
+| ACTIONAME| The name of the action.                                              | Character| 1024| YES           |
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- | NO            |
+
+### Links to other data
+
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| ACTIONID| CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one. <br/> A client action is associated with one action record.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/> A program barrier is associated with one program enrollment.|
+
+## PROGRAM_GOALS_V1_VIEW
+This view groups goals by their associated program. Use this view to identify specific goals associated with a client's programs.
+
+| Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
+| :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
+| GOALID| The identifier for a goal.                                           |  Int 64| ---| NO            |
+| PROGRAMID| The identifier for a program enrollment record.                      |  Int 64|--- | NO            |
+| PROGRAMNAME| The name of this program.                                         | Character| 75| YES           |
+| GOALNAME| The name of the goal.                                                | Character| 1024| YES           |
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---| NO            |
+
+### Links to other data
+
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| GOALID|  GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal is associated with one program enrollment.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many goals.|
+
+## PROGRAM_TEAMACTIONS_V1_VIEW
+This view groups team actions by their associated program. Use this view to identify specific team actions associated with a client's programs.
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| ACTIONID| The identifier for an action record. |  Int 64| ---|NO|
+| PROGRAMID| The identifier for a program enrollment record.  |  Int 64| --- |NO|
+| PROGRAMNAME| The name of this program. | Character| 75|YES|
+| ACTIONAME| The name of an action that is associated with the program. | Character| 1024|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture.  | Date Time| --- |YES|
+
+### Links to other data
+
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one. <br/> A team action is associated with one team action record.|
+| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many team actions.|

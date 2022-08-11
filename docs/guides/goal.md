@@ -28,7 +28,7 @@ This views groups attributes that relate to goals such as the goal name, importa
 | STARTDATE| Date on which the goal is due to start. | Date|---|YES|
 | TARGETDATE| Date on which the goal is expected to be completed.| Date|---|YES|
 | REASON| Reason the goal was added to the care plan.| Character| 2000|YES|
-| OUTCOME| Outcome of the goal. For example, successful, not successful, or abandoned. | Character| 100|YES|
+| OUTCOME| Outcome of the goal; successful, not successful, or abandoned. | Character| 100|YES|
 | PROGRESS| Progress in relation to the goal. For example, poor, good, excellent.| Character| 256|YES|
 | TARGETVALUE| Target value that represents the achievement of the goal. | Character| 100|YES|
 | COMPLETIONCOMMENTS| Most recent comment added when the goal was completed. | Character| 8000|YES|
@@ -39,9 +39,15 @@ This views groups attributes that relate to goals such as the goal name, importa
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many goals.|
-| ADDEDBY | USERS_V1_VIEW | ADDED-by joins to a user.<br /> A user is associated with zero-to-many goals. |
+| ADDEDBY | USERS_V1_VIEW | Added-by joins to a user.<br /> A user is associated with zero-to-many goals. |
 | COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user.<br /> A user is associated with zero-to-many goals. |
 | GOALID| GOAL_BARRIERS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many barriers.|
+| GOALID| GOAL_CLIENTACTIONS_V1_VIEW | Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many client actions.|
+| GOALID| GOAL_TEAMACTIONS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many team actions.|
+| GOALID| GOAL_PROGRESSCOMMENTS_V1_VIEW | Cardinality is zero-to-many.<br/>  A goal is associated with zero-to-many progress comments.|
+| GOALID| SERVICE_GOALS_V1_VIEW | Cardinality is zero-to-many.<br/>  A goal is associated with zero-to-many services.|
+| GOALID| PROGRAM_GOALS_V1_VIEW| Cardinality is zero-to-many.<br/>  A goal is associated with zero-to-many programs.|
+
 
 
 
@@ -63,4 +69,79 @@ This view groups attributes that will allow you to identify barriers associated 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | GOALID| GOALS_V1_VIEW | Cardinality is zero-to-many. <br/> A barrier is associated with zero-to-many goals.|
-| BARRIERID |BARRIERS_V1_VIEW | Cardinality is one-to-one. <br/> A goal barrier is associated with one barrier. |
+| BARRIERID |BARRIERS_V1_VIEW | Cardinality is one-to-one. <br/> A barrier ID is associated with one barrier. |
+| BARRIERID |SERVICE_BARRIERS_V1_VIEW | Cardinality is one-to-one. <br/> A barrier ID is associated with one barrier. |
+| BARRIERID |NOTES_V1_VIEW	| Cardinality is zero-to-many. <br/> A note is associated with zero-to-many barriers. |
+
+
+
+
+## GOAL_CLIENTACTIONS_V1_VIEW
+
+This view groups attributes that will allow you to identify client actions associated with goals.  Use this view in reports to report on the client actions associated with a client's goals.
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| GOALID| Identifier for a goal record.  |  Int 64|--- |NO|
+| ACTIONID| Identifier for a client action record. |  Int 64| ---|NO|
+| GOALNAME| Name of the goal that is associated with the client action. | Character| 1024|YES|
+| ACTION| Name of the client action that is associated with the goal. | Character| 1024|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+
+### Links to other data
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| GOALID|GOALS_V1_VIEW | Cardinality is zero-to-many. <br/>  A client action is associated with zero-to-many goals.|
+| ACTIONID|CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one. <br/>  A goal action is associated with one client action.|
+
+
+
+## GOAL_TEAMACTIONS_V1_VIEW
+
+This view groups attributes that will allow you to identify team actions associated with goals.  Use this view in reports to report on the team actions associated with a client's goals.
+
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| GOALID| Identifier for a goal record.  |  Int 64| ---|NO|
+| ACTIONID| Identifier for a team action record.  |  Int 64|--- |NO|
+| GOALNAME| Name of the goal that is associated with the team action. | Character| 1024|YES|
+| ACTION| Name of the team action that is associated with the goal. | Character| 1024|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture | Date Time|--- |YES|
+
+### Links to other data
+
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| GOALID|GOALS_V1_VIEW | Cardinality is zero-to-many. <br/> A team action is associated with zero-to-many goals.|
+| ACTIONID|TEAMACTIONS_V1_VIEW | Cardinality is one-to-one. <br/>  A goal-action record is associated with one team action record.|
+
+
+
+## GOAL_PROGRESSCOMMENTS_V1_VIEW
+
+This view groups attributes that relate to comments recorded when progress is updated for a goal, such as the progress comment, the name of the user who added the comment, and the date when the comment was added.
+
+
+| Attribute | Description | Domain definition |Character size | Nulls allowed |
+| :-------------- | :------ |:------ |:------ |:------ |
+| PROGRESSID| Identifier for a progress record. |  Int 64| ---|NO|
+| GOALID| Identifier for a goal record.  |  Int 64| ---|NO|
+| CREATIONDATE| Date when the comment was added to the progress update. | Date Time|--- |NO|
+| CREATEDBY| First name and last name of the user who added the progress comment.| Character| 256|NO|
+| COMMENTS| Comment recorded when the goal progress was updated. | Character| 8000|YES|
+| PROGRESS| Progress recorded in relation to the item, for example, poor, good, very good, excellent.| Character| 256|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture.  | Date Time| ---|NO|
+
+### Links to other data
+
+
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| GOALID| GOALS_V1_VIEW. | Cardinality is zero-to-many.<br/>  A progress comment is associated with zero-to-many goals.|
+| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many comments. |

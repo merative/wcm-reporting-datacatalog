@@ -32,6 +32,7 @@ This view groups attributes that relate to a task such as the task name, start t
 | ASSIGNEDDATE| Date and time the task was assigned. | Date Time| ---             | YES           |
 | ASSIGNMENTSTATUS| Scheduled status of the task. | Character| 100            | YES           |
 | SCHEDULED| Indicates if the task is scheduled. | Character| 1              | YES           |
+| ROLEASSIGNED| The care team role that is assigned the task. | Character| 1              | YES           |
 | INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---             | NO            |
 
 ### Links to other data
