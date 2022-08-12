@@ -5,7 +5,7 @@ This section describes data available for barriers.
 A barrier is an issue that your client has that can stop them from achieving their care plan goals and actions.
 
 ## BARRIERS_V1_VIEW
-This view groups attributes that relate to a barrier such as the name, category, status and notes recorded for the 
+This view groups attributes that relate to a barrier such as the name, category, status and notes recorded for the
 barrier. Use this view to create barriers reports.
 
 | Attribute      | Description                                                                                 | Domain definition | Character size | Nulls allowed |
@@ -32,6 +32,7 @@ barrier. Use this view to create barriers reports.
 | RESOLVEDBY | USERS_V1_VIEW           | Updated-by joins to one user.<br/> A user is associated with zero-to-many barriers.         |     
 | BARRIERID | GOAL_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one goals.           |
 | BARRIERID | SERVICE_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one services.     |
-| BARRIERID | PROGARAM_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one programs.     |
+| BARRIERID | PROGRAM_BARRIERS_V1_VIEW       | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one programs.     |
+| BARRIERID | CLIENTACTION_BARRIERS_V1_VIEW      | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one client actions.     |
+| BARRIERID | TEAMACTION_BARRIERS_V1_VIEW      | Cardinality is zero-to-many. <br/>A barrier is associated with zero-to-one team actions.     |
 | NOTEID | NOTES_V1_VIEW       | Cardinality is zero-to-many. <br/> A barrier is associated with zero-to-many notes.   |
-

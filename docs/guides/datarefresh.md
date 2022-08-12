@@ -1,11 +1,11 @@
 
 
-This view shows the date and time of the last data refresh. Describes the age of the data. Data captured after this date is not available. <br/> <br/>
+This view shows the date and time of the last data refresh. Describes the age and status of the data refresh. Data captured after this date is not available. <br/> <br/>
 
 
 
 ## DATAREFRESH_V1_VIEW
-This view groups attributes that relate to the client's consent, such as the consent type, status, expiry and description of the consent record.
+This view groups attributes that relate to when data was last refreshed such as the date and time of the last refresh and the status of the refresh. Use the attributes in the Data Refresh view to understand when data was last copied from the application to the reporting warehouse.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |

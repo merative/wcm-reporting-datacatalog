@@ -2,7 +2,7 @@
 
 This section describes data available for services.
 
-A service is a plan activity that represents the delivery of care or goods to an individual. A service is typically delivered by a provider at a cost per unit. For example, a home care agency can deliver 2 hours of care at an hourly rate, or an equipment provider can deliver a hearing aid at a specified price. See also provider service.
+A service is a plan activity that represents the delivery of care or goods to an individual. A service is typically delivered by a provider at a cost per unit. For example, a home care agency can deliver 2 hours of care at an hourly rate, or an equipment provider can deliver a hearing aid at a specified price.
 
 These views group attributes that relate to services details such as the service name, description, status, start date and the team member who created the service along with goal and barrier views that allow you to identify goals and barriers associated with the service.
 
@@ -47,8 +47,8 @@ This view groups attributes that relate to the service such as the service name,
 | CLIENTREFERENCE| CLIENTS_V1_VIEW         | Client reference joins to a client.<br/> A client is associated with zero-to-many services. |
 | CREATEDBY  | USERS_V1_VIEW           | Created-by joins to a user.<br/> A user is associated with zero-to-many services.           |
 | COMPLETEDBY  | USERS_V1_VIEW           | Completed-by joins to one user.<br/> A user is associated with zero-to-many services.         |  
-| SERVICEDELIVERYID | SERVICE_GOALS_V1_VIEW      | Cardinality is zero-to-many. <br/> A service is associated with zero to many goal records. |
-| SERVICEDELIVERYID | SERVICE_BARRIERS_V1_VIEW   | Cardinality is zero-to-many. <br/> A service is associated with zero to many service barriers records.  |  
+| SERVICEDELIVERYID | SERVICE_GOALS_V1_VIEW      | Cardinality is zero-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID <br/> A service is associated with zero to many goal records. |
+| SERVICEDELIVERYID | SERVICE_BARRIERS_V1_VIEW   | Cardinality is zero-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID <br/>A service is associated with zero to many service barriers records.  |  
 
 
 
@@ -71,7 +71,7 @@ This view groups services by their associated goal. Use this view to identify sp
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | GOALID|GOALS_V1_VIEW | Cardinality is one-to-one.  <br/> A goal is associated with one goal record.|
-| SERVICEID | SERVICE_V1_VIEW| Cardinality is one-to-many. <br/> A service is associated with zero to many goal records. |
+| SERVICEID | SERVICE_V1_VIEW| Cardinality is one-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID  <br/> A service is associated with zero to many goal records. |
 
 
 
@@ -95,4 +95,4 @@ This view groups services by their associated barrier. Use this view to identify
 | Attribute | Joins to               | Cardinality                                                                    |
 |:----------|:---------------------------|:-------------------------------------------------------------------------------|
 | BARRIERID | BARRIERS_V1_VIEW | Cardinality is one-to-one.  <br/> A barrier is associated with one barrier record.         |
-| SERVICEID | SERVICE_V1_VIEW  | Cardinality is one-to-many. <br/> A service is associated with zero to many service barriers records. |
+| SERVICEID | SERVICE_V1_VIEW  | Cardinality is one-to-many. <br/>  SERVICEDELIVERYID joins to SERVICEID <br/>  A service is associated with zero to many service barriers records. |
