@@ -13,6 +13,7 @@
   - [Goal](guides/goal.md)
   - [Note](guides/notes.md)
   - [Program](guides/program.md)
+  - [Provider](guides/provider.md)
   - [Services](guides/services.md)
   - [Task](guides/task.md)
   - [Team & User](guides/team.md)
