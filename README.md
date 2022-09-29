@@ -1,4 +1,3 @@
-
 # Watson Care Manager Reporting Data Catalog
 
 IBM Watson® Care Manager supports human-centered contact tracing through structured interviews and provides care teams a platform for supporting the holistic needs of individuals affected by COVID-19 and beyond. Bridge the gap between health and social needs, collaborate across departments and jurisdictions, and automate care management workflows to support ongoing care.
@@ -15,5 +14,4 @@ The IBM Watson® Care Manager Reporting application is built on IBM® DB2® Ware
 The data catalog for WCM Reporting BYOT is available at this URL: [https://ibm.github.io/wcm-reporting-datacatalog/](https://ibm.github.io/wcm-reporting-datacatalog/)
 
 The Git repository for the data catalog is located as at this URL: [https://github.com/IBM/wcm-reporting-datacatalog](https://github.com/IBM/wcm-reporting-datacatalog)
-
 The WCM SaaS offering includes a Warehouse for BYOT workloads, a data refresh cycle runs every two hours copies data from the application to the warehouse. So that you are aware of when the last data refresh happened, a Data Refresh table is available. This table contains two data items, the Last Refresh Date which shows the last refresh date and time and the Last Refresh Status, for example, Complete or In Progress. Applicaion data that is recorded after the last refresh date is not available. Coordinated Universal Time (UTC) is the time standard used in all reports that display a time, including the last data refresh date and time.
