@@ -11,7 +11,7 @@
   - [Custom ](guides/custom.md)
   - [Data Refresh](guides/datarefresh.md)
   - [Goal](guides/goal.md)
-  - [Goal](guides/inquiry.md)
+  - [Inquiry](guides/inquiry.md)
   - [Note](guides/notes.md)
   - [Program](guides/program.md)
   - [Provider](guides/provider.md)
