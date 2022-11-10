@@ -34,18 +34,20 @@ The client actions view groups attributes relating to client actions, such as th
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many client actions.|
-| ADDEDBY | USERS_V1_VIEW | Added-by joins to a user. <br /> A user is associated with zero-to-many client actions.|
-| COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user. <br /> A user is associated with zero-to-many client actions. |
-| ACTIONID | CLIENTACTION_BARRIERS_V1_VIEW| Actionid joins to an action. <br/> A client action is associated with zero-to-many barriers. |
-| ACTIONID | CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW| Actionid joins to an action. <br/> A client action is associated with zero-to-many progress comments. |
-| ACTIONID |PROGRAM_CLIENTACTION_V1_VIEW| Actionid joins to an action. <br/>  A client action is associated with zero-to-many programs. |
-| ACTIONID | GOALS_CLIENTACTIONS_V1_VIEW| Actionid joins to an action <br/> A client action is associated with zero-to-many goals. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br /> A user identifier is associated with one user.|
+| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br /> A user is associated with one user. |
+| ACTIONID | CLIENTACTION_BARRIERS_V1_VIEW| Cardinality is one-to-many. <br/> A client action is associated with zero-to-many barriers. |
+| ACTIONID | CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW|Cardinality is one-to-many.  <br/> A client action is associated with zero-to-many progress comments. |
+| ACTIONID | PROGRAM_CLIENTACTION_V1_VIEW| Cardinality is one-to-many.  <br/>  A client action is associated with zero-to-many programs. |
+| ACTIONID | GOALS_CLIENTACTIONS_V1_VIEW| Cardinality is one-to-many. <br/> A client action is associated with zero-to-many goals. |
 
 
 ## CLIENTACTION_BARRIERS_V1_VIEW
 
 This view groups attributes that will allow you to identify barriers associated with client actions. Use this view in reports to report on barriers associated with a client's actions.
+<br/>Uniqueness is guaranteed by actionID and barrierID. Client action identifier could be repeated in the view, and barrier identifier could be repeated in the view.
+
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -59,13 +61,14 @@ This view groups attributes that will allow you to identify barriers associated 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| BARRIERID| BARRIERS_V1_VIEW | Barrierid joins to a barrier.<br/> A client action is associated with zero-to-many barriers.|
-| ACTIONID | CLIENTACTIONS_V1_VIEW | Actionid joins to an action.<br/> A client action is associated with zero-to-many barriers. |
+| BARRIERID| BARRIERS_V1_VIEW | Cardinality is one-to-one.<br/> A barrier identifier is associated with one barrier.|
+| ACTIONID | CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A client action identifier is associated with one client action. |
 
 
 ## CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW
 
 This view groups attributes that relate to comments recorded when progress is updated for a client action, such as the progress comment, the name of the user who added the comment, and the date when the comment was added.
+<br/>Uniqueness is guaranteed by actionID and progressID. Client action identifier could be repeated in the view, and progress identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -80,5 +83,5 @@ This view groups attributes that relate to comments recorded when progress is up
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| ACTIONID| CLIENTACTIONS_V1_VIEW | Actionid joins to an action.<br/> A client action is associated with zero-to-many progress comments.|
-| CREATEDBY | USERS_V1_VIEW |  Created-by joins to a user. <br /> A user is associated with zero-to-many progress comments. |
+| ACTIONID| CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A client action identifier is associated with one client action.|
+| CREATEDBY | USERS_V1_VIEW |  Cardinality is one-to-one. <br /> A user identifier is associated with one user. |

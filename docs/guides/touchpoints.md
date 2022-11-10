@@ -2,7 +2,7 @@
 
 This section describes data available for touchpoints.
 
-A touchpoint is a record of a contact or attempted contact made with or received from a client another individual in relation to a client. 
+A touchpoint is a record of a contact or attempted contact made with or received from a client another individual in relation to a client.
 
 These views group attributes that relate to a touchpoint such as the subject, who the contact was with, the contact method, status, content text for the touchpoint and comments recorded for the touchpoint.
 
@@ -37,9 +37,10 @@ This view groups attributes that relate to a touchpoint such as the subject, sta
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many.<br/>  A client is associated with zero-to-many touchpoints|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-many. <br/> A touchpoint is assocated with one user. |
-| TOUCHPONTID | PROGRAM_TOUCHPOINTS_V1_VIEW| Cardinality is zero-to-many. <br/> A touchpoint is associated with zero-to-many programs. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| TOUCHPONTID | PROGRAM_TOUCHPOINTS_V1_VIEW| Cardinality is one-to-many. <br/> A touchpoint is associated with zero-to-many programs. |
+| TOUCHPONTID | TOUCHPOINT_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/> A touchpoint is associated with zero-to-many touchpoint comments. |
 
 ## TOUCHPOINT_COMMENTS_V1_VIEW
 
@@ -53,10 +54,12 @@ This view groups attributes that relate to a touchpoint comment such as the auth
 | CONTENT| Touchpoint comment text. | Character| 32592|YES|
 | CREATIONDATE| Date and time the comment was added. | Date Time| ---|YES|
 | POSITION| Order that the comments were added to the touchpoint, for example, I, 2, 3, 4.  |  Int 32| ---|NO|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. |  Date Time|--- |NO|
 
 ### Links to other data
 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| TOUCHPOINTID| TOUCHPOINTS_V1_VIEW | Cardinality is zero-to-many. <br/> A touchpoint is associated with zero-to-many comments.|
+| TOUCHPOINTID| TOUCHPOINTS_V1_VIEW | Cardinality is one-to-one. <br/> A touchpoint identifier is associated with one touchpoint.|
+| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |

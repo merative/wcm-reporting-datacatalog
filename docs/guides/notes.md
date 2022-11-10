@@ -26,7 +26,6 @@ the note. Use this view to create notes reports.
 | DELETIONREASON | Reason for deleting a Draft or Ready for Review note.   | Character| 512| YES  |
 | MODIFIEDBY            | The identity of user who last modified the note. | Character| 524| YES  |
 | MODIFIEDDATETIME      | Date and time the note was last updated.       | Date Time|--- | YES  |
-| BARRIERID             | Identifier for a record.       |  Int 64|--- | NO   |
 | INGESTIONTIME         | Date and time the record was ingested, supports change data capture.    | Date Time| ---| NO   |
 
 ### Links to other data
@@ -35,12 +34,10 @@ the note. Use this view to create notes reports.
 
 | Attribute        | Joins to     | Cardinality |
 |:-----------------|:----------------------|:-----------------------------------------------------------------------------------------|
-| CLIENTREFERENCE  | CLIENTS_V1_VIEW     | Client reference joins to a client.<br/> A client is associated with zero-to-many notes. |
-| ADDEDBY | USERS_V1_VIEW       | Added-by joins to a user.<br/> A user is associated with zero-to-many notes.    |
-| MODIFIEDBY       | USERS_V1_VIEW        | Modified-by joins to one user.<br/> A user is associated with zero-to-many notes.|
-| NOTEID  | NOTE_COMMENTS_V1_VIEW | A note is associated with zero-to-many comments.       |
-| BARRIERID  | BARRIERS_V1_VIEW | Barrier ID joins to a barrier.<br/>  A note is associated with one barrier.    |
-
+| CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many notes.|
+| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many  notes.|
+| MODIFIEDBY       | USERS_V1_VIEW        | Cardinality is one-to-many. <br/> A user is associated with zero-to-many notes.|
+| NOTEID  | NOTE_COMMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A note is associated with zero-to-many comments.       |
 
 ## NOTE_COMMENTS_V1_VIEW
 This view groups attributes that relate to a note comment such as the author, status and content text for
@@ -63,4 +60,5 @@ the comment. Use this view to create note comments reports.
 
 | Attribute        | Joins to             | Cardinality                                                                              |
 |:-----------------|:---------------------|:-----------------------------------------------------------------------------------------|
-| NOTEID           | NOTE_V1_VIEW         | Cardinality is zero-to-many. <br/> A note is associated with zero-to-many comments.   |
+| NOTEID           | NOTE_V1_VIEW         | Cardinality is one-to-one. <br/> A note identifieris associated with one note.  |
+| CREATEDBY        |  USERS_V1_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|

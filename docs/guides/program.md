@@ -38,13 +38,23 @@ This view groups attributes that relate to a client’s programs such as the pro
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many programs.|
-| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many program status.|
+| CLIENTREFERENCE|  CLIENTS_V1_VIEW |  Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with zero-to-many program status.|
+| PROGRAMID| PROGRAM_ASSESSMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many assessment records.|
+| PROGRAMID| PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many utilization records.|
+| PROGRAMID| PROGRAM_TOUCHPOINTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many touchpoint records.|
+| PROGRAMID| PROGRAM_BARRIERS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many barrier records.|
+| PROGRAMID| PROGRAM_CLIENTACTIONS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many client action records.|
+| PROGRAMID| PROGRAM_GOALS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many goal records.|
+| PROGRAMID| PROGRAM_TEAMACTIONS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many team action records.|
+| PROGRAMID| TASK_PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many task records.|
+
 
 ## PROGRAM_ASSESSMENTS_V1_VIEW
 
 
 This view groups assessments by their associated programs. Use this data set to identify specific assessments associated with a client's program.
+<br/>Uniqueness is guaranteed by programID and assessmentinstanceID. Program identifier could be repeated in the view, and assessment instance identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -59,8 +69,8 @@ This view groups assessments by their associated programs. Use this data set to 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| PROGRAMID|PROGRAMS_V1_VIEW |  Cardinality is one-to-many.  <br/>  A program enrollment is associated with zero-to-many assessment instances.|
 | ASSESSMENTINSTANCEID| ASSESSMENTS_V1_VIEW | Cardinality is one-to-one. <br/>  An assessment instance identifier is associated with one assessment instance record.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 
 
@@ -68,6 +78,7 @@ This view groups assessments by their associated programs. Use this data set to 
 ## PROGRAM_UTILIZATIONS_V1_VIEW
 
 This view groups programs by their utilization type. Use this data set to identify specific utilizations associated with a client's program.
+<br/>Uniqueness is guaranteed by programID and utilizationID. Program identifier could be repeated in the view, and utilization identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -82,12 +93,13 @@ This view groups programs by their utilization type. Use this data set to identi
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | UTILIZATIONID| UTILIZATIONS_V1_VIEW | Cardinality is one-to-one. <br/> A utilization identifier is associated with one utilization record.|
-| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many utilization records.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 
 
 ## PROGRAM_TOUCHPOINTS_V1_VIEW
 This view groups touchpoints by their associated program. Use this view to identify specific touchpoints associated with a client's programs.
+<br/>Uniqueness is guaranteed by programID and touchpointID. Program identifier could be repeated in the view, and touchpoint identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -106,12 +118,13 @@ This view groups touchpoints by their associated program. Use this view to ident
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many programs.|
 | TOUCHPOINTID|TOUCHPOINTS_V1_VIEW | Cardinality is one-to-one. <br/> A touchpoint identifier is associated with one touchpoint record.|
-| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many touchpoints.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 
 
 ## PROGRAM_BARRIERS_V1_VIEW
 This view groups barriers by their associated program. Use this view to identify specific barriers associated with a client's programs.
+<br/>Uniqueness is guaranteed by programID and barrierID. Program identifier could be repeated in the view, and barrier identifier could be repeated in the view.
 
 | Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
 | :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
@@ -127,11 +140,12 @@ This view groups barriers by their associated program. Use this view to identify
 
 | Attribute | Joins to | Cardinality                                                                                        |
 | :-------------- | :------ |:---------------------------------------------------------------------------------------------------|
-| BARRIERID| BARRIERS_V1_VIEW | Cardinality is one-to-one.<br/>  A barrier identifier is associated with with one barrier record. |
-| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.  <br/> A program barrier is associated with one program enrollment.            |
+| BARRIERID| BARRIERS_V1_VIEW | Cardinality is one-to-one.<br/>  A barrier identifier is associated with one barrier record. |
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 ## PROGRAM_CLIENTACTIONS_V1_VIEW
 This view groups client actions by their associated program. Use this view to identify specific client actions associated with a client's programs.
+<br/>Uniqueness is guaranteed by programID and actionID. Program identifier could be repeated in the view, and action identifier could be repeated in the view.
 
 | Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
 | :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
@@ -148,10 +162,11 @@ This view groups client actions by their associated program. Use this view to id
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | ACTIONID| CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one. <br/> A client action is associated with one action record.|
-| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one. <br/> A program barrier is associated with one program enrollment.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 ## PROGRAM_GOALS_V1_VIEW
 This view groups goals by their associated program. Use this view to identify specific goals associated with a client's programs.
+<br/>Uniqueness is guaranteed by programID and goalID. Program identifier could be repeated in the view, and goal identifier could be repeated in the view.
 
 | Attribute | Description                                                          | Domain definition |Character size | Nulls allowed |
 | :-------------- |:---------------------------------------------------------------------|:------ |:------ |:--------------|
@@ -168,10 +183,11 @@ This view groups goals by their associated program. Use this view to identify sp
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | GOALID|  GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal is associated with one program enrollment.|
-| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many goals.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
 
 ## PROGRAM_TEAMACTIONS_V1_VIEW
 This view groups team actions by their associated program. Use this view to identify specific team actions associated with a client's programs.
+<br/>Uniqueness is guaranteed by programID and actionID. Program identifier could be repeated in the view, and action identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -188,4 +204,4 @@ This view groups team actions by their associated program. Use this view to iden
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one. <br/> A team action is associated with one team action record.|
-| PROGRAMID|PROGRAMS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many team actions.|
+| PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |

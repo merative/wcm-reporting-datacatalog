@@ -8,7 +8,7 @@ These views groups attributes that relate to a client's consent records such as 
 
 
 ## CONSENTS_V1_VIEW
-This view groups attributes that relate to the client's consent, such as the consent type, status, expiry and description of the consent record. 
+This view groups attributes that relate to the client's consent, such as the consent type, status, expiry and description of the consent record.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -31,16 +31,19 @@ This view groups attributes that relate to the client's consent, such as the con
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/> A client is associated with zero-to-many consent records.|
-| RECEIVEDBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A consent record is associated with one user. |
-| WITHDRAWNBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A consent record is associated with one user. |
-| TEAMMEMBERID | TEAMMEMBERS_V1_VIEW| Cardinality is one-to-one. <br/>  A team member record id is associated with one team member. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-one. <br/> A client identifier is associated with one client.|
+| RECEIVEDBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user. |
+| WITHDRAWNBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier  is associated with one user. |
+| TEAMMEMBERID | TEAMMEMBERS_V1_VIEW| Cardinality is one-to-one. <br/>  A team member identifier is associated with one team member. |
+| CONSENTID| CONSENT_ATTACHMENTS_V1_VIEW | Cardinality is one-to-many. <br/>  A consent is associated with zero-to-many attachments.|
+| CONSENTID| CONSENT_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br/>  A consent is associated with zero-to-many consent history records.|
 
 
 
 ## CONSENT_ATTACHMENTS_V1_VIEW
 
 This view groups attributes that relate to attachments provided to support the client's consent, such as the attachment type, status, when the attachment was added, and who added it.  
+
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -59,13 +62,13 @@ This view groups attributes that relate to attachments provided to support the c
 ### Links to other data
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CONSENTID| CONSENTS_V1_VIEW . | Cardinality is one-to-many. <br/>  An attachment is associated with zero-to-many consent records.|
-| ADDEDBY | USERS_V1_VIEW. | Cardinality is one-to-many. <br/>  An attachment is associated with one user. |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/> A client is associated with zero-to-many attachment records.|
+| CONSENTID| CONSENTS_V1_VIEW . | Cardinality is one-to-one. <br/>  A consent identifier is associated with one consent .|
+| ADDEDBY | USERS_V1_VIEW. | Cardinality is one-to-one. <br/>  A user identifier is associated with one user. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-one. <br/> A client identifer is associated with one client.|
 
 ## CONSENT_HISTORIES_V1_VIEW
 
-This view groups attributes that relate to consent history, such as when the consent record was updated, the status of the record and who updated the record. 
+This view groups attributes that relate to consent history, such as when the consent record was updated, the status of the record and who updated the record.
 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -80,5 +83,5 @@ This view groups attributes that relate to consent history, such as when the con
 ### Links to other data
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CONSENTID| CONSENTS_V1_VIEW . | Cardinality is one-to-one. <br/> A client is associated with zero-to-many consent history records.|
-| UPDATEDBY | USERS_V1_VIEW. | Cardinality is one-to-many.<br/> A consent history record is associated with one user. |
+| CONSENTID| CONSENTS_V1_VIEW . | Cardinality is one-to-one. <br/> A client identifier is associated with one client.|
+| UPDATEDBY | USERS_V1_VIEW. | Cardinality is one-to-one.<br/> A user identifier is associated with one user. |
