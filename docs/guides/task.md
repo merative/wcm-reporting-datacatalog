@@ -40,17 +40,19 @@ This view groups attributes that relate to a task such as the task name, start t
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br/> A client is associated with zero-to-many tasks.|
-| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br/> A user is associated with zero-to-many tasks. |
-| UPDATEDBY | USERS_V1_VIEW| Updated-by joins to one user.<br/> A user is associated with zero-to-many tasks.|
-| ASSIGNEDTO | USERS_V1_VIEW| Assigned-to joins to one user.<br/> A task is associated with zero-to-many users.|
-| TASKID | TASK_PROGRAMS_V1_VIEW| A task is associated with zero-to-many programs. |
-| TASKID | TASK_ROLE_V1_VIEW| A task is associated with zero-to-one roles. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
+| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| UPDATEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| ASSIGNEDTO | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| TASKID | TASK_PROGRAMS_V1_VIEW| Cardinality is one-to-many.<br /> A task is associated with zero-to-many programs. |
+| TASKID | TASK_ROLE_V1_VIEW| Cardinality is one-to-one.<br /> A task is associated with zero-to-one roles. |
 
 
 
 ## TASK_PROGRAMS_V1_VIEW
 This view groups attributes by their associated program. Use this view to identify specific tasks associated with a client's programs.
+<br/>Uniqueness is guaranteed by taskID and programID. Task identifier could be repeated in the view, and program identifier could be repeated in the view.
+
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:--------------|
@@ -64,6 +66,6 @@ This view groups attributes by their associated program. Use this view to identi
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br/> A client is associated with zero-to-many tasks_program.|
-| TASKID | TASK_V1_VIEW| A task is associated with one-to-many programs. |
-| PROGRAMID | PROGRAMS_V1_VIEW| A program is associated with zero-to-many tasks. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
+| TASKID | TASK_V1_VIEW| Cardinality is one-to-one. <br /> A task is associated with one task. |
+| PROGRAMID | PROGRAMS_V1_VIEW| Cardinality is one-to-one.<br /> A program is associated with one program. |

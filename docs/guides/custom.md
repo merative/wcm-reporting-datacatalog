@@ -36,5 +36,5 @@ This view groups attributes that relate to information captured in respect of a 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/> A client is associated with zero-to-many custom client data type records.|
-| UPDATEDBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A custom client data type record is assocated with one user. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-one. <br/> A client identifier is associated with one client.|
+| UPDATEDBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user. |

@@ -31,9 +31,9 @@ This view groups attributes that relate to the alert such as the alert name, pri
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many alerts.|
-| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many alerts. |
-| CLOSEDBY | USERS_V1_VIEW| Closed-by joins to one user.<br /> A user is associated with zero-to-many closed alerts. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
+| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| CLOSEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
 | ALERTID | ALERT_NOTIFICATIONS_V1_VIEW| Cardinality is one-to-many. <br/> An alert is associated with zero-to-many notifications. |
 | ALERTID | ALERT_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/> An alert is associated with zero-to-many comments. |
 
@@ -57,7 +57,7 @@ This view groups attributes that relate to who is notified of an alert, such as 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| ALERTID | ALERTS_V1_VIEW| Cardinality is one-to-many. <br/>An alert is associated with zero-to-many notifications. |
+| ALERTID | ALERTS_V1_VIEW| Cardinality is one-to-one. <br/>An alert identifier is associated with one alert. |
 
 
 
@@ -82,4 +82,4 @@ This view groups attributes that relate to comments recorded for an alert, such 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| ALERTID | ALERTS_V1_VIEW| Cardinality is one-to-many. <br/> An alert is associated with zero-to-many comments. |
+| ALERTID | ALERTS_V1_VIEW| Cardinality is one-to-one. <br/> An alert identifier is associated with one alert. |

@@ -60,8 +60,7 @@ The attribute CLIENTREFERENCE is the primary key to this table, and can be used 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| REGISTEREDBYUSER | USERS_V1_VIEW | Registered-by-user joins to a user.<br /> A user is associated with zero-to-many clients. |
-
+| REGISTEREDBYUSER| USERS_V1_VIEW | Cardinality is one-to-one. <br/> A registered-by-user joins to a user. <br/> A user is associated with zero-to-many clients.|
 
 
 
@@ -92,7 +91,7 @@ This view groups attributes that relate to emergency access requests. Use this v
 
 
 ## CLIENT_ADDRESSES_V1_VIEW
-This view groups attributes that relate to a client's address such as the address details, address type, and whether the address is the client's preferred address.
+This view groups attributes that relate to a client's address such as the address details, address type, and whether the address is the client's preferred address.  The most recent record of each address type is listed.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -123,7 +122,7 @@ This view groups attributes that relate to a client's address such as the addres
 
 
 ## CLIENT_EMAILS_V1_VIEW
-This view groups attributes that relate to a client's email address such as the email address details, email address type, and whether the email address is the client's preferred email address.
+This view groups attributes that relate to a client's email address such as the email address details, email address type, and whether the email address is the client's preferred email address. The most recent record of each email type is listed.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -145,7 +144,7 @@ This view groups attributes that relate to a client's email address such as the 
 
 
 ## CLIENT_IDENTIFICATIONS_V1_VIEW
-This view groups attributes that relate to client's identification types such as their Employee ID or passport, and the number associated with the identification type.
+This view groups attributes that relate to client's identification types such as their Employee ID or passport, and the number associated with the identification type.  The most recent record of each identification type is listed.
 
 | Attribute       | Description | Domain definition |Character size | Nulls allowed |
 |:----------------| :------ |:------ |:------ |:------ |
@@ -169,7 +168,7 @@ This view groups attributes that relate to client's identification types such as
 
 
 ## CLIENT_PHONES_V1_VIEW
-This view groups attributes that relate to a client's phone number such as the phone number, phone type, and whether the phone number is the client's preferred phone number for calls and texts.
+This view groups attributes that relate to a client's phone number such as the phone number, phone type, and whether the phone number is the client's preferred phone number for calls and texts. The most recent record of each phone type is listed.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -300,3 +299,221 @@ This view groups attributes that relate to the utilization such as the utilizati
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many utilizations.|
 | ADDEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many utilizations. |
  |UTILIZATIONID| PROGRAM_UTILIZATIONS_V1_VIEW | Utilizationid joins to a utilization record.<br />A utilization identifier is associated with one utilization record. |
+
+ ## CLIENT_NAME_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's name change history such as when and who created or updated the client's name. Use this view with the clients view to identify when changes were made and by who to a client's name.
+
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| NAMEID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to a name record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| TYPEOFNAME| Client's type of name, alias, preferred, registered, or stage name. | Character| 50|YES|
+| FIRSTNAME| Client's first name.| Character| 200|YES|
+| LASTNAME| Client's last name.  | Character| 200|YES|
+| SUFFIX| Client's suffix, for example, junior, senior, or esquire. | Character| 20|YES|
+| MIDDLENAME| Client's middle name. | Character| 200|YES|
+| INITIALS| Client's intials.| Character| 50|YES|
+| COMMENTS| Comments entered for the record.| Character| 8000|YES|
+| TITLE| Client's title, for example, Mr or Ms. | Character| 20|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many name history records.|
+
+
+## CLIENT_EMAIL_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's email change history such as when and who created or updated the client's email address. Use this view with the clients view to identify when changes were made and by who to a client's email.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| EMAILID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to an email record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| EMAILTYPE| Client's type of name, alias, preferred, registered, or stage name. | Character| 40|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many email history records.|
+
+
+## CLIENT_BIRTHDEATH_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's birth and death change history such as when and who created or updated the client's date of birth or death. Use this view with the clients view to identify when changes were made and by who to a client's birth and death details.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| BIRTHDEATHID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to a client birth and death record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| EMAILTYPE| Client's type of name, alias, preferred, registered, or stage name. | Character| 40|YES|
+| DATEOFBIRTH| Client's date of birth.| Date Time|--- |YES|
+| DATEOFDEATH| Client's date of death.| Date Time| ---|YES|
+| MOTHERSBIRTHLASTNAME| Mother's birth last name. | Character| 200|YES|
+| BIRTHLASTNAME| Client's birth last name.| Character| 200|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many birth and death history records.|
+
+
+## CLIENT_PHONE_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's phone change history such as when and who created or updated the client's phone number. Use this view with the clients view to identify when changes were made and by who to a client's phone number.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| PHONEID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to a phone record. |  Int 64|--- |NO|
+| ACTION |Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| PHONETYPE| Client's type of phone such as home or preferred. | Character| 40|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many phone number history records.|
+
+
+## CLIENT_IDENTIFICATION_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's identification change history such as when and who created or updated the client's identification details.  Use this view with the clients view to identify when changes were made and by who to a client's identification details.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| EMAILID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to an identification record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| IDENTIFICATIONTYPE| Client's type of identification, for example, SSN. | Character| 40|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many identifications history records.|
+
+## CLIENT_ADDRESS_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's address change history such as when and who created or updated the client's address. Use this view with the clients view to identify when changes were made and by who to a client's address details.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| ADDRESSID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to an address record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| ADDRESSTYPE| Client's type of address, for example, home or work. | Character| 40|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many address history records.|
+
+
+
+## CLIENT_GENDER_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's gender change history such as when and who created or updated the client's gender information. Use this view with the clients view to identify when changes were made and by who to a client's gender information.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| GENDERID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to a gender record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| GENDER           | Client's gender.                      | Character| 20 |YES|
+| STARTDATE| Date from which the marital status is valid.| Date| ---|YES|
+| ENDDATE| Date to which the marital status is valid.| Date| ---|YES|
+| COMMENTS| Comments entered for the record.| Character| 1024|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture.| Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many gender history records.|
+
+
+
+## CLIENT_MARITALSTATUS_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to a client's maritial status change history such as when and who created or updated the client's martial status information. Use this view with the clients view to identify when changes were made and by who to a client's martial status information.
+
+| Attribute       | Description | Domain definition |Character size | Nulls allowed |
+|:----------------| :------ |:------ |:------ |:------ |
+| CLIENTREFERENCE | Unique reference number that identifies the client in the application. | Character| 200|NO|
+| MARITIALSTATUSID| Identifier for a record. |  Int 64|--- |NO|
+| CORRECTIONID| Identifier linking edits to a maritial status record. |  Int 64|--- |NO|
+| ACTION | Action carried out on the record such as create, update, or delete. | Character| 200|NO|
+| UPDATEDBYFULLNAME| First name and last name of the user who updated the record. | Character| 524|NO|
+| UPDATEDON        | Date and time the record was changed. | Date Time| ---|NO|
+| MARITIALSTATUS| Client's type of name, alias, preferred, registered, or stage name. | Character| 40|YES|
+| STARTDATE| Date from which the marital status is valid.| Date| ---|YES|
+| ENDDATE| Date to which the marital status is valid.| Date| ---|YES|
+| COMMENTS| Comments entered for the record.| Character| 1024|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture.| Date Time|--- |YES|
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many marital status history records.|
+
+
+## CLIENT_STATUS_HISTORIES_V1_VIEW
+
+This view groups attributes that relate to status changes for a client, such as the client's status, active or inactive, the reason for the client status change, and the date when the status was updated. Use this view with the clients view to identify when changes were made and by who to a client's status information.
+
+| Attribute             | Description                                                            | Domain definition | Character size | Nulls allowed |
+|:----------------------|:-----------------------------------------------------------------------|:------ |:---------------|:--------------|
+| CLIENTSTATUSHISTORYID | Identifier for a record.                                               |  Int 64| ---            | NO            |
+| CLIENTREFERENCE       | Unique reference number that identifies the client in the application. | Character| 200            | NO            |
+| STATUS                | Status of the record such as active, inactive, or delete.                     |  Character| 50             | NO            |
+| STATUSREASON          | Reason for changing client status.                                     |  Character| 50             | YES           |
+| STATUSOTHERREASON     | Other reason for changing client status.                               | Character| 200            | YES           |
+| COMMENTS              | Comments entered for the record.                                       | Character| 8000           | YES           |
+| UPDATEDBYFULLNAME     | First name and last name of the user who updated the record.           | Character| 524            | NO            |
+| UPDATEDBYROLE         | Role of the user who updated the record.                               | Character| 200            | YES           |
+| UPDATEDON             | Date and time the record was changed.                                  | Date Time| ---            | NO            |
+| INGESTIONTIME         | Date and time the record was ingested, supports change data capture.   | Date Time| ---            | NO            |
+
+### Links to other data
+
+| Attribute | Joins to|Cardinality |
+| :-------------- | :------ |:------ |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many status records.|

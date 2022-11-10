@@ -4,7 +4,7 @@ This section describes data available for services.
 
 A service is a plan activity that represents the delivery of care or goods to an individual. A service is typically delivered by a provider at a cost per unit. For example, a home care agency can deliver 2 hours of care at an hourly rate, or an equipment provider can deliver a hearing aid at a specified price.
 
-These views group attributes that relate to services details such as the service name, description, status, start date and the team member who created the service along with goal and barrier views that allow you to identify goals and barriers associated with the service.
+These views group attributes that relate to services details such as the service name, description, status, start date and the team member who created the service along with goal, barrier,note and note comments views that allow you to identify goals, barriers, notes and note comments associated with the service.
 
 ## SERVICES_V1_VIEW
 
@@ -13,7 +13,7 @@ This view groups attributes that relate to the service such as the service name,
 
 | Attribute           | Description                                                                                                              | Domain definition | Character size | Nulls allowed |
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------|:-----|:--------------|
-| SERVICEDELIVERYID   | Identifier for a service record.                                                                                         | Int 64            | ---   | NO            |
+| SERVICEID   | Identifier for a service record.                                                                                         | Int 64            | ---   | NO            |
 | CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                   | Character         | 200  | YES           |
 | PROVIDEROFFERINGID  | Identifier for a provider offering.                                                                                       | Int 64            | ---   | YES           |
 | SERVICEOFFERINGID   | Identifier for a service offering.                                                                                        | Int 64            | ---   | NO            |
@@ -44,18 +44,20 @@ This view groups attributes that relate to the service such as the service name,
 
 | Attribute         | Joins to                      | Cardinality                                                                                   |
 |:------------------|:------------------------------------|:----------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE| CLIENTS_V1_VIEW         | Client reference joins to a client.<br/> A client is associated with zero-to-many services. |
-| CREATEDBY  | USERS_V1_VIEW           | Created-by joins to a user.<br/> A user is associated with zero-to-many services.           |
-| COMPLETEDBY  | USERS_V1_VIEW           | Completed-by joins to one user.<br/> A user is associated with zero-to-many services.         |  
-| SERVICEDELIVERYID | SERVICE_GOALS_V1_VIEW      | Cardinality is zero-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID <br/> A service is associated with zero to many goal records. |
-| SERVICEDELIVERYID | SERVICE_BARRIERS_V1_VIEW   | Cardinality is zero-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID <br/>A service is associated with zero to many service barriers records.  |  
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW         | Cardinality is one-to-one. <br/>A client identifier is associated with one client. |
+| CREATEDBY  | USERS_V1_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.          |
+| COMPLETEDBY  | USERS_V1_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.         |  
+| SERVICEID | SERVICE_GOALS_V1_VIEW    | Cardinality is one-to-many. <br/> A service is associated with zero-to-many goals. |
+| SERVICEID | SERVICE_BARRIERS_V1_VIEW | Cardinality is one-to-many. <br/> A service is associated with zero-to-many barriers.  |  
+| SERVICEID | SERVICE_NOTE_V1_VIEW | Cardinality is one-to-many. <br/> A service is associated with zero-to-many notes.  |  
+| SERVICEID | SERVICE_NOTE_COMMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A service is associated with zero-to-many note comments.  |  
+| PROVIDEROFFERINGID| SHORTLISTED_PROVIDERS_V1_VIEW| Cardinality is one-to-one. <br/> A provider offering identifier is associated with one provider offering identifier.  |  
 
 
 
 ## SERVICE_GOALS_V1_VIEW
 This view groups services by their associated goal. Use this view to identify specific services associated with a client's goals.
-<br/>
+<br/><br/>Uniqueness is guaranteed by serviceID and goalID. Service identifier could be repeated in the view, and goal identifier could be repeated in the view.
 
 | Attribute     | Description                                                          | Domain definition | Character size | Nulls allowed |
 |:--------------|:---------------------------------------------------------------------|:------------------|:-----|:--------------|
@@ -70,16 +72,15 @@ This view groups services by their associated goal. Use this view to identify sp
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| GOALID|GOALS_V1_VIEW | Cardinality is one-to-one.  <br/> A goal is associated with one goal record.|
-| SERVICEID | SERVICE_V1_VIEW| Cardinality is one-to-many. <br/> SERVICEDELIVERYID joins to SERVICEID  <br/> A service is associated with zero to many goal records. |
+| GOALID|GOALS_V1_VIEW | Cardinality is one-to-one.  <br/> A goal is associated with one goal.|
+| SERVICEID | SERVICE_V1_VIEW| Cardinality is one-to-one. <br/>  A service identifier is associated with one service. |
 
 
 
 
 ## SERVICE_BARRIERS_V1_VIEW
 This view groups services by their associated barrier. Use this view to identify specific services associated with a barrier.
-
-<br/>
+<br/><br/>Uniqueness is guaranteed by serviceID and barrier ID. Service identifier could be repeated in the view, and barrier identifier could be repeated in the view.
 
 | Attribute     | Description                                                          | Domain definition | Character size | Nulls allowed |
 |:--------------|:---------------------------------------------------------------------|:------------------|:-----|:--------------|
@@ -94,5 +95,48 @@ This view groups services by their associated barrier. Use this view to identify
 
 | Attribute | Joins to               | Cardinality                                                                    |
 |:----------|:---------------------------|:-------------------------------------------------------------------------------|
-| BARRIERID | BARRIERS_V1_VIEW | Cardinality is one-to-one.  <br/> A barrier is associated with one barrier record.         |
-| SERVICEID | SERVICE_V1_VIEW  | Cardinality is one-to-many. <br/>  SERVICEDELIVERYID joins to SERVICEID <br/>  A service is associated with zero to many service barriers records. |
+| BARRIERID | BARRIERS_V1_VIEW | Cardinality is one-to-one.  <br/> A barrier is associated with one barrier.         |
+| SERVICEID | SERVICE_V1_VIEW  | Cardinality is one-to-one. <br/>  A service is associated with one service. |
+
+## SERVICE_NOTES_V1_VIEW
+This view groups services by their associated notes. Use this view to identify specific services associated with a note.
+<br/><br/>Uniqueness is guaranteed by serviceID and noteID. Service identifier could be repeated in the view, and note identifier could be repeated in the view.
+
+
+
+| Attribute     | Description                                                          | Domain definition | Character size | Nulls allowed |
+|:--------------|:---------------------------------------------------------------------|:------------------|:-----|:--------------|
+| SERVICEID     | Identifier for a service record.                                     | Int 64            | ---   | NO            |
+| NOTEID     | Identifier for a note record.                                        | Int 64            | ---   | NO            |
+| NOTETEXT                  | The text of the note.   | Character| 32592| YES  |
+| STATUS                | Current status of the note, Draft, Ready for Review, Final, Discarded, or Canceled. When a Draft or Ready for Review note is deleted, its status changes to Discarded. | Character| 20| YES  |
+| INGESTIONTIME | Date and time the record was ingested, supports change data capture. | Date Time         | ---  | NO            |
+
+### Links to other data
+
+
+| Attribute | Joins to        | Cardinality                                                                                   |
+|:----------|:----------------|:----------------------------------------------------------------------------------------------|
+| NOTEID    | NOTES_V1_VIEW   | Cardinality is one-to-one.  <br/> A note identifier is associated with one note record.              |
+| NOTEID    | SERVICE_NOTE_COMMENTS_V1_VIEW | Cardinality is one-to-many.<br/> A note identifier is associated with with zero-to-many note comments. |
+| SERVICEID | SERVICE_V1_VIEW | Cardinality is one-to-one. <br/> A service identifier is associated with one service. |
+
+
+## SERVICE_NOTE_COMMENTS_V1_VIEW
+
+This view groups attributes that relate to comments recorded for the services' note.
+
+| Attribute     | Description | Domain definition |Character size | Nulls allowed |
+|:--------------| :------ |:------ |:------ |:------ |
+| NOTEID        | Identifier for a record. |  Int 64|---  |NO|
+| POSITION      | The index or sequence number of the comment when multiple comments exist. | Int 32|---  |NO|
+| COMMENT       | Comment entered for the record. | Character| 32592|NO|
+| STATUS        | Current status of the note, Draft, Ready for Review, Final, Discarded, or Canceled. When a Draft or Ready for Review note is deleted, its status changes to Discarded. | Character| 20| YES  |
+| INGESTIONTIME | Date and time the record was ingested, supports change data capture. | Date Time|---  |NO|
+
+### Links to other data
+
+
+| Attribute | Joins to |Cardinality |
+| :-------------- | :------ |:------ |
+| NOTEID           | NOTE_V1_VIEW         | Cardinality is one-to-one. <br/> A note identifier is associated with one note.   |

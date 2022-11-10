@@ -7,6 +7,7 @@
   - [Barrier](guides/barriers.md)
   - [Client](guides/client.md)
   - [Client Action](guides/clientaction.md)
+  - [Clinical & Vital](guides/clientdata.md)
   - [Consent](guides/consents.md)
   - [Custom ](guides/custom.md)
   - [Data Refresh](guides/datarefresh.md)
