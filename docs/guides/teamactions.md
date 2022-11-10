@@ -1,10 +1,10 @@
-This section describes data available for care team actions. <br/> <br/> 
-Team actions are plan activities that team members can complete to help a client to achieve a goal. <br/>  <br/> 
-These views groups attributes that relate to actions such as the action name, category, status, progress commments 
+This section describes data available for care team actions. <br/> <br/>
+Team actions are plan activities that team members can complete to help a client to achieve a goal. <br/>  <br/>
+These views groups attributes that relate to actions such as the action name, category, status, progress commments
 recorded against the care team action and reason for the action.
 
 ## TEAMACTIONS_V1_VIEW
-The team actions view groups attributes relating to team actions, such as the name, category, status and completion 
+The team actions view groups attributes relating to team actions, such as the name, category, status and completion
 details for the action. Use this view to create team action reports.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -32,17 +32,21 @@ details for the action. Use this view to create team action reports.
 
 | Attribute | Joins to                | Cardinality                                                                                 |
 | :-------------- |:------------------------|:--------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE| CLIENTS_V1_VIEW         | Client reference joins to a client.<br/> A client is associated with zero-to-many actions. |
-| ADDEDBY | USERS_V1_VIEW | Added-by joins to a user. <br /> A user is associated with zero-to-many actions.|
-| COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user. <br /> A user is associated with zero-to-many actions. |
-| ASSIGNEDTO | USERS_V1_VIEW | Completed-by joins to a user. <br /> A user is associated with zero-to-many actions. |
-| ACTIONID | PROGRAM_TEAMACTIONS_V1_VIEW| Actionid joins to an action. <br/> A action is associated with zero-to-many programs. |
-| ACTIONID | GOAL_TEAMACTIONS_V1_VIEW| Actionid joins to an action. <br/> A action is associated with zero-to-many goals. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW         | Cardinality is one-to-one. <br/>  A client identifier is associated with one client. |
+| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| ASSIGNEDTO | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| ACTIONID | PROGRAM_TEAMACTIONS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many programs. |
+| ACTIONID | GOAL_TEAMACTIONS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many goals. |
+| ACTIONID | TEAMACTION_BARRIERS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many barriers. |
+| ACTIONID | TEAMACTION_PROGRESSCOMMENTS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many progress comments |
 
 
 ## TEAMACTION_BARRIERS_V1_VIEW
-This view groups attributes that will allow you to identify barriers associated with team actions. Use this view in 
+This view groups attributes that will allow you to identify barriers associated with team actions. Use this view in
 reports to report on barriers associated with a team's actions.
+<br/>Uniqueness is guaranteed by barrierID and actionID. Barrier identifier could be repeated in the view, and team action identifier could be repeated in the view.
+
 
 | Attribute | Description                        | Domain definition |Character size | Nulls allowed |
 | :-------------- |:-----------------------------------|:------ |:------ |:--------------|
@@ -56,13 +60,15 @@ reports to report on barriers associated with a team's actions.
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| BARRIERID| BARRIERS_V1_VIEW | Barrierid joins to a barrier.<br/> A team action is associated with zero-to-many barriers.|
-| ACTIONID | TEAMACTIONS_V1_VIEW | Actionid joins to an action.<br/> A team action is associated with zero-to-many barriers. |
+| BARRIERID| BARRIERS_V1_VIEW | Cardinality is one-to-one.<br/> A barrier identifier is associated with one barrier.|
+| ACTIONID | TEAMACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A team action identifier is associated with one team action. |
 
 
 ## TEAMACTION_PROGRESSCOMMENTS_V1_VIEW
-This view groups attributes that relate to comments recorded when progress is updated for a team action, such as the 
+This view groups attributes that relate to comments recorded when progress is updated for a team action, such as the
 progress comment, the name of the user who added the comment, and the date when the comment was added.
+<br/>Uniqueness is guaranteed by actionID and progressID. Team action identifier could be repeated in the view, and progress identifier could be repeated in the view.
+
 
 | Attribute | Description                          | Domain definition |Character size | Nulls allowed |
 | :-------------- |:-------------------------------------|:------ |:------ |:------ |
@@ -77,5 +83,5 @@ progress comment, the name of the user who added the comment, and the date when 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| ACTIONID| TEAMACTIONS_V1_VIEW | Actionid joins to an action.<br/> A team action is associated with zero-to-many progress comments.|
-| CREATEDBY | USERS_V1_VIEW |  Created-by joins to a user. <br /> A user is associated with zero-to-many progress comments. |
+| ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A team action identifier is associated with one team action. |
+| CREATEDBY | USERS_V1_VIEW |  Cardinality is one-to-one.<br /> A user identifier is associated with one user.  |

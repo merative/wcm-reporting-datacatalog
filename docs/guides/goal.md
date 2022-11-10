@@ -38,9 +38,9 @@ This views groups attributes that relate to goals such as the goal name, importa
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many goals.|
-| ADDEDBY | USERS_V1_VIEW | Added-by joins to a user.<br /> A user is associated with zero-to-many goals. |
-| COMPLETEDBY | USERS_V1_VIEW | Completed-by joins to a user.<br /> A user is associated with zero-to-many goals. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user. |
+| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user.  |
 | GOALID| GOAL_BARRIERS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many barriers.|
 | GOALID| GOAL_CLIENTACTIONS_V1_VIEW | Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many client actions.|
 | GOALID| GOAL_TEAMACTIONS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many team actions.|
@@ -54,6 +54,7 @@ This views groups attributes that relate to goals such as the goal name, importa
 ## GOAL_BARRIERS_V1_VIEW
 
 This view groups attributes that will allow you to identify barriers associated with client goals. Use this view in reports to report on barriers associated with a client's goals.
+<br/>Uniqueness is guaranteed by goalID and barrierID. Goal identifier could be repeated in the view, and barrier identifier could be repeated in the view.
 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -68,17 +69,15 @@ This view groups attributes that will allow you to identify barriers associated 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| GOALID| GOALS_V1_VIEW | Cardinality is zero-to-many. <br/> A barrier is associated with zero-to-many goals.|
+| GOALID| GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
 | BARRIERID |BARRIERS_V1_VIEW | Cardinality is one-to-one. <br/> A barrier ID is associated with one barrier. |
-| BARRIERID |SERVICE_BARRIERS_V1_VIEW | Cardinality is one-to-one. <br/> A barrier ID is associated with one barrier. |
-| BARRIERID |NOTES_V1_VIEW	| Cardinality is zero-to-many. <br/> A note is associated with zero-to-many barriers. |
-
 
 
 
 ## GOAL_CLIENTACTIONS_V1_VIEW
 
 This view groups attributes that will allow you to identify client actions associated with goals.  Use this view in reports to report on the client actions associated with a client's goals.
+<br/>Uniqueness is guaranteed by goalID and actionID. Goal identifier could be repeated in the view, and client action identifier could be repeated in the view.
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -93,14 +92,15 @@ This view groups attributes that will allow you to identify client actions assoc
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| GOALID|GOALS_V1_VIEW | Cardinality is zero-to-many. <br/>  A client action is associated with zero-to-many goals.|
-| ACTIONID|CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one. <br/>  A goal action is associated with one client action.|
+| GOALID|GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
+| ACTIONID|CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one. <br/>  A client action identifier is associated with one client action.|
 
 
 
 ## GOAL_TEAMACTIONS_V1_VIEW
 
 This view groups attributes that will allow you to identify team actions associated with goals.  Use this view in reports to report on the team actions associated with a client's goals.
+<br/>Uniqueness is guaranteed by goalID and actionID. Goal identifier could be repeated in the view, and team action identifier could be repeated in the view.
 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -117,7 +117,7 @@ This view groups attributes that will allow you to identify team actions associa
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| GOALID|GOALS_V1_VIEW | Cardinality is zero-to-many. <br/> A team action is associated with zero-to-many goals.|
+| GOALID|GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
 | ACTIONID|TEAMACTIONS_V1_VIEW | Cardinality is one-to-one. <br/>  A goal-action record is associated with one team action record.|
 
 
@@ -125,6 +125,7 @@ This view groups attributes that will allow you to identify team actions associa
 ## GOAL_PROGRESSCOMMENTS_V1_VIEW
 
 This view groups attributes that relate to comments recorded when progress is updated for a goal, such as the progress comment, the name of the user who added the comment, and the date when the comment was added.
+<br/>Uniqueness is guaranteed by goalID and progressID. Goal identifier could be repeated in the view, and progress identifier could be repeated in the view.
 
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
@@ -143,5 +144,5 @@ This view groups attributes that relate to comments recorded when progress is up
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| GOALID| GOALS_V1_VIEW. | Cardinality is zero-to-many.<br/>  A progress comment is associated with zero-to-many goals.|
-| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many comments. |
+| GOALID|GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
+| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |

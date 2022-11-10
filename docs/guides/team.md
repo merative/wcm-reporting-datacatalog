@@ -8,6 +8,8 @@ These views groups attributes that relate to a users details, such as their logi
 ## TEAM_MEMBERS_V1_VIEW
 
 This view groups attributes that relate to a client's team members and their role on the team. If additional roles are added for a team member who is already on the client's team, their previous role is end dated and a new instance of that role is created with a new start date.
+<br/>Uniqueness is guaranteed by teamID and loginID. Team identifier could be repeated in the view, and user login identifier could be repeated in the view.
+
 
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
@@ -67,9 +69,9 @@ This view groups attributes that relate to a client and their teams. Use this vi
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A team is associated with zero-to-many clients.|
-| FAMILYREFERENCE| FAMILIES_V1_VIEW | Cardinality is one-to-many. <br/> A team manages a family interaction.|
-| TEAMID| TEAM_MEMBERS_V1_VIEW | Cardinality is one-to-many. <br/> A team has many team members.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one. <br/>  A client identifier is associated with one client.|
+| FAMILYREFERENCE| FAMILIES_V1_VIEW | Cardinality is one-to-one. <br/>  A family identifier is associated with one family.|
+| TEAMID| TEAM_MEMBERS_V1_VIEW | Cardinality is one-to-many. <br/> A team has zero-to-many team members.|
 
 
 ## USERS_V1_VIEW
@@ -96,8 +98,8 @@ This view  groups attributes that relate to users who are not in a client's team
 
 ### Links to other data
 
-Any table with a `LOGINID` can link to this table. No links from this table to other tables defined.
+Any table with a `LOGINID` can link to this table.  This table can link to any table with a `LOGINID`, one example is included below.
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| -| - | -|
+| LOGINID| TEAM_MEMBERS_V1_VIEW |  Cardinality is one-to-many. <br/> A user is associated with to zero to many teams.|
