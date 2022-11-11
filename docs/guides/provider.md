@@ -36,61 +36,10 @@ This view groups attributes that relate to the provider such as the provider id,
 | PROVIDERID   | INQUIRIES_V1_VIEW              | Cardinality is one-to-many. <br/> A provider identifier is associated with one-to-many inquiries.                |
 | PROVIDERID   | PROVIDER_CONNECT_USERS_V1_VIEW | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many provider connect users. |
 
-## PROVIDER_CONTACTS_V1_VIEW
-
-| Attribute              | Description                                                                                         | Domain definition | Size | Nulls allowed |
-|:-----------------------|:----------------------------------------------------------------------------------------------------|:------------------|:-----|:--------------|
-| PROVIDERID             | Identifier for a provider record.                                                                   | Int 64            |      | NO            |
-| FIRSTNAME              | Provider contact's first name                                                                       | Character         | 260  | YES           |
-| LASTNAME               | Provider contact's last name                                                                        | Character         | 260  | YES           |
-| ROLE                   | Role of the provider contact                                                                        | Character         | 200  | YES           |
-| PRIMARYCONTACT         | Indicates if this is the provider's primary contact. A provider can have multiple primary contacts. | Character         | 1    | NO            |
-| PHONECOUNTRYCODE       | The international dialing code for the provider contact's phone number                              | Character         | 20   | YES           |
-| PHONEAREACODE          | Phone area code.                                                                                    | Character         | 32   | YES           |
-| PHONENUMBER            | Phone number                                                                                        | Character         | 80   | YES           |
-| PHONEEXTENSION         | The phone number extension                                                                          | Character         | 60   | YES           |
-| MOBILEPHONECOUNTRYCODE | The international dialing code for the provider contact's mobile phone number                       | Character         | 20   | YES           |
-| MOBILEPHONEAREACODE    | Mobile Phone area code                                                                              | Character         | 32   | YES           |
-| MOBILEPHONENUMBER      | Mobile Phone Number                                                                                 | Character         | 80   | YES           |
-| MOBILEPHONEEXTENSION   | The mobile phone number extension                                                                   | Character         | 60   | YES           |
-| EMAILADDRESS           | The email address of the provider contact                                                           | Character         | 256  | YES           |
-| PROVIDERCONTACTLINKID  | tbc                                                                                                 | Int 64            |      | YES           |
-| PROVIDERCONTACTID      | tbc                                                                                                 | Int 64            |      | YES           |
-| INGESTIONTIME          | Date and time the record was ingested, supports change data capture.                                | Date Time         |      | YES           |
-
-### Links to other data
-
-| Attribute  | Description                 | Cardinality                                                        |
-|:-----------|:----------------------------|:-------------------------------------------------------------------|
-| PROVIDERID | Joins to PROVIDERS_V1_VIEW. | Cardinality is zero-to-many.  A provider has zero-to-many contacts |
-
-## PROVIDER_ADDRESSES_V1_VIEW
-
-| Attribute         | Description                                                              | Domain definition | Size | Nulls allowed |
-|:------------------|:-------------------------------------------------------------------------|:------------------|:-----|:--------------|
-| PROVIDERADDRESSID | The ID of the Provider Address Record                                    | Int 64            |      | YES           |
-| PROVIDERID        | The ID of the provider                                                   | Int 64            |      | NO            |
-| STATUS            | Current Status of the address record. Active or Cancelled                | Character         | 200  | YES           |
-| PRIMARYADDRESS    | Indicates if this is the provider's preferred address for communications | Character         | 1    | NO            |
-| COUNTRY           | Country of the address                                                   | Character         | 200  | YES           |
-| ADD1              | Line 1 of the address                                                    | Character         | 1024 | YES           |
-| ADD2              | Line 2 of the address                                                    | Character         | 1024 | YES           |
-| ADD3              | Line 3 of the address                                                    | Character         | 1024 | YES           |
-| CITY              | City of the address                                                      | Character         | 100  | YES           |
-| STATE             | State of the address                                                     | Character         | 100  | YES           |
-| ZIP               | Zip of the address                                                       | Character         | 30   | YES           |
-| INGESTIONTIME     | Date and time the record was ingested, supports change data capture.     | Date Time         |      | YES           |
-
-### Links to other data
-
-| Attribute  | Description                 | Cardinality                                                         |
-|:-----------|:----------------------------|:--------------------------------------------------------------------|
-| PROVIDERID | Joins to PROVIDERS_V1_VIEW. | Cardinality is zero-to-many.  A provider has zero-to-many addresses |
-
 
 ## PROVIDER_CONNECT_USERS_V1_VIEW
 
-This view groups attributes that relate to users of the Provider Connect application. For example, the user's name, phone number, email address, and status. Use this view to identify providers who have users onboarded to the Connect application. 
+This view groups attributes that relate to users of the Provider Connect application. For example, the user's name, phone number, email address, and status. Use this view to identify providers who have users onboarded to the Connect application.
 
 | Attribute        | Description                                                          | Domain definition | Character size | Nulls allowed |
 |:-----------------|:---------------------------------------------------------------------|:------------------|:---------------|:--------------|
@@ -106,25 +55,10 @@ This view groups attributes that relate to users of the Provider Connect applica
 | REQUESTSENT      | Date and time the request was sent.                                  | Date Time         | ---            | YES           |
 | INGESTIONTIME    | Date and time the record was ingested, supports change data capture. | Date Time         | ---            | YES           |
 
+
 ### Links to other data
 
 | Attribute  | Joins to          | Cardinality                                                                                                      |
 |:-----------|:------------------|:-----------------------------------------------------------------------------------------------------------------|
 | PROVIDERID | INQUIRIES_V1_VIEW | Cardinality is one-to-one. <br/> A provider identifier is associated with one inquiry.                           |
 | PROVIDERID | PROVIDERS_V1_VIEW | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many provider connect users. |
-
-## PROVIDER_IDENTIFICATIONS_V1_VIEW
-
-| Attribute            | Description                                                          | Domain definition | Size | Nulls allowed |
-|:---------------------|:---------------------------------------------------------------------|:------------------|:-----|:--------------|
-| PROVIDERID           | Identifier for a provider record.                                    | Int 64            |      | NO            |
-| IDENTIFICATIONNUMBER | Identifier for the ID record.                                        | Character         | 72   | NO            |
-| IDENTIFICATIONTYPE   | Type of Identification                                               | Character         | 200  | YES           |
-| INGESTIONTIME        | Date and time the record was ingested, supports change data capture. | Date Time         |      | YES           |
-
-### Links to other data
-=======
-
-| Attribute  | Description                 | Cardinality                                                               |
-|:-----------|:----------------------------|:--------------------------------------------------------------------------|
-| PROVIDERID | Joins to PROVIDERS_V1_VIEW. | Cardinality is zero-to-many.  A provider has zero-to-many identifications |
