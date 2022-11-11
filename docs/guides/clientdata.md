@@ -347,7 +347,7 @@ The view groups attributes that relate to a client's body mass information, such
 | Attribute | Description | Domain definition  |Character size | Nulls allowed |
 | :-------------- | :------ |:-------------------|:------ |:------ |
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application.  | Character          | 200|NO|
-| BODYMASSMEASUREMENTID|  Identifier for the body mass measurement record.     | Int 64             | |NO|
+| BODYMASSMEASUREMENTID|  Identifier for the body mass measurement record.     | Int 64             | ---  |NO|
 | CODE1               | First code associated with the body mass measurement.                                                                                                     | Character          | 500            | YES           |
 | CODINGSYSTEM1       | First coding system for the body mass measurement.                                                                                                        | Character          | 500            | YES           |
 | CODE2               | Second code associated with the body mass measurement.                                                                                                    | Character          | 500            | YES           |
