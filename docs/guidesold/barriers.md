@@ -37,7 +37,7 @@ barrier along with note and note comments views that allow you to identify notes
 
 ## BARRIER_NOTES_V1_VIEW
 This view groups barriers by their associated notes. Use this view to identify specific barriers associated with a note.
-<br/>Uniqueness is guaranteed by barrierbID and noteID. Barrier identifier could be repeated in the view, and note identifier could be repeated in the view.
+<br/><br/>Uniqueness is guaranteed by barrierbID and noteID. Barrier identifier could be repeated in the view, and note identifier could be repeated in the view.
 
 <br/>
 
@@ -55,7 +55,7 @@ This view groups barriers by their associated notes. Use this view to identify s
 | Attribute | Joins to        | Cardinality                                                                                   |
 |:----------|:----------------|:----------------------------------------------------------------------------------------------|
 | NOTEID    | NOTES_V1_VIEW   | Cardinality is one-to-one.  <br/> A note identifier is associated with one note record.       |
-| NOTEID    | BARRIER_NOTE_COMMENTS_V1_VIEW   |Cardinality is one-to-many.<br/>A note is associated with zero-to many note comments.|
+| NOTEID    | BARRIER_NOTE_COMMENTS_V1_VIEW   |Cardinality is one-to-many.<br/>A note identifier is associated with zero-to many barrier note comments.|
 | BARRIERID | BARRIER_V1_VIEW | Cardinality is one-to-one. <br/>  A barrier identifier is associated with one barrier record. |
 
 
@@ -77,4 +77,4 @@ This view groups attributes that relate to comments recorded for the barriers' n
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| NOTEID           | NOTE_V1_VIEW         | Cardinality is one-to-one. <br/> A note identifier is associated with one note record.    |
+| NOTEID           | NOTE_V1_VIEW         | Cardinality is zero-to-many. <br/> A note is associated with zero-to-many comments.   |

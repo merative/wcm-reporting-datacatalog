@@ -60,50 +60,8 @@ The attribute CLIENTREFERENCE is the primary key to this table, and can be used 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| REGISTEREDBYUSER| USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. <br/> A user is associated with zero-to-many clients.|
-| CLIENTREFERENCE| EMERGENCYACCESS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many emergency access requests.|
-| CLIENTREFERENCE| CLIENT_ADDRESSES_V1_VIEW| Cardinality is one-to-many.  <br/> A client is associated with zero-to-many addresses|
-| CLIENTREFERENCE| CLIENT_EMAILS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many email addresses.|
-| CLIENTREFERENCE| CLIENT_IDENTIFICATIONS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many identifications.|
-| CLIENTREFERENCE| CLIENT_PHONES_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many phone numbers.|
-| CLIENTREFERENCE| REFERRALS_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many referrals.|
-| CLIENTREFERENCE| TAGS_V1_VIEW | Cardinality is one-to-many. <br/>  A client is associated with zero-to-many tags.|
-| CLIENTREFERENCE| UTILIZATIONS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many utilizations.|
-| CLIENTREFERENCE| CLIENT_NAME_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many name history records.|
-| CLIENTREFERENCE| CLIENT_EMAIL_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many email history records.|
-| CLIENTREFERENCE| CLIENT_BIRTHDEATH_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br /> A client is associated with zero-to-many birth and death history records.|
-| CLIENTREFERENCE| CLIENT_PHONE_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br /> A client is associated with zero-to-many phone number history records.|
-| CLIENTREFERENCE| CLIENT_IDENTIFICATION_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br /> A client is associated with zero-to-many identifications history records.|
-| CLIENTREFERENCE| CLIENT_ADDRESS_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many address history records.|
-| CLIENTREFERENCE| CLIENT_GENDER_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many gender history records.|
-| CLIENTREFERENCE| CLIENT_MARITALSTATUS_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many marital status history records.|
-| CLIENTREFERENCE| CLIENT_STATUS_HISTORIES_V1_VIEW | Cardinality is one-to-many.<br /> A client is associated with zero-to-many status historyrecords.|
-| CLIENTREFERENCE| CLIENT_RECEIVINGCARE_V1_VIEW | Cardinality is zero-to-many.<br /> A client is associated with zero-to-many under care records.|
+| REGISTEREDBYUSER| USERS_V1_VIEW | Cardinality is one-to-one. <br/> A registered-by-user joins to a user. <br/> A user is associated with zero-to-many clients.|
 
-
-## CLIENT_UNDERCARE_V1_VIEW
-
-This view groups attributes that relate to clients who actively receive care management from your organization. A client actively receives care management when their status is active and they have a care team with one or more care team members for 1 or more days in a calendar month. Group clients by month and year to see all of your organization's active clients receiving care for that period.
-
-| Attribute | Description | Domain definition |Character Size | Nulls allowed |
-| :-------------- | :------ |:------ |:---------- |:------ |
-| UNIQUEREF| Unique reference number that identifies the client in the application. | Character| 200|NO|
-| FIRSTNAME| Client's first name.| Character| 200|NO|
-| LASTNAME| Client's last name.  | Character| 200|NO|
-| MONTH| The full month name, for example, January, February. | Character| 40|NO|
-| YEAR| The year, for example, 2022. |  Int 32| ---|NO|
-| FIRSTDAYOFMONTH| A date value representing the month in which the client is receiving care, for example, 01/01/2022. | Date Time|--- |NO|
-| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|--- |NO|
-
-
-
-### Links to other data
-
-
-
-| Attribute | Joins to |Cardinality |
-| :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client. A client is associated with zero-to-many management records.|
 
 
 ## EMERGENCYACCESS_V1_VIEW
@@ -127,8 +85,8 @@ This view groups attributes that relate to emergency access requests. Use this v
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| REQUESTEDBY |USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user.  |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many emergency access requests.|
+| REQUESTEDBY |USERS_V1_VIEW| Cardinality is one-to-many. <br/> An emergency access request is associated with one user. |
 
 
 
@@ -145,7 +103,7 @@ This view groups attributes that relate to a client's address such as the addres
 | STATE| State. | Character| 100|YES|
 | ZIP| ZIP code. | Character| 30|YES|
 | ADD1| First line of the client's address. | Character| 1024|YES|
-| ADD2| Second line of the client's address.| Character| 1024|YES|
+| ADD2| Second line of the client's address.| 1024|YES|
 | ADD3| Third line of the client's address.| Character| 1024|YES|
 | PRIORITY| Priority of the item, high, medium, low, or not set. |  Int 32|--- |YES|
 | PHYSICALVISIT| Indicates whether the address is the client's physical visit address. | Character| 1|YES|
@@ -159,7 +117,8 @@ This view groups attributes that relate to a client's address such as the addres
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-many.  <br/> A client is associated with zero-to-many addresses|
+
 
 
 ## CLIENT_EMAILS_V1_VIEW
@@ -179,7 +138,7 @@ This view groups attributes that relate to a client's email address such as the 
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many email addresses.|
 
 
 
@@ -202,7 +161,7 @@ This view groups attributes that relate to client's identification types such as
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many identifications.|
 
 
 
@@ -231,7 +190,7 @@ This view groups attributes that relate to a client's phone number such as the p
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many phone numbers.|
 
 
 ## REFERRALS_V1_VIEW
@@ -277,44 +236,10 @@ This view groups data items that relate to a client's referrals such as cohort n
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
-| ASSIGNEDTO | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
-| REJECTEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
-| REFERRALID  | REFERRAL_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br/> A referral is associated with zero-to-many history records.       |
-
-## REFERRAL_HISTORIES_V1_VIEW
-
-
-This view groups data items that relate to a client's referral status change histories such as referral status,  change date, reasons and comments.
-
-
-
-| Attribute | Description | Domain definition | Character size | Nulls allowed |
-| :-------------- | :------ |:------ |:------ |:------ |
-| REFERRALHISTORYID|  Identifier for a referral history record.  |  Int 64|--- |NO|
-| REFERRALID|  Identifier for a referral record.  |  Int 64|--- |NO|
-| ASSIGNEDTO| 	Login ID of the user who was assigned the referral. | Character| 256|YES|
-| CREATEDBY| 	Login ID of the user who created the referral. | Character| 256|YES|
-| COMMENTS| Comments entered for the record.| Character| 6000|YES|
-| FROMSTATUS| Previous status of the referral, open, accepted, or rejected.| Character| 1850|YES|
-| TOSTATUS| Changed status of the referral, open, accepted, or rejected.| Character| 1850|YES|
-| REASON          | Reason for changing referral status.                                     |  Character| 1850             | YES           |
-| OTHERREASON     | Other reason for changing referral status.                               | Character| 800            | YES           |
-| CREATEDON| Date that the referral was created. | Date| ---|NO|
-| INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time| ---|YES|
-
-
-### Links to other data
-
-
-| Attribute | Joins to|Cardinality |
-| :-------------- | :------ |:------ |
-| REFERRALID| REFERRALS_V1_VIEW | Cardinality is one-to-one.<br /> A referral history identifier is associated with one referral.|
-| CREATEDBY        |  USERS_V1_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
-| ASSIGNEDTO        |  USERS_V1_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
-
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with one referral.|
+| CREATEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many referrals. |
+| ASSIGNEDTO | USERS_V1_VIEW | Assigned-to joins to a user.<br /> A user is associated with zero-to-many referrals. |
+| REJECTEDBY | USERS_V1_VIEW | Rejected-by joins to a user.<br /> A user is associated with zero-to-many referrals. |
 
 
 
@@ -330,7 +255,7 @@ Tags are used to describe additional information about the client like whether t
 | ADDEDBY| The identity of the user who created the record.  | Character| 256|NO|
 | ADDEDON| Date on which the record was added.| Date Time| ---|YES|
 | STATUS| The tag status, Active or Canceled. | Character| 200|YES|
-| INGESTIONTIME| Date and time the record was ingested, supports change data capture.| Date Time| ---|YES|
+| INGESTIONTIME| Date and time the record was ingested, supports change data capture.| Date Time| |YES|
 
 ### Links to other data
 
@@ -338,8 +263,8 @@ Tags are used to describe additional information about the client like whether t
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY |  USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| CLIENTREFERENCE|  CLIENTS_V1_VIEW| Cardinality is one-to-many. <br/>  A client is associated with zero-to-many tags.|
+| ADDEDBY |  USERS_V1_VIEW | Cardinality is one-to-many. <br/> A tag is added by a user. |
 
 ## UTILIZATIONS_V1_VIEW
 
@@ -371,11 +296,11 @@ This view groups attributes that relate to the utilization such as the utilizati
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user.|
-| UTILIZATIONID | PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-one <br />A utilization identifier is associated with one utilization record. |
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many utilizations.|
+| ADDEDBY | USERS_V1_VIEW | Created-by joins to a user.<br /> A user is associated with zero-to-many utilizations. |
+ |UTILIZATIONID| PROGRAM_UTILIZATIONS_V1_VIEW | Utilizationid joins to a utilization record.<br />A utilization identifier is associated with one utilization record. |
 
-## CLIENT_NAME_HISTORIES_V1_VIEW
+ ## CLIENT_NAME_HISTORIES_V1_VIEW
 
 This view groups attributes that relate to a client's name change history such as when and who created or updated the client's name. Use this view with the clients view to identify when changes were made and by who to a client's name.
 
@@ -402,7 +327,7 @@ This view groups attributes that relate to a client's name change history such a
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many name history records.|
 
 
 ## CLIENT_EMAIL_HISTORIES_V1_VIEW
@@ -424,8 +349,7 @@ This view groups attributes that relate to a client's email change history such 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many email history records.|
 
 
 ## CLIENT_BIRTHDEATH_HISTORIES_V1_VIEW
@@ -451,7 +375,7 @@ This view groups attributes that relate to a client's birth and death change his
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many birth and death history records.|
 
 
 ## CLIENT_PHONE_HISTORIES_V1_VIEW
@@ -473,8 +397,7 @@ This view groups attributes that relate to a client's phone change history such 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many phone number history records.|
 
 
 ## CLIENT_IDENTIFICATION_HISTORIES_V1_VIEW
@@ -496,8 +419,7 @@ This view groups attributes that relate to a client's identification change hist
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many identifications history records.|
 
 ## CLIENT_ADDRESS_HISTORIES_V1_VIEW
 
@@ -518,8 +440,7 @@ This view groups attributes that relate to a client's address change history suc
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many address history records.|
 
 
 
@@ -545,7 +466,7 @@ This view groups attributes that relate to a client's gender change history such
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many gender history records.|
 
 
 
@@ -571,7 +492,7 @@ This view groups attributes that relate to a client's maritial status change his
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many marital status history records.|
 
 
 ## CLIENT_STATUS_HISTORIES_V1_VIEW
@@ -595,4 +516,4 @@ This view groups attributes that relate to status changes for a client, such as 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Client reference joins to a client.<br /> A client is associated with zero-to-many status records.|
