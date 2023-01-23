@@ -15,9 +15,9 @@ This view groups attributes that relate to the service such as the service name,
 |:--------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------|:-----|:--------------|
 | SERVICEID   | Identifier for a service record.                                                                                         | Int 64            | ---   | NO            |
 | CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                   | Character         | 200  | YES           |
-| PROVIDEROFFERINGID  | Identifier for a provider offering record.                                                                               | Int 64            | ---   | YES           |
-| SERVICEOFFERINGID   | Identifier for a service offering record.                                                                                | Int 64            | ---   | NO            |
-| PROVIDERID          | Identifier for a provider record.                                                                                         | Int 64            | ---   | YES           |
+| PROVIDEROFFERINGID  | Identifier for a provider offering.                                                                                       | Int 64            | ---   | YES           |
+| SERVICEOFFERINGID   | Identifier for a service offering.                                                                                        | Int 64            | ---   | NO            |
+| PROVIDERID          | Identifier for a provider.                                                                                                | Int 64            | ---   | YES           |
 | NAME                | Name of the service provided to the client.                                                                               | Character         | 200  | YES           |
 | DESCRIPTION         | Description of the service.                                                                                               | Character         | 1000 | YES           |
 | STATUS              | Current status for the service; open, canceled or deleted.                                                                                                | Character         | 200  | YES           |

@@ -98,9 +98,7 @@ This view  groups attributes that relate to users who are not in a client's team
 
 ### Links to other data
 
-Any table with a `LOGINID` can link to this table.  This table can link to any table with a `LOGINID`, one example is included below.  
-
-Please note that other data sets may not always use a field named `LOGINID`  as the key to link to `USERS_V1_VIEW`.  Sometimes more descriptive attribute names are used, for example `Created By/Updated By/Registered By`,  to link to  `USERS_V1_VIEW.LOGINID`.
+Any table with a `LOGINID` can link to this table.  This table can link to any table with a `LOGINID`, one example is included below.
 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |

@@ -13,7 +13,7 @@ This view groups attributes that relate to an inquiry such as the inquiry ID, th
 | :-------------- | :------ |:------ |:------ |:--------------|
 | INQUIRYID| Identifier for an inquiry record. |  Int 64| ---            | NO            |
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200            | NO            |
-| SERVICEOFFERINGID| Identifier for a service offering record. | Int 64| ---          | NO            |
+| SERVICEOFFERINGID| Identifier for a provider record. | Int 64| ---          | NO            |
 | SERVICENAME| Name of the service for which the inquiry was made. | Character| 500            | YES           |
 | REFERENCENUMBER| Reference number assigned to the inquiry by Watson Care Manager after the inquiry was sent. | Int 64| ---            | NO            |
 | RECORDEDON| Date on which the inquiry was sent to the provider of the service. | Date Time| ---             | NO            |
@@ -34,12 +34,11 @@ This view groups attributes that relate to an inquiry such as the inquiry ID, th
 
 | Attribute | Joins to | Cardinality                                                                                  |
 | :-------------- | :------ |:---------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client.  |
-| RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.           |
-| SERVICEOFFERINGID | PROVIDERS_V1_VIEW| Cardinality is one-to-one. <br/> A provider identifier is associated with one provider.       |   
-| INQUIRYID | INQUIRY_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/>  An inquiry is associated with zero-to-many inquiry comments.     |                            
-| INQUIRYID | INQUIRY_RESPONSES_V1_VIEW| Cardinality is one-to-many. <br/> An inquiry is associated with zero-to-many inquiry responses.      |                           
-                       
+| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-many <br/> A client is associated with zero-to-many inquiries. |
+| RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many inquiries.          |
+| INQUIRYID | INQUIRY_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/>  An inquiry is associated with zero-to-many inquiry comments.                                  |
+| INQUIRYID | INQUIRY_RESPONSES_V1_VIEW| Cardinality is one-to-many. <br/> An inquiry is associated with zero-to-many inquiry responses.                                 |
+| SERVICEOFFERINGID | PROVIDERS_V1_VIEW| Cardinality is one-to-one. <br/> A provider identifier is associated with one provider.                                 |
 
 
 
@@ -63,7 +62,7 @@ comment.
 | :-------------- | :------ |:----------------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client. |
 | RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.          |
-| INQUIRYID | INQUIRIES_V1_VIEW | Cardinality is one-to-one.<br/>  An inquiry identifier is associated with one inquiry record.   |                               
+| INQUIRYID | INQUIRIES_V1_VIEW | Cardinality is one-to-one.<br/>  An inquiry identifier is associated with one inquiry record.                                       |
 
 
 ## INQUIRY_RESPONSES_V1_VIEW
@@ -75,7 +74,7 @@ This view groups attributes that relate to responses and inquiry response commen
 | :-------------- |:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------ |:------ |:--------------|
 | INQUIRYID| Identifier for an inquiry record.                                                                                                                               |  Int 64| ---| NO            |
 | PROVIDERID| Identifier for a provider record.                                                                                                                               |  Int 64| ---| NO            |
-| SERVICEOFFERINGID| Identifier for a service offering record.                                                                                                               |  Int 64| ---| NO            |
+| SERVICEOFFERINGID| Identifier for a record.                                                                                                                               |  Int 64| ---| NO            |
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application.                                                                                 | Character| 200            | NO            |
 | RESPONDER| Name of the provider contact who responded to the inquiry.                                                                                             | Character | 400| YES            |
 | STATUS| Current status of the offer, awaiting offer, offer made, pending acceptance, accepted, withdrawn, rejected, or declined.                               | Character| 200| NO            |
@@ -106,7 +105,7 @@ This view groups attributes that relate to shortlisted providers such as the fir
 
 | Attribute          | Description                                                            | Domain definition | Character size | Nulls allowed |
 |:-------------------|:-----------------------------------------------------------------------|:------------------|:-----|:--------------|
-| PROVIDEROFFERINGID | Identifier for a provider offering record.                             | Int 64            |---    | NO            |
+| PROVIDEROFFERINGID | Identifier for the shortlisted provider offering.                      | Int 64            |---    | NO            |
 | CLIENTREFERENCE    | Unique reference number that identifies the client in the application. | Character         | 200  | YES           |
 | ADDEDBY            | The identity of user who shortlisted the record.                       | Character         | 256  | YES           |
 | ADDEDBYCLIENT      | First name and last name of the client who shortlisted the record.     | Character         | 400  | NO            |
@@ -116,9 +115,9 @@ This view groups attributes that relate to shortlisted providers such as the fir
 
 | Attribute       | Joins to          | Cardinality                                                   |
 |:----------------|:--------------------------|:--------------------------------------------------------------|
-| CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client. |
-| ADDEDBY | USERS_V1_VIEW |Cardinality is one-to-one. </br> A user is associated with one user record.|
-| PROVIDEROFFERINGID | SERVICES_V1_VIEW |Cardinality is one-to-one. </br> A provider offering identifier is associated with one provider offering identifier.|
+| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-many. </br>  A client is associated with zero-to-many shortlisted provider records. |
+| ADDEDBY| USERS_V1_VIEW |Cardinality is one-to-one. </br> A user is associated with one user record.|
+|PROVIDEROFFERINGID| SERVICES_V1_VIEW |Cardinality is one-to-one. </br> A provider offering identifier is associated with one provider offering identifier.|
 
 
 
