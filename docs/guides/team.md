@@ -60,8 +60,6 @@ This view groups attributes that relate to a client and their teams. Use this vi
 | :-------------- | :------ |:------ |:------ |:------ |
 | TEAMID| Identifier for a record.  | Int 64| ---|NO|
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|YES|
-| INTERACTIONREFERENCE| Unique reference number that identifies an interaction under management. | Character| 200|YES|
-| FAMILYREFERENCE| Unique reference number that identifies a family under management. | Character| 200|YES|
 | STATUS| Status of the record, open or closed.| Character| 40|NO|
 | INGESTIONTIME| Date and time the record was ingested, supports change data capture. | Date Time|---  |NO|
 
@@ -70,7 +68,6 @@ This view groups attributes that relate to a client and their teams. Use this vi
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one. <br/>  A client identifier is associated with one client.|
-| FAMILYREFERENCE| FAMILIES_V1_VIEW | Cardinality is one-to-one. <br/>  A family identifier is associated with one family.|
 | TEAMID| TEAM_MEMBERS_V1_VIEW | Cardinality is one-to-many. <br/> A team has zero-to-many team members.|
 
 
