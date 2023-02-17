@@ -371,160 +371,152 @@ The view groups attributes that relate to a client's height measurement informat
 
 The view groups attributes that relate to a client's body mass information, such as the measurement number, measurement date, status, and data source. Use this view to report on a client's body mass measurement results.
 
-
-| Attribute | Description | Domain definition  |Character size | Nulls allowed |
-| :-------------- | :------ |:-------------------|:------ |:------ |
-| CLIENTREFERENCE| Unique reference number that identifies the client in the application.  | Character          | 200|NO|
-| BODYMASSMEASUREMENTID|  Identifier for the body mass measurement record.     | Int 64             |--- |NO|
-| CODE1               | First code associated with the body mass measurement.                                                                                                     | Character          | 500            | YES           |
-| CODINGSYSTEM1       | First coding system for the body mass measurement.                                                                                                        | Character          | 500            | YES           |
-| CODE2               | Second code associated with the body mass measurement.                                                                                                    | Character          | 500            | YES           |
-| CODINGSYSTEM2       | Second coding system for the body mass measurement.                                                                                                       | Character          | 500            | YES           |
-| MEASUREMENTASNUMBER| Measurement number of the body mass. | Decimal fixed-point| 4 decimal places|YES|
-| MEASUREMENTASTEXT| Measurement result in text string.  | Character          | 500|YES|
-| MEASUREMENTDATETIME         | Date when the client's measurement was taken.                                                                                                                   | Timestamp          | ---            | NO            |
-| SOURCE              | Indicates whether the body mass information is reported by the client, or where the information is obtained from.                                         | Character          | 500            | NO           |
-| STATUS              | Status of the body mass measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                                   | Character          | 500            | NO            |
-| VERIFIEDBY              | The name of the healthcare professional who took the body mass measurement and verified that it was accurate.                                                                                                          | Character          | 500            | YES           |
-| SOURCESYTEM              | Source system for the body mass measurement.                                                                                                              | Character          | 500            | YES           |
-| COMMENTS            | Comments about the body mass measurements.                                                                                                                | Character          | 500            | YES           |
-| DATASOURCE          | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character          | 500            | NO            |
-| INGESTIONTIME       | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time          | ---            | NO            |
-
+| Attribute             | Description                                                                                                                                            | Domain definition   | Character size   | Nulls allowed |
+|:----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|:-----------------|:--------------|
+| CLIENTREFERENCE       | Unique reference number that identifies the client in the application.                                                                                 | Character           | 200              | NO            |
+| BODYMASSMEASUREMENTID | Identifier for the body mass measurement record.                                                                                                       | Int 64              | ---              | NO            |
+| CODE1                 | First code associated with the body mass measurement.                                                                                                  | Character           | 500              | YES           |
+| CODINGSYSTEM1         | First coding system for the body mass measurement.                                                                                                     | Character           | 500              | YES           |
+| CODE2                 | Second code associated with the body mass measurement.                                                                                                 | Character           | 500              | YES           |
+| CODINGSYSTEM2         | Second coding system for the body mass measurement.                                                                                                    | Character           | 500              | YES           |
+| MEASUREMENTASNUMBER   | Measurement number of the body mass.                                                                                                                   | Decimal fixed-point | 4 decimal places | YES           |
+| MEASUREMENTASTEXT     | Measurement result in text string.                                                                                                                     | Character           | 500              | YES           |
+| MEASUREMENTDATETIME   | Date when the client's measurement was taken.                                                                                                          | Timestamp           | ---              | NO            |
+| SOURCE                | Indicates whether the body mass information is reported by the client, or where the information is obtained from.                                      | Character           | 500              | NO            |
+| STATUS                | Status of the body mass measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                               | Character           | 500              | NO            |
+| VERIFIEDBY            | The name of the healthcare professional who took the body mass measurement and verified that it was accurate.                                          | Character           | 500              | YES           |
+| SOURCESYTEM           | Source system for the body mass measurement.                                                                                                           | Character           | 500              | YES           |
+| COMMENTS              | Comments about the body mass measurements.                                                                                                             | Character           | 500              | YES           |
+| DATASOURCE            | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character           | 500              | NO            |
+| INGESTIONTIME         | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time           | ---              | NO            |
 
 ### Links to other data
 
-| Attribute       | Joins to        | Cardinality                                                                                                      |
-|:----------------|:----------------|:-----------------------------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client.  |
-
+| Attribute       | Joins to        | Cardinality                                                                        |
+|:----------------|:----------------|:-----------------------------------------------------------------------------------|
+| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
 
 ## CLIENT_VITAL_HEART_V1_VIEW
 
 The view groups attributes that relate to a client's heart rate measurement information, such as the measurement number, status, and data source. Use this view to report on a client's heart rate measurement results.
 
-| Attribute           | Description                                                                                                                                            | Domain definition | Character size   | Nulls allowed |
-|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:-----------------|:--------------|
-| CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200              | NO            |
-| HEARTMEASUREMENTID  | Identifier for the heart rate measurement record.                                                                                                      | Int 64            | ---              | NO            |
-| CODE1               | First code associated with the  measurement.                                                                                                     | Character         | 500              | YES           |
-| CODINGSYSTEM1       | First coding system for the  measurement.                                                                                                        | Character         | 500              | YES           |
-| CODE2               | Second code associated with the measurement.                                                                                                    | Character         | 500              | YES           |
-| CODINGSYSTEM2       | Second coding system for the measurement.                                                                                                       | Character         | 500              | YES           |
-| MEASUREMENTASNUMBER | Measurement number of the heart rate.                                                                                                                  | Decimal fixed-point           | 2 decimal places | YES           |
-| MEASUREMENTASTEXT   | Measurement result in text string.                                                                                                                     | Character         | 500              | YES           |
-| DISPLAYMEASUREMENTUNITS| Displayed heart rate measurement result with units.                                                                                                    | Character         | 500              | YES           |
-| MEASUREMENTUNITS| Unit of measurement result.                                                                                                                            | Character         | 500              | YES           |
-| MEASUREMENTMETHOD| Method of heart rate measurement, auscultation, EKG, and palpation.                                                                                     | Character         | 500              | YES           |
-| MEASUREMENTDATETIME | Date when the client's heart rate was measured.                                                                                                               | Timestamp         | ---              | NO            |
-| SOURCE              | Indicates whether the heart rate information is reported by the client, or where the information is obtained from.                                     | Character         | 500              | NO            |
-| STATUS              | Status of the heart rate measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                               | Character         | 500              | NO            |
-| VERIFIEDBY          | The name of the healthcare professional who took the heart rate reading and verified that it was accurate.                                                                                                           | Character         | 500              | YES           |
-| SOURCESYTEM         | Source system for the heart rate measurement.                                                                                                          | Character         | 500              | YES           |
-| COMMENTS            | Comments about the heart rate measurements.                                                                                                            | Character         | 500              | YES           |
-| DATASOURCE          | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500              | NO            |
-| INGESTIONTIME       | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---              | NO            |
-
+| Attribute               | Description                                                                                                                                            | Domain definition   | Character size   | Nulls allowed |
+|:------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|:-----------------|:--------------|
+| CLIENTREFERENCE         | Unique reference number that identifies the client in the application.                                                                                 | Character           | 200              | NO            |
+| HEARTMEASUREMENTID      | Identifier for the heart rate measurement record.                                                                                                      | Int 64              | ---              | NO            |
+| CODE1                   | First code associated with the  measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM1           | First coding system for the  measurement.                                                                                                              | Character           | 500              | YES           |
+| CODE2                   | Second code associated with the measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM2           | Second coding system for the measurement.                                                                                                              | Character           | 500              | YES           |
+| MEASUREMENTASNUMBER     | Measurement number of the heart rate.                                                                                                                  | Decimal fixed-point | 2 decimal places | YES           |
+| MEASUREMENTASTEXT       | Measurement result in text string.                                                                                                                     | Character           | 500              | YES           |
+| DISPLAYMEASUREMENTUNITS | Displayed heart rate measurement result with units.                                                                                                    | Character           | 500              | YES           |
+| MEASUREMENTUNITS        | Unit of measurement result.                                                                                                                            | Character           | 500              | YES           |
+| MEASUREMENTMETHOD       | Method of heart rate measurement, auscultation, EKG, and palpation.                                                                                    | Character           | 500              | YES           |
+| MEASUREMENTDATETIME     | Date when the client's heart rate was measured.                                                                                                        | Timestamp           | ---              | NO            |
+| SOURCE                  | Indicates whether the heart rate information is reported by the client, or where the information is obtained from.                                     | Character           | 500              | NO            |
+| STATUS                  | Status of the heart rate measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                              | Character           | 500              | NO            |
+| VERIFIEDBY              | The name of the healthcare professional who took the heart rate reading and verified that it was accurate.                                             | Character           | 500              | YES           |
+| SOURCESYTEM             | Source system for the heart rate measurement.                                                                                                          | Character           | 500              | YES           |
+| COMMENTS                | Comments about the heart rate measurements.                                                                                                            | Character           | 500              | YES           |
+| DATASOURCE              | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character           | 500              | NO            |
+| INGESTIONTIME           | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time           | ---              | NO            |
 
 ### Links to other data
 
-| Attribute       | Joins to        | Cardinality                                                                                                        |
-|:----------------|:----------------|:-------------------------------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client.|
-
+| Attribute       | Joins to        | Cardinality                                                                        |
+|:----------------|:----------------|:-----------------------------------------------------------------------------------|
+| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
 
 ## CLIENT_VITAL_WEIGHT_V1_VIEW
 
 The view groups attributes that relate to a client's weight measurement information, such as the measurement number, status, and data source. Use this view to report on a client's weight measurement results.
 
-| Attribute           | Description                                                                                                                                            | Domain definition | Character size   | Nulls allowed |
-|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:-----------------|:--------------|
-| CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200              | NO            |
-| WEIGHTMEASUREMENTID  | Identifier for the weight measurement record.                                                                                                          | Int 64            | ---              | NO            |
-| CODE1               | First code associated with the  measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM1       | First coding system for the  measurement.                                                                                                              | Character         | 500              | YES           |
-| CODE2               | Second code associated with the measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM2       | Second coding system for the measurement.                                                                                                              | Character         | 500              | YES           |
-| MEASUREMENTASNUMBER | Measurement number of the weight.                                                                                                                      | Decimal fixed-point           | 2 decimal places | YES           |
-| MEASUREMENTASTEXT   | Measurement result in text string.                                                                                                                     | Character         | 500              | YES           |
-| MEASUREMENTUNITS| Unit of measurement result.                                                                                                                            | Character         | 500              | YES           |
-| DISPLAYMEASUREMENTUNITS| Displays the weight measurement result with units.                                                                                                        | Character         | 500              | YES           |
-| MEASUREMENTDATETIME | Date when the client's weight was measured.                                                                                                        | Timestamp         | ---              | NO            |
-| SOURCE              | Indicates whether the weight information is reported by the client, or where the information is obtained from.                                     | Character         | 500              | NO            |
-| STATUS              | Status of the weight measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                              | Character         | 500              | NO            |
-| VERIFIEDBY          | The name of the healthcare professional who took the weight reading and verified that it was accurate.                                             | Character         | 500              | YES           |
-| COMMENTS            | Comments about the weight measurements.                                                                                                            | Character         | 500              | YES           |
-| DATASOURCE          | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500              | NO            |
-| INGESTIONTIME       | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---              | NO            |
-
+| Attribute               | Description                                                                                                                                            | Domain definition   | Character size   | Nulls allowed |
+|:------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|:-----------------|:--------------|
+| CLIENTREFERENCE         | Unique reference number that identifies the client in the application.                                                                                 | Character           | 200              | NO            |
+| WEIGHTMEASUREMENTID     | Identifier for the weight measurement record.                                                                                                          | Int 64              | ---              | NO            |
+| CODE1                   | First code associated with the  measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM1           | First coding system for the  measurement.                                                                                                              | Character           | 500              | YES           |
+| CODE2                   | Second code associated with the measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM2           | Second coding system for the measurement.                                                                                                              | Character           | 500              | YES           |
+| MEASUREMENTASNUMBER     | Measurement number of the weight.                                                                                                                      | Decimal fixed-point | 2 decimal places | YES           |
+| MEASUREMENTASTEXT       | Measurement result in text string.                                                                                                                     | Character           | 500              | YES           |
+| MEASUREMENTUNITS        | Unit of measurement result.                                                                                                                            | Character           | 500              | YES           |
+| DISPLAYMEASUREMENTUNITS | Displays the weight measurement result with units.                                                                                                     | Character           | 500              | YES           |
+| MEASUREMENTDATETIME     | Date when the client's weight was measured.                                                                                                            | Timestamp           | ---              | NO            |
+| SOURCE                  | Indicates whether the weight information is reported by the client, or where the information is obtained from.                                         | Character           | 500              | NO            |
+| STATUS                  | Status of the weight measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                                  | Character           | 500              | NO            |
+| VERIFIEDBY              | The name of the healthcare professional who took the weight reading and verified that it was accurate.                                                 | Character           | 500              | YES           |
+| COMMENTS                | Comments about the weight measurements.                                                                                                                | Character           | 500              | YES           |
+| DATASOURCE              | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character           | 500              | NO            |
+| INGESTIONTIME           | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time           | ---              | NO            |
 
 ### Links to other data
 
-| Attribute       | Joins to        | Cardinality                                                                                                        |
-|:----------------|:----------------|:-------------------------------------------------------------------------------------------------------------------|
+| Attribute       | Joins to        | Cardinality                                                                        |
+|:----------------|:----------------|:-----------------------------------------------------------------------------------|
 | CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
 
 ## CLIENT_VITAL_WAISTTOHEIGHT_V1_VIEW
 
 The view groups attributes that relate to a client's waist-to-height measurement information, such as the measurement number, status, and data source. Use this view to report on a client's waist-to-height measurement results.
 
-| Attribute                  | Description                                                                                                                                            | Domain definition | Character size   | Nulls allowed |
-|:---------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:-----------------|:--------------|
-| CLIENTREFERENCE            | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200              | NO            |
-| WAISTTOHEIGHTMEASUREMENTID | Identifier for the waist-to-height measurement record.                                                                                                 | Int 64            | ---              | NO            |
-| CODE1                      | First code associated with the  measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM1              | First coding system for the  measurement.                                                                                                              | Character         | 500              | YES           |
-| CODE2                      | Second code associated with the measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM2              | Second coding system for the measurement.                                                                                                              | Character         | 500              | YES           |
-| MEASUREMENT                | Measurement result of the waist-to-height.                                                                                                             | Character           | 500         | YES           |
-| MEASUREMENTDATETIME        | Date when the client's waist-to-height was measured.                                                                                                   | Timestamp         | ---              | NO            |
-| SOURCE                     | Indicates whether the waist-to-height information is reported by the client, or where the information is obtained from.                                | Character         | 500              | NO            |
-| STATUS                     | Status of the waist-to-height measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                         | Character         | 500              | NO            |
-| VERIFIEDBY                 | The name of the healthcare professional who took the waist-to-height reading and verified that it was accurate.                                        | Character         | 500              | YES           |
-| COMMENTS                   | Comments about the waist-to-height measurements.                                                                                                       | Character         | 500              | YES           |
-| DATASOURCE                 | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500              | NO            |
-| INGESTIONTIME              | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---              | NO            |
-
+| Attribute                  | Description                                                                                                                                            | Domain definition | Character size | Nulls allowed |
+|:---------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
+| CLIENTREFERENCE            | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200            | NO            |
+| WAISTTOHEIGHTMEASUREMENTID | Identifier for the waist-to-height measurement record.                                                                                                 | Int 64            | ---            | NO            |
+| CODE1                      | First code associated with the  measurement.                                                                                                           | Character         | 500            | YES           |
+| CODINGSYSTEM1              | First coding system for the  measurement.                                                                                                              | Character         | 500            | YES           |
+| CODE2                      | Second code associated with the measurement.                                                                                                           | Character         | 500            | YES           |
+| CODINGSYSTEM2              | Second coding system for the measurement.                                                                                                              | Character         | 500            | YES           |
+| MEASUREMENT                | Measurement result of the waist-to-height.                                                                                                             | Character         | 500            | YES           |
+| MEASUREMENTDATETIME        | Date when the client's waist-to-height was measured.                                                                                                   | Timestamp         | ---            | NO            |
+| SOURCE                     | Indicates whether the waist-to-height information is reported by the client, or where the information is obtained from.                                | Character         | 500            | NO            |
+| STATUS                     | Status of the waist-to-height measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                         | Character         | 500            | NO            |
+| VERIFIEDBY                 | The name of the healthcare professional who took the waist-to-height reading and verified that it was accurate.                                        | Character         | 500            | YES           |
+| COMMENTS                   | Comments about the waist-to-height measurements.                                                                                                       | Character         | 500            | YES           |
+| DATASOURCE                 | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500            | NO            |
+| INGESTIONTIME              | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---            | NO            |
 
 ### Links to other data
 
-| Attribute       | Joins to        | Cardinality                                                                                                        |
-|:----------------|:----------------|:-------------------------------------------------------------------------------------------------------------------|
-| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client.|
-
+| Attribute       | Joins to        | Cardinality                                                                        |
+|:----------------|:----------------|:-----------------------------------------------------------------------------------|
+| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
 
 ## CLIENT_VITAL_TEMPERATURE_V1_VIEW
 
 The view groups attributes that relate to a client's temperature measurement information, such as the measurement number, status, and data source. Use this view to report on a client's temperature measurement results.
 
-| Attribute           | Description                                                                                                                                            | Domain definition | Character size   | Nulls allowed |
-|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:-----------------|:--------------|
-| CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200              | NO            |
-| TEMPERATUREMEASUREMENTID  | Identifier for the temperature measurement record.                                                                                                          | Int 64            | ---              | NO            |
-| CODE1               | First code associated with the  measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM1       | First coding system for the  measurement.                                                                                                              | Character         | 500              | YES           |
-| CODE2               | Second code associated with the measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM2       | Second coding system for the measurement.                                                                                                              | Character         | 500              | YES           |
-| MEASUREMENTASNUMBER | Measurement number of the temperature.                                                                                                                      | Decimal fixed-point           | 2 decimal places | YES           |
-| MEASUREMENTASTEXT   | Measurement result in text string.                                                                                                                     | Character         | 500              | YES           |
-| DISPLAYMEASUREMENTUNITS| Displays the temperature measurement result with units.                                                                                                        | Character         | 500              | YES           |
-| MEASUREMENTUNITS| Unit of measurement result.                                                                                                                            | Character         | 500              | YES           |
-| MEASUREMENTDATETIME | Date when the client's temperature was measured.                                                                                                        | Timestamp         | ---              | NO            |
-| MEASUREMENTSITE| Location of the client where the healthcare professional took the temperature reading. | Character| 500| NO            |
-| MEASUREMENTMETHOD| Method of temperature measurement.                                                                        | Character         | 500              | YES           |
-| SOURCE              | Indicates whether the temperature information is reported by the client, or where the information is obtained from.                                     | Character         | 500              | NO            |
-| SOURCESYTEM         | Source system for the temperature measurement.                                                                                                          | Character         | 500              | YES           |
-| STATUS              | Status of the temperature measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                              | Character         | 500              | NO            |
-| VERIFIEDBY          | The name of the healthcare professional who took the temperature reading and verified that it was accurate.                                             | Character         | 500              | YES           |
-| COMMENTS            | Comments about the temperature measurements.                                                                                                            | Character         | 500              | YES           |
-| DATASOURCE          | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500              | NO            |
-| INGESTIONTIME       | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---              | NO            |
+| Attribute                | Description                                                                                                                                            | Domain definition   | Character size   | Nulls allowed |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|:-----------------|:--------------|
+| CLIENTREFERENCE          | Unique reference number that identifies the client in the application.                                                                                 | Character           | 200              | NO            |
+| TEMPERATUREMEASUREMENTID | Identifier for the temperature measurement record.                                                                                                     | Int 64              | ---              | NO            |
+| CODE1                    | First code associated with the  measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM1            | First coding system for the  measurement.                                                                                                              | Character           | 500              | YES           |
+| CODE2                    | Second code associated with the measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM2            | Second coding system for the measurement.                                                                                                              | Character           | 500              | YES           |
+| MEASUREMENTASNUMBER      | Measurement number of the temperature.                                                                                                                 | Decimal fixed-point | 2 decimal places | YES           |
+| MEASUREMENTASTEXT        | Measurement result in text string.                                                                                                                     | Character           | 500              | YES           |
+| DISPLAYMEASUREMENTUNITS  | Displays the temperature measurement result with units.                                                                                                | Character           | 500              | YES           |
+| MEASUREMENTUNITS         | Unit of measurement result.                                                                                                                            | Character           | 500              | YES           |
+| MEASUREMENTDATETIME      | Date when the client's temperature was measured.                                                                                                       | Timestamp           | ---              | NO            |
+| MEASUREMENTSITE          | Location of the client where the healthcare professional took the temperature reading.                                                                 | Character           | 500              | NO            |
+| MEASUREMENTMETHOD        | Method of temperature measurement.                                                                                                                     | Character           | 500              | YES           |
+| SOURCE                   | Indicates whether the temperature information is reported by the client, or where the information is obtained from.                                    | Character           | 500              | NO            |
+| SOURCESYTEM              | Source system for the temperature measurement.                                                                                                         | Character           | 500              | YES           |
+| STATUS                   | Status of the temperature measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                             | Character           | 500              | NO            |
+| VERIFIEDBY               | The name of the healthcare professional who took the temperature reading and verified that it was accurate.                                            | Character           | 500              | YES           |
+| COMMENTS                 | Comments about the temperature measurements.                                                                                                           | Character           | 500              | YES           |
+| DATASOURCE               | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character           | 500              | NO            |
+| INGESTIONTIME            | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time           | ---              | NO            |
 
 
 ### Links to other data
 
-| Attribute       | Joins to        | Cardinality                                                                                                        |
-|:----------------|:----------------|:-------------------------------------------------------------------------------------------------------------------|
+| Attribute       | Joins to        | Cardinality                                                                        |
+|:----------------|:----------------|:-----------------------------------------------------------------------------------|
 | CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
 
 
@@ -532,29 +524,59 @@ The view groups attributes that relate to a client's temperature measurement inf
 
 The view groups attributes that relate to a client's respiratory rate measurement information, such as the measurement number, status, and data source. Use this view to report on a client's respiratory rate measurement results.
 
-| Attribute           | Description                                                                                                                                            | Domain definition | Character size   | Nulls allowed |
-|:--------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:-----------------|:--------------|
-| CLIENTREFERENCE     | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200              | NO            |
-| RESPIRATORYMEASUREMENTID  | Identifier for the respiratory rate measurement record.                                                                                                          | Int 64            | ---              | NO            |
-| CODE1               | First code associated with the  measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM1       | First coding system for the  measurement.                                                                                                              | Character         | 500              | YES           |
-| CODE2               | Second code associated with the measurement.                                                                                                           | Character         | 500              | YES           |
-| CODINGSYSTEM2       | Second coding system for the measurement.                                                                                                              | Character         | 500              | YES           |
-| MEASUREMENT | Measurement result of the respiratory rate.                                                                                                                    | Character           | 500            | YES           |
-| MEASUREMENTUNITS| Unit of measurement result.                                                                                                                            | Character         | 500              | YES           |
-| DISPLAYMEASUREMENTUNITS   | Displays the respiratory rate measurement result with units.   | Character         | 500            | NO            |
-| MEASUREMENTDATETIME | Date when the client's respiratory rate was measured.                                                                                                        | Timestamp         | ---              | NO            |
-| SOURCE              | Indicates whether the respiratory rate information is reported by the client, or where the information is obtained from.                                     | Character         | 500              | NO            |
-| STATUS              | Status of the respiratory rate measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                              | Character         | 500              | NO            |
-| VERIFIEDBY          | The name of the healthcare professional who took the respiratory rate reading and verified that it was accurate.                                             | Character         | 500              | YES           |
-| COMMENTS            | Comments about the respiratory rate measurements.                                                                                                            | Character         | 500              | YES           |
-| DATASOURCE          | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500              | NO            |
-| INGESTIONTIME       | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---              | NO            |
-
-
+| Attribute                | Description                                                                                                                                            | Domain definition | Character size | Nulls allowed |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
+| CLIENTREFERENCE          | Unique reference number that identifies the client in the application.                                                                                 | Character         | 200            | NO            |
+| RESPIRATORYMEASUREMENTID | Identifier for the respiratory rate measurement record.                                                                                                | Int 64            | ---            | NO            |
+| CODE1                    | First code associated with the  measurement.                                                                                                           | Character         | 500            | YES           |
+| CODINGSYSTEM1            | First coding system for the  measurement.                                                                                                              | Character         | 500            | YES           |
+| CODE2                    | Second code associated with the measurement.                                                                                                           | Character         | 500            | YES           |
+| CODINGSYSTEM2            | Second coding system for the measurement.                                                                                                              | Character         | 500            | YES           |
+| MEASUREMENT              | Measurement result of the respiratory rate.                                                                                                            | Character         | 500            | YES           |
+| MEASUREMENTUNITS         | Unit of measurement result.                                                                                                                            | Character         | 500            | YES           |
+| DISPLAYMEASUREMENTUNITS  | Displays the respiratory rate measurement result with units.                                                                                           | Character         | 500            | NO            |
+| MEASUREMENTDATETIME      | Date when the client's respiratory rate was measured.                                                                                                  | Timestamp         | ---            | NO            |
+| SOURCE                   | Indicates whether the respiratory rate information is reported by the client, or where the information is obtained from.                               | Character         | 500            | NO            |
+| STATUS                   | Status of the respiratory rate measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                        | Character         | 500            | NO            |
+| VERIFIEDBY               | The name of the healthcare professional who took the respiratory rate reading and verified that it was accurate.                                       | Character         | 500            | YES           |
+| COMMENTS                 | Comments about the respiratory rate measurements.                                                                                                      | Character         | 500            | YES           |
+| DATASOURCE               | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character         | 500            | NO            |
+| INGESTIONTIME            | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time         | ---            | NO            |
 
 ### Links to other data
 
 | Attribute       | Joins to        | Cardinality                                                                                                        |
 |:----------------|:----------------|:-------------------------------------------------------------------------------------------------------------------|
+| CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
+
+## CLIENT_VITAL_WAIST_V1_VIEW
+
+The view groups attributes that relate to a client's waist circumference measurement information, such as the measurement number, unit, status, and data source. Use this view to report on a client's waist circumference measurement results.
+
+| Attribute               | Description                                                                                                                                            | Domain definition   | Character Size             | Nulls allowed |
+|:------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------|:-----------------|:--------------|
+| CLIENTREFERENCE         | Unique reference number that identifies the client in the application.                                                                                 | Character           | 200              | YES           |
+| WAISTMEASUREMENTID      | Identifier for the waist measurement record.                                                                                                           | Int 64              |                  | NO            |
+| CODE1                   | First code associated with the  measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM1           | First coding system for the  measurement.                                                                                                              | Character           | 500              | YES           |
+| CODE2                   | Second code associated with the measurement.                                                                                                           | Character           | 500              | YES           |
+| CODINGSYSTEM2           | Second coding system for the measurement.                                                                                                              | Character           | 500              | YES           |
+| MEASUREMENTASNUMBER     | Measurement number of the waist circumference.                                                                                                           | Decimal fixed-point | 4 decimal places | YES           |
+| MEASUREMENTASTEXT       | Measurement result in text string.                                                                                                           | Character           | 500              | YES           |
+| MEASUREMENTUNITS        | Unit of waist measurement.                                                                                                                             | Character           | 500              | YES           |
+| DISPLAYMEASUREMENTUNITS | Displays the waist measurement result with units.                                                                                                      | Character           | 500              | YES           |
+| MEASUREMENTDATETIME     | Date when the client's waist was measured.                                                                                                             | Date Time           |                  | YES           |
+| SOURCE                  | Indicates whether the waist measurement information is reported by the client, or where the information is obtained from.                              | Character           | 500              | YES           |
+| STATUS                  | Status of the waist measurement, includes completed, canceled, duplicate, amended, invalid, registered, and unknown.                                   | Character           | 500              | YES           |
+| VERIFIEDBY              | The name of the healthcare professional who took the waist measurement reading and verified that it was accurate.                                      | Character           | 500              | YES           |
+| COMMENTS                | Comments about the waist measurements.                                                                                                                 | Character           | 500              | YES           |
+| DATASOURCE              | Indicates where the record came from, for example, a facility or an external system. Only populated if the record is received from an external system. | Character           | 500              | YES           |
+| INGESTIONTIME           | Date and time the record was ingested, supports change data capture.                                                                                   | Date Time           |                  | YES           |
+
+### Links to other data
+
+Please review and amend, just examples below to help your edits.
+
+| Attribute       | Joins to               | Cardinality                                                                        |
+|:----------------|:--------------------------|:-----------------------------------------------------------------------------------|
 | CLIENTREFERENCE | CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |

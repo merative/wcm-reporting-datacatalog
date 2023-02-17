@@ -1,7 +1,7 @@
 
 
 This section describes data available for clients.<br/> <br/>
-These views groups attributes that relate to a client's demographic information, address and contact information along with referral and utilization information for the client. It also contains a view that groups data that relates to tags recorded for clients and a view that groups data that shows who has requested emergency access to a client and when.
+These views groups attributes that relate to a client's demographic information, address and contact information along with referral and utilization information for the client. It also contains a view that groups clients who actively receive care management from your organization, a view that groups data that relates to tags recorded for clients and a view that groups data that shows who has requested emergency access to a client and when.
 
 ## CLIENTS_V1_VIEW
 
@@ -81,7 +81,7 @@ The attribute CLIENTREFERENCE is the primary key to this table, and can be used 
 | CLIENTREFERENCE| CLIENT_RECEIVINGCARE_V1_VIEW | Cardinality is zero-to-many.<br /> A client is associated with zero-to-many under care records.|
 
 
-## CLIENT_UNDERCARE_V1_VIEW
+## CLIENT_RECEIVINGCARE_V1_VIEW
 
 This view groups attributes that relate to clients who actively receive care management from your organization. A client actively receives care management when their status is active and they have a care team with one or more care team members for 1 or more days in a calendar month. Group clients by month and year to see all of your organization's active clients receiving care for that period.
 
