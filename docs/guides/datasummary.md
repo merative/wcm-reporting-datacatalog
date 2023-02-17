@@ -112,9 +112,6 @@ See the release notes section below for further details on the updates made to e
 This section provides further details on the updates made to data in existing views in each release. This section lists any additions or changes to existing data. 
 
 
-### 23:03 Release Notes
-  1. ``TEAM_MEMBERS_V1_VIEW:`` The data item  ``USER`` is renamed to ``ISUSER``.
-
 
 ### 23:02 Release Notes
   1. ```CLIENT_UNDERCARE_V1_VIEW:``` Renamed to [CLIENT_RECEIVINGCARE_V1_VIEW](guides/client.md#CLIENT_RECEIVINGCARE_V1_VIEW) .
