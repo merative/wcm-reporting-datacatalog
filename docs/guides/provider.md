@@ -6,6 +6,7 @@ A provider is an organization or individual who provides services, such as healt
 
 These views group attributes that relate to provider's details such as the provider name, status, contact details, address, identification and the team member who created the provider. These views also group attributes that relate to the provider's service such as address, contacts, rates and status history of the service.
 
+
 ## PROVIDERS_V1_VIEW
 
 This view groups attributes that relate to the provider such as the provider id, type and status.

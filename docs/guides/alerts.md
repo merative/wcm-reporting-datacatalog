@@ -28,7 +28,6 @@ This view groups attributes that relate to the alert such as the alert name, pri
 
 ### Links to other data
 
-
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|

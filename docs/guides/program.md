@@ -7,7 +7,6 @@ A program is a care delivery strategy that is designed to deliver a specific cli
 These views group attributes that relate to a client’s programs such as the program name, status and the date and time from which a program is in a status. They also contains views that groups data for plan activies and items that can be associated with a program such as assessments, goals, client actions, team actions, barriers, touchpoints and utilizations.  
 
 
-
 ## PROGRAMS_V1_VIEW
 This view groups attributes that relate to a client’s programs such as the program name, program enrollment status, and the completion date.
 

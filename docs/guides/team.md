@@ -4,7 +4,6 @@ This section describes data available for teams, team members and users.
 
 These views groups attributes that relate to a users details, such as their login id,  which workspaces they have access to, what team role they are assigned, when they last logged in to the application and whether they are a member of a client's team.  
 
-
 ## TEAM_MEMBERS_V2_VIEW
 
 <br/> ```TEAM_MEMBERS_V1_VIEW``` is deprecated so use this view instead. The attribute previously named ```ROLENAME``` has been renamed to ```DEFAULTWORKSPACE``` .

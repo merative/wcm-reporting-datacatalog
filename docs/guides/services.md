@@ -6,6 +6,7 @@ A service is a plan activity that represents the delivery of care or goods to an
 
 These views group attributes that relate to services details such as the service name, description, status, start date and the team member who created the service along with goal, barrier,note and note comments views that allow you to identify goals, barriers, notes and note comments associated with the service.
 
+
 ## SERVICES_V1_VIEW
 
 This view groups attributes that relate to the service such as the service name, service start date, frequency and the number of units to be delivered.

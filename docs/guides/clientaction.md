@@ -32,6 +32,7 @@ The client actions view groups attributes relating to client actions, such as th
 ### Links to other data
 
 
+
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|

@@ -8,6 +8,7 @@ Notes can be recorded about clients in different places of the application to ad
 This view groups attributes that relate to a note such as the priority, subject, status and content text for
 the note. Use this view to create notes reports.
 
+
 | Attribute        | Description                                                                                                                                                            | Domain definition | Character size | Nulls allowed |
 |:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
 | CLIENTREFERENCE  | Unique reference number that identifies the client in the application.                                                                                                 | Character         | 200            | YES           |

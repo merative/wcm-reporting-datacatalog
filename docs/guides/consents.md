@@ -7,6 +7,7 @@ Client consent represents a client's permission for their data to be captured an
 These views groups attributes that relate to a client's consent records such as the consent type, status, the date consent was received, attachments provided to support the clients's consent and the history of the consent record.
 
 
+
 ## CONSENTS_V1_VIEW
 This view groups attributes that relate to the client's consent, such as the consent type, status, expiry and description of the consent record.
 

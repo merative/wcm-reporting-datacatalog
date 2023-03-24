@@ -29,6 +29,7 @@ This view groups attributes that relate to client questionnaires, for example, t
 | SCORE| Score associated with the client's answer to the question. | Decimal floating-point| ---| YES           |
 | INGESTIONTIME| Date and time the record was ingested, supports changed data capture. | Date Time| ---| NO            |
 
+
 ### Links to other data
 
 | Attribute | Joins to |Cardinality |

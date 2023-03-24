@@ -9,7 +9,6 @@ Goals are plan items that represents a measurable target that a client can compl
 This views groups attributes that relate to goals such as the goal name, importance, outcome and reason for the goal. Use this view in reports to report on client's goals.
 
 
-
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
 | GOALID| Identifier for a goal record. |  Int 64| ---|NO|

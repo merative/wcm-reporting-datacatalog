@@ -6,6 +6,7 @@ Care team members can create inquiries for services and send them to one or more
 
 These views group attributes relating to inquiries that are sent by the care team to providers to solicit services for their clients. Use these views to create inquiries reports.
 
+
 ## INQUIRIES_V1_VIEW
 This view groups attributes that relate to an inquiry such as the inquiry ID, the service name, expected start date, frequency of the service, and the number of units to be delivered.
 

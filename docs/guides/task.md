@@ -6,6 +6,7 @@ A task is an item of work that  team members and supervisors must complete that 
 
 These views groups attributes hat relate to a tasks details such as the task name, priority, category and whether it's assigned to a role or a user.
 
+
 ## TASKS_V1_VIEW
 This view groups attributes that relate to a task such as the task name, start time, and priority.
 
