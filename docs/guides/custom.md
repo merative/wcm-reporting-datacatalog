@@ -5,7 +5,6 @@ This section describes data available for custom entities (custom data type).
 Custom entities are configurable records that are defined by the organisation.  A custom data type represents the logical grouping of related attributes about which the organization wants to record information in respect of a client.
 
 
-
 ## CUSTOM_ENTITIES_V1_VIEW
 
 This view groups attributes that relate to information captured in respect of a custom client data type, such as the custom data type name, attribute name, position, attribute value, effective from date, and effective version number. It is best practice to create reports based on the attribute name and not the position. The position indicates the order that your Administrator added the attribute to the custom client data type and updates in reports if the attribute is later removed.
@@ -37,4 +36,4 @@ This view groups attributes that relate to information captured in respect of a 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW| Cardinality is one-to-one. <br/> A client identifier is associated with one client.|
-| UPDATEDBY | USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user. |
+| UPDATEDBY | USERS_V2_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user. |

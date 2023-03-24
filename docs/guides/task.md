@@ -6,6 +6,7 @@ A task is an item of work that  team members and supervisors must complete that 
 
 These views groups attributes hat relate to a tasks details such as the task name, priority, category and whether it's assigned to a role or a user.
 
+
 ## TASKS_V1_VIEW
 This view groups attributes that relate to a task such as the task name, start time, and priority.
 
@@ -41,9 +42,9 @@ This view groups attributes that relate to a task such as the task name, start t
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
-| UPDATEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
-| ASSIGNEDTO | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| UPDATEDBY | USERS_V2_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| ASSIGNEDTO | USERS_V2_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
 | TASKID | TASK_PROGRAMS_V1_VIEW| Cardinality is one-to-many.<br /> A task is associated with zero-to-many programs. |
 | TASKID | TASK_ROLE_V1_VIEW| Cardinality is one-to-one.<br /> A task is associated with zero-to-one roles. |
 

@@ -9,6 +9,7 @@ The view groups attributes that relate to a client's medication information, suc
 
 
 
+
 | Attribute          | Description                                                                                                                                                                                                                                      | Domain definition | Character size | Nulls allowed |
 |:-------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
 | MEDICATIONID       | Identifier for a medication record.                                                                                                                                                                                                              | Int 64            | ---            | YES           |
@@ -575,7 +576,6 @@ The view groups attributes that relate to a client's waist circumference measure
 
 ### Links to other data
 
-Please review and amend, just examples below to help your edits.
 
 | Attribute       | Joins to               | Cardinality                                                                        |
 |:----------------|:--------------------------|:-----------------------------------------------------------------------------------|

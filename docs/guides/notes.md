@@ -8,6 +8,7 @@ Notes can be recorded about clients in different places of the application to ad
 This view groups attributes that relate to a note such as the priority, subject, status and content text for
 the note. Use this view to create notes reports.
 
+
 | Attribute        | Description                                                                                                                                                            | Domain definition | Character size | Nulls allowed |
 |:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
 | CLIENTREFERENCE  | Unique reference number that identifies the client in the application.                                                                                                 | Character         | 200            | YES           |
@@ -33,8 +34,8 @@ the note. Use this view to create notes reports.
 | Attribute        | Joins to              | Cardinality                                                                        |
 |:-----------------|:----------------------|:-----------------------------------------------------------------------------------|
 | CLIENTREFERENCE  | CLIENTS_V1_VIEW       | Cardinality is one-to-many. <br/> A client is associated with zero-to-many notes.  |
-| STATUSEUPDATEDBY | USERS_V1_VIEW         | Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many  notes. |
-| MODIFIEDBY       | USERS_V1_VIEW         | Cardinality is one-to-many. <br/> A user is associated with zero-to-many notes.    |
+| STATUSEUPDATEDBY | USERS_V2_VIEW         | Cardinality is one-to-many.  <br/>  A user is associated with zero-to-many  notes. |
+| MODIFIEDBY       | USERS_V2_VIEW         | Cardinality is one-to-many. <br/> A user is associated with zero-to-many notes.    |
 | NOTEID           | NOTE_COMMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A note is associated with zero-to-many comments. |
 
 ## NOTE_COMMENTS_V1_VIEW
@@ -56,4 +57,4 @@ the comment. Use this view to create note comments reports.
 | Attribute | Joins to      | Cardinality                                                                       |
 |:----------|:--------------|:----------------------------------------------------------------------------------|
 | NOTEID    | NOTE_V1_VIEW  | Cardinality is one-to-one. <br/> A note identifieris associated with one note.    |
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user. |

@@ -8,7 +8,6 @@ Every attribute in every view has a data type. The domain definition or data typ
 
 The data types are required to consume data through your BI tool, database federation or client download program.
 
-
 | Domain definition | Description |
 | :-------------- | :------ |
 | Character| Varying-length character strings with a maximum length of N|

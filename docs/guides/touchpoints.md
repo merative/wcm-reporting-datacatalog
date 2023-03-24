@@ -6,7 +6,6 @@ A touchpoint is a record of a contact or attempted contact made with or received
 
 These views group attributes that relate to a touchpoint such as the subject, who the contact was with, the contact method, status, content text for the touchpoint and comments recorded for the touchpoint.
 
-
 ## TOUCHPOINTS_V1_VIEW
 
 This view groups attributes that relate to a touchpoint such as the subject, status and content text for the touchpoint. Use this view to create touchpoint reports.
@@ -38,7 +37,7 @@ This view groups attributes that relate to a touchpoint such as the subject, sta
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| ADDEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
 | TOUCHPONTID | PROGRAM_TOUCHPOINTS_V1_VIEW| Cardinality is one-to-many. <br/> A touchpoint is associated with zero-to-many programs. |
 | TOUCHPONTID | TOUCHPOINT_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/> A touchpoint is associated with zero-to-many touchpoint comments. |
 
@@ -62,4 +61,4 @@ This view groups attributes that relate to a touchpoint comment such as the auth
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | TOUCHPOINTID| TOUCHPOINTS_V1_VIEW | Cardinality is one-to-one. <br/> A touchpoint identifier is associated with one touchpoint.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |

@@ -11,3 +11,4 @@ This view groups attributes that relate to when data was last refreshed such as 
 | :-------------- | :------ |:------ |:------ |:------ |
 | LASTREFRESHDATE| The date and time of the last data refresh. Describes the age of the data. Data captured after this date is not available. |  Date Time|--- |NO|
 | LASTREFRESHSTATUS| Describes the status of the last data refresh, Complete or In Progress. | Character| 200|NO|
+

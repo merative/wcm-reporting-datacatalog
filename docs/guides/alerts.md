@@ -28,12 +28,11 @@ This view groups attributes that relate to the alert such as the alert name, pri
 
 ### Links to other data
 
-
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
-| CLOSEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| CLOSEDBY | USERS_V2_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
 | ALERTID | ALERT_NOTIFICATIONS_V1_VIEW| Cardinality is one-to-many. <br/> An alert is associated with zero-to-many notifications. |
 | ALERTID | ALERT_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/> An alert is associated with zero-to-many comments. |
 

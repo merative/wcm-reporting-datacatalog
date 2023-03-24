@@ -9,7 +9,6 @@ Goals are plan items that represents a measurable target that a client can compl
 This views groups attributes that relate to goals such as the goal name, importance, outcome and reason for the goal. Use this view in reports to report on client's goals.
 
 
-
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
 | GOALID| Identifier for a goal record. |  Int 64| ---|NO|
@@ -39,8 +38,8 @@ This views groups attributes that relate to goals such as the goal name, importa
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user. |
-| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user.  |
+| ADDEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user. |
+| COMPLETEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br/> A user identifier is associated with one user.  |
 | GOALID| GOAL_BARRIERS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many barriers.|
 | GOALID| GOAL_CLIENTACTIONS_V1_VIEW | Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many client actions.|
 | GOALID| GOAL_TEAMACTIONS_V1_VIEW| Cardinality is zero-to-many. <br/> A goal is associated with zero-to-many team actions.|
@@ -145,4 +144,4 @@ This view groups attributes that relate to comments recorded when progress is up
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | GOALID|GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |

@@ -3,6 +3,7 @@ Team actions are plan activities that team members can complete to help a client
 These views groups attributes that relate to actions such as the action name, category, status, progress commments
 recorded against the care team action and reason for the action.
 
+
 ## TEAMACTIONS_V1_VIEW
 The team actions view groups attributes relating to team actions, such as the name, category, status and completion
 details for the action. Use this view to create team action reports.
@@ -33,9 +34,9 @@ details for the action. Use this view to create team action reports.
 | Attribute | Joins to                | Cardinality                                                                                 |
 | :-------------- |:------------------------|:--------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW         | Cardinality is one-to-one. <br/>  A client identifier is associated with one client. |
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
-| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
-| ASSIGNEDTO | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| ADDEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user.|
+| COMPLETEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| ASSIGNEDTO | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
 | ACTIONID | PROGRAM_TEAMACTIONS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many programs. |
 | ACTIONID | GOAL_TEAMACTIONS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many goals. |
 | ACTIONID | TEAMACTION_BARRIERS_V1_VIEW| Cardinality is one-to-many. <br/> A team action is associated with zero-to-many barriers. |
@@ -84,4 +85,4 @@ progress comment, the name of the user who added the comment, and the date when 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A team action identifier is associated with one team action. |
-| CREATEDBY | USERS_V1_VIEW |  Cardinality is one-to-one.<br /> A user identifier is associated with one user.  |
+| CREATEDBY | USERS_V2_VIEW |  Cardinality is one-to-one.<br /> A user identifier is associated with one user.  |

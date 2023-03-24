@@ -6,6 +6,7 @@ Care team members can create inquiries for services and send them to one or more
 
 These views group attributes relating to inquiries that are sent by the care team to providers to solicit services for their clients. Use these views to create inquiries reports.
 
+
 ## INQUIRIES_V1_VIEW
 This view groups attributes that relate to an inquiry such as the inquiry ID, the service name, expected start date, frequency of the service, and the number of units to be delivered.
 
@@ -35,7 +36,7 @@ This view groups attributes that relate to an inquiry such as the inquiry ID, th
 | Attribute | Joins to | Cardinality                                                                                  |
 | :-------------- | :------ |:---------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client.  |
-| RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.           |
+| RECORDEDBY | USERS_V2_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.           |
 | SERVICEOFFERINGID | PROVIDERS_V1_VIEW| Cardinality is one-to-one. <br/> A provider identifier is associated with one provider.       |   
 | INQUIRYID | INQUIRY_COMMENTS_V1_VIEW| Cardinality is one-to-many. <br/>  An inquiry is associated with zero-to-many inquiry comments.     |                            
 | INQUIRYID | INQUIRY_RESPONSES_V1_VIEW| Cardinality is one-to-many. <br/> An inquiry is associated with zero-to-many inquiry responses.      |                           
@@ -62,7 +63,7 @@ comment.
 | Attribute | Joins to | Cardinality                                                                                         |
 | :-------------- | :------ |:----------------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client. |
-| RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.          |
+| RECORDEDBY | USERS_V2_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.          |
 | INQUIRYID | INQUIRIES_V1_VIEW | Cardinality is one-to-one.<br/>  An inquiry identifier is associated with one inquiry record.   |                               
 
 
@@ -95,7 +96,7 @@ This view groups attributes that relate to responses and inquiry response commen
 | Attribute | Joins to | Cardinality                                                                                          |
 | :-------------- | :------ |:-----------------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client. |
-| RECORDEDBY | USERS_V1_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.          |
+| RECORDEDBY | USERS_V2_VIEW| Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.          |
 | INQUIRYID | INQUIRIES_V1_VIEW | Cardinality is one-to-one.<br/>  An inquiry identifier is associated with one inquiry record.     |
 | PROVIDERID | PROVIDERS_V1_VIEW| Cardinality is one-to-one. <br/> A provider identifier is associated with one provider.
 
@@ -117,7 +118,7 @@ This view groups attributes that relate to shortlisted providers such as the fir
 | Attribute       | Joins to          | Cardinality                                                   |
 |:----------------|:--------------------------|:--------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one <br/> A client identifier is associated with one client. |
-| ADDEDBY | USERS_V1_VIEW |Cardinality is one-to-one. </br> A user is associated with one user record.|
+| ADDEDBY | USERS_V2_VIEW |Cardinality is one-to-one. </br> A user is associated with one user record.|
 | PROVIDEROFFERINGID | SERVICES_V1_VIEW |Cardinality is one-to-one. </br> A provider offering identifier is associated with one provider offering identifier.|
 
 

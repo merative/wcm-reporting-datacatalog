@@ -6,6 +6,7 @@ A service is a plan activity that represents the delivery of care or goods to an
 
 These views group attributes that relate to services details such as the service name, description, status, start date and the team member who created the service along with goal, barrier,note and note comments views that allow you to identify goals, barriers, notes and note comments associated with the service.
 
+
 ## SERVICES_V1_VIEW
 
 This view groups attributes that relate to the service such as the service name, service start date, frequency and the number of units to be delivered.
@@ -45,8 +46,8 @@ This view groups attributes that relate to the service such as the service name,
 | Attribute         | Joins to                      | Cardinality                                                                                   |
 |:------------------|:------------------------------------|:----------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW         | Cardinality is one-to-one. <br/>A client identifier is associated with one client. |
-| CREATEDBY  | USERS_V1_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.          |
-| COMPLETEDBY  | USERS_V1_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.         |  
+| CREATEDBY  | USERS_V2_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.          |
+| COMPLETEDBY  | USERS_V2_VIEW           | Cardinality is one-to-one. <br/> A user identifier is associated with one user.         |  
 | SERVICEID | SERVICE_GOALS_V1_VIEW    | Cardinality is one-to-many. <br/> A service is associated with zero-to-many goals. |
 | SERVICEID | SERVICE_BARRIERS_V1_VIEW | Cardinality is one-to-many. <br/> A service is associated with zero-to-many barriers.  |  
 | SERVICEID | SERVICE_NOTE_V1_VIEW | Cardinality is one-to-many. <br/> A service is associated with zero-to-many notes.  |  

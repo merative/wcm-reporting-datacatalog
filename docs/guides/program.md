@@ -7,7 +7,6 @@ A program is a care delivery strategy that is designed to deliver a specific cli
 These views group attributes that relate to a client’s programs such as the program name, status and the date and time from which a program is in a status. They also contains views that groups data for plan activies and items that can be associated with a program such as assessments, goals, client actions, team actions, barriers, touchpoints and utilizations.  
 
 
-
 ## PROGRAMS_V1_VIEW
 This view groups attributes that relate to a client’s programs such as the program name, program enrollment status, and the completion date.
 
@@ -39,7 +38,7 @@ This view groups attributes that relate to a client’s programs such as the pro
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW |  Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.                               |
+| STATUSEUPDATEDBY|  USERS_V2_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.                               |
 | PROGRAMID| PROGRAM_ASSESSMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many assessment records.|
 | PROGRAMID| PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many utilization records.|
 | PROGRAMID| PROGRAM_TOUCHPOINTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many touchpoint records.|
