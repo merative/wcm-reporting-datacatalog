@@ -39,7 +39,7 @@ This view groups attributes that relate to a client’s programs such as the pro
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE|  CLIENTS_V1_VIEW |  Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| STATUSEUPDATEDBY|  USERS_V1_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.                               |
+| STATUSEUPDATEDBY|  USERS_V2_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.                               |
 | PROGRAMID| PROGRAM_ASSESSMENTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many assessment records.|
 | PROGRAMID| PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many utilization records.|
 | PROGRAMID| PROGRAM_TOUCHPOINTS_V1_VIEW | Cardinality is one-to-many. <br/> A program enrollment is associated with zero-to-many touchpoint records.|

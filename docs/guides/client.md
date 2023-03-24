@@ -60,7 +60,7 @@ The attribute CLIENTREFERENCE is the primary key to this table, and can be used 
 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
-| REGISTEREDBYUSER| USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. <br/> A user is associated with zero-to-many clients.|
+| REGISTEREDBYUSER| USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. <br/> A user is associated with zero-to-many clients.|
 | CLIENTREFERENCE| EMERGENCYACCESS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many emergency access requests.|
 | CLIENTREFERENCE| CLIENT_ADDRESSES_V1_VIEW| Cardinality is one-to-many.  <br/> A client is associated with zero-to-many addresses|
 | CLIENTREFERENCE| CLIENT_EMAILS_V1_VIEW | Cardinality is one-to-many. <br/> A client is associated with zero-to-many email addresses.|
@@ -128,7 +128,7 @@ This view groups attributes that relate to emergency access requests. Use this v
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| REQUESTEDBY |USERS_V1_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user.  |
+| REQUESTEDBY |USERS_V2_VIEW| Cardinality is one-to-one. <br/>  A user identifier is associated with one user.  |
 
 
 
@@ -278,9 +278,9 @@ This view groups data items that relate to a client's referrals such as cohort n
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| CREATEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
-| ASSIGNEDTO | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
-| REJECTEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| ASSIGNEDTO | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| REJECTEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
 | REFERRALID  | REFERRAL_HISTORIES_V1_VIEW | Cardinality is one-to-many. <br/> A referral is associated with zero-to-many history records.       |
 
 ## REFERRAL_HISTORIES_V1_VIEW
@@ -311,8 +311,8 @@ This view groups data items that relate to a client's referral status change his
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | REFERRALID| REFERRALS_V1_VIEW | Cardinality is one-to-one.<br /> A referral history identifier is associated with one referral.|
-| CREATEDBY        |  USERS_V1_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
-| ASSIGNEDTO        |  USERS_V1_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
+| CREATEDBY        |  USERS_V2_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
+| ASSIGNEDTO        |  USERS_V2_VIEW       | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user.|
 
 
 
@@ -339,7 +339,7 @@ Tags are used to describe additional information about the client like whether t
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY |  USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+| ADDEDBY |  USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
 
 ## UTILIZATIONS_V1_VIEW
 
@@ -372,7 +372,7 @@ This view groups attributes that relate to the utilization such as the utilizati
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user.|
+| ADDEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user.|
 | UTILIZATIONID | PROGRAM_UTILIZATIONS_V1_VIEW | Cardinality is one-to-one <br />A utilization identifier is associated with one utilization record. |
 
 ## CLIENT_NAME_HISTORIES_V1_VIEW

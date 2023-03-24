@@ -35,8 +35,8 @@ The client actions view groups attributes relating to client actions, such as th
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
-| ADDEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br /> A user identifier is associated with one user.|
-| COMPLETEDBY | USERS_V1_VIEW | Cardinality is one-to-one. <br /> A user is associated with one user. |
+| ADDEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br /> A user identifier is associated with one user.|
+| COMPLETEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br /> A user is associated with one user. |
 | ACTIONID | CLIENTACTION_BARRIERS_V1_VIEW| Cardinality is one-to-many. <br/> A client action is associated with zero-to-many barriers. |
 | ACTIONID | CLIENTACTION_PROGRESSCOMMENTS_V1_VIEW|Cardinality is one-to-many.  <br/> A client action is associated with zero-to-many progress comments. |
 | ACTIONID | PROGRAM_CLIENTACTION_V1_VIEW| Cardinality is one-to-many.  <br/>  A client action is associated with zero-to-many programs. |
@@ -84,4 +84,4 @@ This view groups attributes that relate to comments recorded when progress is up
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | ACTIONID| CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A client action identifier is associated with one client action.|
-| CREATEDBY | USERS_V1_VIEW |  Cardinality is one-to-one. <br /> A user identifier is associated with one user. |
+| CREATEDBY | USERS_V2_VIEW |  Cardinality is one-to-one. <br /> A user identifier is associated with one user. |

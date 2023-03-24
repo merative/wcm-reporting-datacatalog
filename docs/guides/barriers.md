@@ -26,8 +26,8 @@ barrier along with note and note comments views that allow you to identify notes
 | Attribute | Joins to                | Cardinality                                                                                 |
 | :-------------- |:------------------------|:--------------------------------------------------------------------------------------------|
 | CLIENTREFERENCE| CLIENTS_V1_VIEW         | Cardinality is one-to-one.<br/> A client identifier is associated with one client. |
-| ADDEDBY | USERS_V1_VIEW           | Cardinality is one-to-one.<br/> A user identifier is associated with one user.          |
-| RESOLVEDBY | USERS_V1_VIEW           | Cardinality is one-to-one.<br/> A user identifier is associated with one user.         |     
+| ADDEDBY | USERS_V2_VIEW           | Cardinality is one-to-one.<br/> A user identifier is associated with one user.          |
+| RESOLVEDBY | USERS_V2_VIEW           | Cardinality is one-to-one.<br/> A user identifier is associated with one user.         |     
 | BARRIERID | GOAL_BARRIERS_V1_VIEW       | Cardinality is one-to-many. <br/>A barrier is associated with zero-to-many goals.           |
 | BARRIERID | SERVICE_BARRIERS_V1_VIEW       | Cardinality is one-to-many. <br/>A barrier is associated with zero-to-many services.     |
 | BARRIERID | PROGRAM_BARRIERS_V1_VIEW       | Cardinality is one-to-many. <br/>A barrier is associated with zero-to-many programs.     |

@@ -35,8 +35,8 @@ This view groups attributes that relate to client questionnaires, for example, t
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
 | ASSESSMENTINSTANCEID | ASSESSMENTS_V1_VIEW | Cardinality is one-to-many.<br /> A questionnaire is associated with one-to-many assessment instances. |
-| STARTEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
-| COMPLETEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| STARTEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| COMPLETEDBY | USERS_V2_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
 | ASSESSMENTINSTANCEID| PROGRAM_ASSESSMENTS_V1_VIEW |Cardinality is one-to-one.<br /> An assessment instance identifier is associated with a assessment instance.|
 
 <br />
@@ -77,8 +77,8 @@ This view groups attributes that relate to client assessments, for example, the 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
-| STARTEDBY | USERS_V1_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
-| COMPLETEDBY | USERS_V1_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| STARTEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+| COMPLETEDBY | USERS_V2_VIEW| Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
 | ASSESSMENTINSTANCEID| ASSESSMENT_MEASURES_V1_VIEW |Cardinality is one-to-many. <br />An assessment is associated with one-to-many measures.|
 | ASSESSMENTINSTANCEID| PROGRAM_ASSESSMENTS_V1_VIEW |Cardinality is one-to-one. <br /> An assessment instance identifier is associated with a assessment instance.|
 | ASSESSMENTINSTANCEID| ASSESSMENT_NOTES_V1_VIEW |Cardinality is one-to-many. <br /> An assessment instance identifier is associated with zero-to-many assessment note records.|

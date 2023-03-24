@@ -32,7 +32,7 @@ This view groups attributes that relate to the provider such as the provider id,
 
 | Attribute    | Joins to                         | Cardinality                                                                                                        |
 |:-------------|:---------------------------------|:-------------------------------------------------------------------------------------------------------------------|
-| REGISTEREDBY | USERS_V1_VIEW                    | Cardinality is one-to-one .<br />  A user identifier is associated with one user.                                  |
+| REGISTEREDBY | USERS_V2_VIEW                    | Cardinality is one-to-one .<br />  A user identifier is associated with one user.                                  |
 | PROVIDERID   | INQUIRIES_RESPONSES_V1_VIEW      | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many inquiry responses.     |
 | PROVIDERID   | PROVIDER_CONNECT_USERS_V1_VIEW   | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many provider connect users.   |
 | PROVIDERID   | PROVIDER_SERVICES_V1_VIEW        | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many provider services.        |
