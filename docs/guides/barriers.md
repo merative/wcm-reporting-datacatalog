@@ -35,7 +35,6 @@ barrier along with note and note comments views that allow you to identify notes
 | BARRIERID | TEAMACTION_BARRIERS_V1_VIEW      | Cardinality is one-to-many. <br/>A barrier is associated with zero-to-many team actions.     |
 | BARRIERID | BARRIER_NOTES_V1_VIEW      | Cardinality is one-to-many. <br/>A barrier is associated with zero-to-many note records.     |
 
-
 ## BARRIER_NOTES_V1_VIEW
 This view groups barriers by their associated notes. Use this view to identify specific barriers associated with a note.
 <br/>Uniqueness is guaranteed by barrierbID and noteID. Barrier identifier could be repeated in the view, and note identifier could be repeated in the view.
@@ -79,3 +78,7 @@ This view groups attributes that relate to comments recorded for the barriers' n
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | NOTEID           | NOTE_V1_VIEW         | Cardinality is one-to-one. <br/> A note identifier is associated with one note record.    |
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

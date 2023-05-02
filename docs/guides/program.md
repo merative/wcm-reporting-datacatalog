@@ -7,6 +7,7 @@ A program is a care delivery strategy that is designed to deliver a specific cli
 These views group attributes that relate to a client’s programs such as the program name, status and the date and time from which a program is in a status. They also contains views that groups data for plan activies and items that can be associated with a program such as assessments, goals, client actions, team actions, barriers, touchpoints and utilizations.  
 
 
+
 ## PROGRAMS_V1_VIEW
 This view groups attributes that relate to a client’s programs such as the program name, program enrollment status, and the completion date.
 
@@ -204,3 +205,6 @@ This view groups team actions by their associated program. Use this view to iden
 | :-------------- | :------ |:------ |
 | ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one. <br/> A team action is associated with one team action record.|
 | PROGRAMID| PROGRAMS_V1_VIEW | Cardinality is one-to-one.<br/>  A program identifier is associated with one program record. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

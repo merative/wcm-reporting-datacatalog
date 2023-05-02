@@ -6,6 +6,7 @@ A touchpoint is a record of a contact or attempted contact made with or received
 
 These views group attributes that relate to a touchpoint such as the subject, who the contact was with, the contact method, status, content text for the touchpoint and comments recorded for the touchpoint.
 
+
 ## TOUCHPOINTS_V1_VIEW
 
 This view groups attributes that relate to a touchpoint such as the subject, status and content text for the touchpoint. Use this view to create touchpoint reports.
@@ -62,3 +63,6 @@ This view groups attributes that relate to a touchpoint comment such as the auth
 | :-------------- | :------ |:------ |
 | TOUCHPOINTID| TOUCHPOINTS_V1_VIEW | Cardinality is one-to-one. <br/> A touchpoint identifier is associated with one touchpoint.|
 | CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one. <br/> A user identifier is associated with one user. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

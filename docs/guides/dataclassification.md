@@ -1,12 +1,13 @@
 
 
-## Domain definitions.
+## Domain definitions
 
-The following table describes the domain definitions or data types for WCM data.   
+The following table describes the domain definitions or data types for Merative Integrated Care data.   
 
 Every attribute in every view has a data type. The domain definition or data type influences the range of values that the column can have and the set of operators and functions that apply to it.
 
 The data types are required to consume data through your BI tool, database federation or client download program.
+
 
 | Domain definition | Description |
 | :-------------- | :------ |
@@ -55,3 +56,6 @@ The following table summarizes the mappings of data types to Java data types for
 | Decimal fixed-point   | java.math.BigDecimal |	 float, double, java.math.BigDecimal|
 | Double floating-point | double |	 float, java.math.BigDecimal|
 | Decimal floating-point| java.math.BigDecimal |	 float, double, java.math.BigDecimal|
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

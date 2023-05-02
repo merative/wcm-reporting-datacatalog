@@ -29,7 +29,6 @@ This view groups attributes that relate to client questionnaires, for example, t
 | SCORE| Score associated with the client's answer to the question. | Decimal floating-point| ---| YES           |
 | INGESTIONTIME| Date and time the record was ingested, supports changed data capture. | Date Time| ---| NO            |
 
-
 ### Links to other data
 
 | Attribute | Joins to |Cardinality |
@@ -147,3 +146,7 @@ This view groups attributes that relate to comments recorded for the assessments
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | NOTEID           | NOTE_V1_VIEW         | Cardinality is zero-to-many. <br/> A note is associated with zero-to-many comments.   |
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

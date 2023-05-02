@@ -6,7 +6,6 @@ A provider is an organization or individual who provides services, such as healt
 
 These views group attributes that relate to provider's details such as the provider name, status, contact details, address, identification and the team member who created the provider. These views also group attributes that relate to the provider's service such as address, contacts, rates and status history of the service.
 
-
 ## PROVIDERS_V1_VIEW
 
 This view groups attributes that relate to the provider such as the provider id, type and status.
@@ -40,6 +39,7 @@ This view groups attributes that relate to the provider such as the provider id,
 | PROVIDERID   | PROVIDER_CONTACTS_V1_VIEW        | Cardinality is zero-to-many. <br/>  A provider identifier is associated with zero-to-many contact records.         |
 | PROVIDERID   | PROVIDER_ADDRESSES_V1_VIEW       | Cardinality is zero-to-many. <br/> A provider identifier is associated with zero-to-many address records.          |
 | PROVIDERID   | PROVIDER_IDENTIFICATIONS_V1_VIEW | Cardinality is zero-to-many. <br/>  A provider identifier is associated with zero-to-many  identification records. |
+| PROVIDERID   | USERS_V2_VIEW                    | Cardinality is zero-to-many. <br/>  A provider identifier is associated with zero-to-many  users.                         |
 
 ## PROVIDER_ADDRESSES_V1_VIEW
 
@@ -288,3 +288,6 @@ This view groups attributes that relate to the provider's service rates such as 
 |:-------------------|:--------------------------|:------------------------------------------------------------------------------------------------------------------|
 | PROVIDEROFFERINGID | PROVIDER_SERVICES_V1_VIEW | Cardinality is one-to-one. </br>  A provider offering identifier is associated with one provider services record. |
 | PROVIDEROFFERINGID | SERVICES_V1_VIEW          | Cardinality is one-to-one. </br>  A provider offering identifier is associated with one services record.          |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

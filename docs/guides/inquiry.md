@@ -2,10 +2,9 @@
 
 This section describes data available for inquiries.
 
-Care team members can create inquiries for services and send them to one or more providers. In the Watson Care Manager Connect Providers application, providers can view and respond to inquiries and make offers to provide services.
+Care team members can create inquiries for services and send them to one or more providers. In the Merative Integrated Care Connect Providers application, providers can view and respond to inquiries and make offers to provide services.
 
 These views group attributes relating to inquiries that are sent by the care team to providers to solicit services for their clients. Use these views to create inquiries reports.
-
 
 ## INQUIRIES_V1_VIEW
 This view groups attributes that relate to an inquiry such as the inquiry ID, the service name, expected start date, frequency of the service, and the number of units to be delivered.
@@ -16,7 +15,7 @@ This view groups attributes that relate to an inquiry such as the inquiry ID, th
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200            | NO            |
 | SERVICEOFFERINGID| Identifier for a service offering record. | Int 64| ---          | NO            |
 | SERVICENAME| Name of the service for which the inquiry was made. | Character| 500            | YES           |
-| REFERENCENUMBER| Reference number assigned to the inquiry by Watson Care Manager after the inquiry was sent. | Int 64| ---            | NO            |
+| REFERENCENUMBER| Reference number assigned to the inquiry by Merative Integrated Care after the inquiry was sent. | Int 64| ---         | NO            |
 | RECORDEDON| Date on which the inquiry was sent to the provider of the service. | Date Time| ---             | NO            |
 | RECORDEDBY| The identity of the user who recorded the record. | Character| 256           | NO            |
 | RESPONSEREQUIREDBY| Date by which a response to the inquiry is required. | Date| ---            | YES           |
@@ -122,4 +121,4 @@ This view groups attributes that relate to shortlisted providers such as the fir
 | PROVIDEROFFERINGID | SERVICES_V1_VIEW |Cardinality is one-to-one. </br> A provider offering identifier is associated with one provider offering identifier.|
 
 
-
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

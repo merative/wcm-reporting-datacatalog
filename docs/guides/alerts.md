@@ -28,6 +28,7 @@ This view groups attributes that relate to the alert such as the alert name, pri
 
 ### Links to other data
 
+
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
@@ -82,3 +83,7 @@ This view groups attributes that relate to comments recorded for an alert, such 
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | ALERTID | ALERTS_V1_VIEW| Cardinality is one-to-one. <br/> An alert identifier is associated with one alert. |
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

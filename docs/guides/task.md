@@ -2,10 +2,9 @@
 
 This section describes data available for tasks.
 
-A task is an item of work that  team members and supervisors must complete that relate to a client or a general item of work.
+A task is an item of work that team members and supervisors must complete that relate to a client or a general item of work.
 
 These views groups attributes hat relate to a tasks details such as the task name, priority, category and whether it's assigned to a role or a user.
-
 
 ## TASKS_V1_VIEW
 This view groups attributes that relate to a task such as the task name, start time, and priority.
@@ -16,8 +15,8 @@ This view groups attributes that relate to a task such as the task name, start t
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200            | NO            |
 | NAME| The name of the task. | Character| 1000           | NO            |
 | DUEDATE| Date that the task is due to be completed. | Date| ---            | YES           |
-| STARTTIME| Time that the task is due to start. The start time is populated only when the task due date and time is recorded in Watson Care Manager. | Date Time| ---            | YES           |
-| ENDTIME| Time that the task is due to end. The end time is populated only when the task due date and time is recorded in Watson Care Manager. | Date Time| ---             | YES           |
+| STARTTIME| Time that the task is due to start. The start time is populated only when the task due date and time is recorded in Merative Integrated Care. | Date Time| ---            | YES           |
+| ENDTIME| Time that the task is due to end. The end time is populated only when the task due date and time is recorded in Merative Integrated Care. | Date Time| ---             | YES           |
 | DESCRIPTION| Description of the record. | Character| 1200           | YES           |
 | UPDATEDBY| First name and last name of the user who updated the record. | Character| 256            | YES           |
 | UPDATEDDATETIME| Date and time that the record was updated. | Date Time| ---             | YES           |
@@ -70,3 +69,6 @@ This view groups attributes by their associated program. Use this view to identi
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br /> A client identifier is associated with one client.|
 | TASKID | TASK_V1_VIEW| Cardinality is one-to-one. <br /> A task is associated with one task. |
 | PROGRAMID | PROGRAMS_V1_VIEW| Cardinality is one-to-one.<br /> A program is associated with one program. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.
