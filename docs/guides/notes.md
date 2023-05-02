@@ -8,7 +8,6 @@ Notes can be recorded about clients in different places of the application to ad
 This view groups attributes that relate to a note such as the priority, subject, status and content text for
 the note. Use this view to create notes reports.
 
-
 | Attribute        | Description                                                                                                                                                            | Domain definition | Character size | Nulls allowed |
 |:-----------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
 | CLIENTREFERENCE  | Unique reference number that identifies the client in the application.                                                                                                 | Character         | 200            | YES           |
@@ -58,3 +57,6 @@ the comment. Use this view to create note comments reports.
 |:----------|:--------------|:----------------------------------------------------------------------------------|
 | NOTEID    | NOTE_V1_VIEW  | Cardinality is one-to-one. <br/> A note identifieris associated with one note.    |
 | CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.  <br/>  A user identifier is associated with one user. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

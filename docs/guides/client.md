@@ -51,7 +51,7 @@ This view groups attributes that relate to a client's demographics data such as 
 | ADDRESS2| Second line of the client's address. | Character| 1024|YES|
 | ADDRESS3| Third line of the client's address.| Character| 1024|YES|
 | ADDRESSPREFERREDIND| Indicates if this is the client's preferred address for communications. | Character| 1|YES|
-| ADDRESSPHYSICALVISIT| Indicates whether the address is the client's physical visit address. The address shown matches the address that is displayed throughout Watson Care Manager for the client, for example, in their context pane and search result. | Character| 1|YES|
+| ADDRESSPHYSICALVISIT| Indicates whether the address is the client's physical visit address. The address shown matches the address that is displayed throughout Merative Integrated Care for the client, for example, in their context pane and search result. | Character| 1|YES|
 
 ### Links to other data
 
@@ -246,7 +246,7 @@ This view groups data items that relate to a client's referrals such as cohort n
 | :-------------- | :------ |:------ |:------ |:------ |
 | REFERRALID|  Identifier for a referral record.  |  Int 64|--- |NO|
 | COHORTNAME| Name of the cohort that referred the client. Only populated when the referral came from an external source. | Character| 500|YES|
-| COHORTSOURCE| Indicates where the cohort came from, for example, a facility or an external system. Only populated when the referral came from an external system. The field is not displayed in the Watson Care Manager user interface.  | Character| 100 |YES|
+| COHORTSOURCE| Indicates where the cohort came from, for example, a facility or an external system. Only populated when the referral came from an external system. The field is not displayed in the Merative Integrated Care user interface.  | Character| 100 |YES|
 | CLIENTREFERENCE| Unique reference number that identifies the client in the application. | Character| 200|NO|
 | REFERRALREASON| Reason the client was referred selected from a preconfigured list of reasons.| Character| 2000|NO|
 | OTHERREFERRALREASON| Reason entered for the referral, if none of the reasons in the preconfigured list were suitable for selection. | Character| 2000|YES|
@@ -596,3 +596,7 @@ This view groups attributes that relate to status changes for a client, such as 
 | Attribute | Joins to|Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

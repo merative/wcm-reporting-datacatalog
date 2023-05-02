@@ -9,6 +9,7 @@ Goals are plan items that represents a measurable target that a client can compl
 This views groups attributes that relate to goals such as the goal name, importance, outcome and reason for the goal. Use this view in reports to report on client's goals.
 
 
+
 | Attribute | Description | Domain definition |Character size | Nulls allowed |
 | :-------------- | :------ |:------ |:------ |:------ |
 | GOALID| Identifier for a goal record. |  Int 64| ---|NO|
@@ -145,3 +146,6 @@ This view groups attributes that relate to comments recorded when progress is up
 | :-------------- | :------ |:------ |
 | GOALID|GOALS_V1_VIEW | Cardinality is one-to-one. <br/> A goal identifier is associated with one goal.|
 | CREATEDBY | USERS_V2_VIEW | Cardinality is one-to-one.<br /> A user identifier is associated with one user. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

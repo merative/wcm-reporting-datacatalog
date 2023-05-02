@@ -7,7 +7,6 @@ Client consent represents a client's permission for their data to be captured an
 These views groups attributes that relate to a client's consent records such as the consent type, status, the date consent was received, attachments provided to support the clients's consent and the history of the consent record.
 
 
-
 ## CONSENTS_V1_VIEW
 This view groups attributes that relate to the client's consent, such as the consent type, status, expiry and description of the consent record.
 
@@ -86,3 +85,7 @@ This view groups attributes that relate to consent history, such as when the con
 | :-------------- | :------ |:------ |
 | CONSENTID| CONSENTS_V1_VIEW| Cardinality is one-to-one. <br/> A client identifier is associated with one client.|
 | UPDATEDBY | USERS_V2_VIEW| Cardinality is one-to-one.<br/> A user identifier is associated with one user. |
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

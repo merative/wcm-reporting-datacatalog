@@ -32,7 +32,6 @@ The client actions view groups attributes relating to client actions, such as th
 ### Links to other data
 
 
-
 | Attribute | Joins to |Cardinality |
 | :-------------- | :------ |:------ |
 | CLIENTREFERENCE| CLIENTS_V1_VIEW | Cardinality is one-to-one.<br/>  A client identifier is associated with one client.|
@@ -86,3 +85,7 @@ This view groups attributes that relate to comments recorded when progress is up
 | :-------------- | :------ |:------ |
 | ACTIONID| CLIENTACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A client action identifier is associated with one client action.|
 | CREATEDBY | USERS_V2_VIEW |  Cardinality is one-to-one. <br /> A user identifier is associated with one user. |
+
+
+© Merative US L.P. 2016, 2023. 
+Merative is a trademark of Merative US L.P. in the United States and other countries.

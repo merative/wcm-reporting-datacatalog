@@ -3,7 +3,6 @@ Team actions are plan activities that team members can complete to help a client
 These views groups attributes that relate to actions such as the action name, category, status, progress commments
 recorded against the care team action and reason for the action.
 
-
 ## TEAMACTIONS_V1_VIEW
 The team actions view groups attributes relating to team actions, such as the name, category, status and completion
 details for the action. Use this view to create team action reports.
@@ -86,3 +85,6 @@ progress comment, the name of the user who added the comment, and the date when 
 | :-------------- | :------ |:------ |
 | ACTIONID| TEAMACTIONS_V1_VIEW | Cardinality is one-to-one.<br/> A team action identifier is associated with one team action. |
 | CREATEDBY | USERS_V2_VIEW |  Cardinality is one-to-one.<br /> A user identifier is associated with one user.  |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.

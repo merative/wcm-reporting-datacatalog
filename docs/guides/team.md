@@ -4,6 +4,7 @@ This section describes data available for teams, team members and users.
 
 These views groups attributes that relate to a users details, such as their login id,  which workspaces they have access to, what team role they are assigned, when they last logged in to the application and whether they are a member of a client's team.  
 
+
 ## TEAM_MEMBERS_V2_VIEW
 
 <br/> ```TEAM_MEMBERS_V1_VIEW``` is deprecated so use this view instead. The attribute previously named ```ROLENAME``` has been renamed to ```DEFAULTWORKSPACE``` .
@@ -24,7 +25,7 @@ This view groups attributes that relate to a client's team members and their rol
 | TITLE                   | User's title. For example, Mr or Ms.                                                                                                   | Character             | 60             | YES           |
 | FULLNAME                | User's first name and last name.                                                                                                       | Character             | 524            | YES           |
 | USERSTATUS              | The status of the user's account. The status can be active, suspended, or closed.                                                      | Character             | 1850           | NO            |
-| ACCOUNTENABLED          | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to IBM Watson Care Manager.             | Character             | 1              | NO            |
+| ACCOUNTENABLED          | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to Merative Integrated Care.             | Character             | 1              | NO            |
 | CREATIONDATE            | Date the user's account was created.                                                                                                   | Date                  | ---            | NO            |
 | LASTSUCCESSLOGIN        | Date on which the user last logged in successfully.                                                                                    | Date Time             | ---            | YES           |
 | DEFAULTWORKSPACE        | User's default workspace, for example, Care Team, Administrator, and so on.                                                            | Character             | 200            | NO            |
@@ -73,7 +74,7 @@ This view groups attributes that relate to a client's team members and their rol
 | TITLE                   | User's title. For example, Mr or Ms.                                                                                                   | Character             | 60             | YES           |
 | FULLNAME                | User's first name and last name.                                                                                                       | Character             | 524            | YES           |
 | USERSTATUS              | The status of the user's account. The status can be active, suspended, or closed.                                                      | Character             | 1850           | NO            |
-| ACCOUNTENABLED          | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to IBM Watson Care Manager.             | Character             | 1              | NO            |
+| ACCOUNTENABLED          | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to Merative Integrated Care.             | Character             | 1              | NO            |
 | CREATIONDATE            | Date the user's account was created.                                                                                                   | Date                  | ---            | NO            |
 | LASTSUCCESSLOGIN        | Date on which the user last logged in successfully.                                                                                    | Date Time             | ---            | YES           |
 | ROLENAME                | User's security role, for example, Care Team,  Administrator, and so on.                                                               | Character             | 200            | NO            |
@@ -125,7 +126,7 @@ This view groups attributes that relate to a client and their teams. Use this vi
 
 <br/> ```USERS_V1_VIEW``` is deprecated so use this view instead. The attribute previously named ```ROLENAME``` has been renamed to ```DEFAULTWORKSPACE``` .
 
-This view groups attributes that relate to users in Watson Care Manager, for example, user's name, status, workspaces, and security roles. External users that have no email address will be automatically given the following email address to be stored as their login ID: <first 6 characters from the username column>.\<full name>@protectedapi.com.
+This view groups attributes that relate to users in Merative Integrated Care, for example, user's name, status, workspaces, and security roles. Users that are members of a provider organization will have a provider ID. External users that have no email address will be automatically given the following email address to be stored as their login ID: <first 6 characters from the username column>.\<full name>@protectedapi.com.
 
 | Attribute        | Description                                                                                                                            | Domain definition | Character size | Nulls allowed |
 |:-----------------|:---------------------------------------------------------------------------------------------------------------------------------------|:------------------|:---------------|:--------------|
@@ -135,7 +136,7 @@ This view groups attributes that relate to users in Watson Care Manager, for exa
 | TITLE            | User's title. For example, Mr or Ms.                                                                                                   | Character         | 60             | YES           |
 | FULLNAME         | User's first name and last name.                                                                                                       | Character         | 524            | YES           |
 | USERSTATUS       | The status of the user's account. The status can be Active, Suspended, or Closed.                                                      | Character         | 100            | NO            |
-| ACCOUNTENABLED   | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to IBM Watson Care Manager.             | Character         | 1              | NO            |
+| ACCOUNTENABLED   | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to Merative Integrated Care.             | Character         | 1              | NO            |
 | CREATIONDATE     | Date the user's account was created.                                                                                                   | Date              | ---            | NO            |
 | LASTSUCCESSLOGIN | Date on which the user last logged in successfully.                                                                                    | Date Time         | ---            | YES           |
 | DEFAULTWORKSPACE | User's default workspace, for example, Care Team, Administrator, and so on.                                                            | Character         | 200            | NO            |
@@ -144,6 +145,7 @@ This view groups attributes that relate to users in Watson Care Manager, for exa
 | EXTERNALROLENAME | Displays the user's external role, if configured.                                                                                      | Character         | 1024           | YES           |
 | SECURITYROLE     | Displays a comma separated list of the user's assigned security roles, for example, Care Team Standard Access, Full Access, and so on. | Character         | 1024           | NO            |
 | INGESTIONTIME    | Date and time the record was ingested, supports change data capture.                                                                   | Date Time         | ---            | NO            |
+| PROVIDERID       | Identifier for a provider user. NULL if user is not a provider user.                                                                   | Int 64            | ---            | YES           |
 
 ### Links to other data
 
@@ -154,6 +156,7 @@ Please note that other data sets may not always use a field named `LOGINID`  as 
 | Attribute  | Joins to             | Cardinality                                                                        |
 |:-----------|:---------------------|:-----------------------------------------------------------------------------------|
 | LOGINID    | TEAM_MEMBERS_V2_VIEW | Cardinality is zero-to-many. <br/> A user is associated with zero to many teams.   |
+| PROVIDERID | PROVIDERS_V1_VIEW    | Cardinality is zero-to-one. <br/> A user is associated with zero or one providers. |
 
 
 ## USERS_V1_VIEW
@@ -170,7 +173,7 @@ This view  groups attributes that relate to users who are not in a client's team
 | TITLE            | User's title. For example, Mr or Ms.                                                                                                   | Character         | 60             | YES           |
 | FULLNAME         | User's first name and last name.                                                                                                       | Character         | 524            | YES           |
 | USERSTATUS       | The status of the user's account. The status can be Active, Suspended, or Closed.                                                      | Character         | 100            | NO            |
-| ACCOUNTENABLED   | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to IBM Watson Care Manager.             | Character         | 1              | NO            |
+| ACCOUNTENABLED   | Shows if the account is active or suspended. Users whose accounts are suspended cannot sign in to Merative Integrated Care.             | Character         | 1              | NO            |
 | CREATIONDATE     | Date the user's account was created.                                                                                                   | Date              | ---            | NO            |
 | LASTSUCCESSLOGIN | Date on which the user last logged in successfully.                                                                                    | Date Time         | ---            | YES           |
 | ROLENAME         | User's security role, for example, Care Team,  Administrator, and so on.                                                               | Character         | 200            | NO            |
@@ -189,3 +192,6 @@ Please note that other data sets may not always use a field named `LOGINID`  as 
 | Attribute | Joins to             | Cardinality                                                                      |
 |:----------|:---------------------|:---------------------------------------------------------------------------------|
 | LOGINID   | TEAM_MEMBERS_V1_VIEW | Cardinality is zero-to-many. <br/> A user is associated with zero to many teams. |
+
+
+© Merative US L.P. 2016, 2023.  Merative is a trademark of Merative US L.P. in the United States and other countries.
